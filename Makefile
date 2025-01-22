@@ -6,11 +6,11 @@
 #    By: izanoni <izanoni@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/22 15:45:54 by izanoni           #+#    #+#              #
-#    Updated: 2025/01/22 15:45:59 by izanoni          ###   ########.fr        #
+#    Updated: 2025/01/22 16:25:32 by izanoni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= Game
+NAME	:= cub3d
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./lib/MLX42
 
