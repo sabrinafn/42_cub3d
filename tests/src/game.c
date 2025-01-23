@@ -6,7 +6,7 @@
 /*   By: izanoni <izanoni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:46:07 by izanoni           #+#    #+#             */
-/*   Updated: 2025/01/22 16:25:45 by izanoni          ###   ########.fr       */
+/*   Updated: 2025/01/23 19:54:07 by izanoni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,3 +126,20 @@ int32_t	main(void)
 	return (EXIT_SUCCESS);
 }
  */
+
+int	read_file(char *map_file, t_game *game)
+{
+	char	*full_content;
+
+	full_content = read_file_content(map_file);
+	if (!full_content)
+		return (-1);
+	replace_tabs(full_content);
+	if (parser_file(full_content, game) == -1)
+	{
+		free(full_content);
+		return (-1);
+	}
+	free(full_content);
+	return (0);
+}
