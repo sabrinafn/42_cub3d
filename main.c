@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izanoni <izanoni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/23 19:47:23 by izanoni          ###   ########.fr       */
+/*   Updated: 2025/01/24 15:22:30 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	print_error(char *e)
+{
+	printf("Error\n%s", e);
+	return (0);
+}
 
 int check_name(char *argv)
 {
@@ -47,5 +53,8 @@ int main(int argc, char **argv)
 {
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
+	validação aquivo vazio;
+	read_content(argv[1]);
+	
 	
 }
