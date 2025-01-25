@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 16:20:35 by izanoni           #+#    #+#             */
-/*   Updated: 2024/07/23 18:16:09 by mgonzaga         ###   ########.fr       */
+/*   Created: 2023/05/22 17:57:46 by mgonzaga          #+#    #+#             */
+/*   Updated: 2023/05/23 13:42:48 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	ft_putendl_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
-	if (!s)
-		return ;
-	write(fd, s, ft_strlen(s));
+	while (s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 	write(fd, "\n", 1);
 }

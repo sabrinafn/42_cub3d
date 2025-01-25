@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izanoni <izanoni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 16:48:25 by izanoni           #+#    #+#             */
-/*   Updated: 2023/05/03 16:54:28 by izanoni          ###   ########.fr       */
+/*   Created: 2023/05/10 11:11:00 by mgonzaga          #+#    #+#             */
+/*   Updated: 2023/05/28 04:03:04 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int i)
+int	ft_toupper(int c)
 {
-	if (i >= 'a' && i <= 'z')
-		return (i - 32);
-	return (i);
+	if (c >= 'a' && c <= 'z')
+	{
+		c = c - 32;
+	}
+	return (c);
 }

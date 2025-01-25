@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izanoni <izanoni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 15:19:28 by izanoni           #+#    #+#             */
-/*   Updated: 2023/05/03 15:30:48 by izanoni          ###   ########.fr       */
+/*   Created: 2023/05/03 14:00:40 by mgonzaga          #+#    #+#             */
+/*   Updated: 2023/05/22 14:00:51 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int i)
+int	ft_isdigit(int c)
 {
-	if (i >= 48 && i <= 57)
+	if (c >= 48 && c <= 57)
 		return (1);
 	else
 		return (0);

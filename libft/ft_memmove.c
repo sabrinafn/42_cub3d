@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izanoni <izanoni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 19:06:12 by izanoni           #+#    #+#             */
-/*   Updated: 2023/05/29 18:53:17 by izanoni          ###   ########.fr       */
+/*   Created: 2023/05/08 14:57:38 by mgonzaga          #+#    #+#             */
+/*   Updated: 2023/05/28 04:23:41 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char		*cdest;
-	const char	*csrc;
+	size_t		i;
+	char		*d;
+	const char	*s;
 
-	cdest = dest;
-	csrc = src;
-	if (cdest == NULL && csrc == NULL)
+	i = 0;
+	d = dest;
+	s = src;
+	if (dest == NULL && src == NULL)
 		return (NULL);
-	if (csrc < cdest)
+	if (dest > src)
 	{
-		cdest += n;
-		csrc += n;
-		while (n--)
+		i = n;
+		while (n > 0)
 		{
-			*--cdest = *--csrc;
+			i--;
+			n--;
+			d[i] = s[i];
 		}
 	}
-	else
+	while (i < n)
 	{
-		while (n--)
-		{
-			*cdest++ = *csrc++;
-		}
+		d[i] = s[i];
+		i++;
 	}
 	return (dest);
 }

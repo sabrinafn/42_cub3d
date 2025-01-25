@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izanoni <izanoni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 21:17:22 by izanoni           #+#    #+#             */
-/*   Updated: 2023/05/19 13:48:19 by izanoni          ###   ########.fr       */
+/*   Created: 2023/05/15 14:56:28 by mgonzaga          #+#    #+#             */
+/*   Updated: 2023/05/28 04:02:04 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	size_t	ib;
+	size_t	il;
 
-	i = 0;
-	j = 0;
-	if (little[j] == '\0')
+	ib = 0;
+	if (little[0] == '\0')
 		return ((char *)big);
-	while (i < len && big[i])
+	while (big[ib] != '\0' && ib < len)
 	{
-		if (big[i] == little[0])
+		il = 0;
+		while (big[ib] == little[il] && big[ib] != '\0' && ib < len)
 		{
-			j = 1;
-			while ((big[i + j] == little[j]) && little[j] && (i + j < len))
-				j++;
-			if (little[j] == '\0')
-				return ((char *)&big[i]);
+			il++;
+			ib++;
 		}
-		i++;
+		if (little[il] == '\0')
+			return ((char *)&big[ib] - il);
+		ib = ib - il;
+		ib++;
 	}
-	return (NULL);
+	return (0);
 }

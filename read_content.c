@@ -6,11 +6,11 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:13:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/24 15:34:06 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/25 19:58:25 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub_3d.h"
 
 int	countcols(char *file_name)
 {
@@ -20,7 +20,10 @@ int	countcols(char *file_name)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return (print_error(ERROR_1));
+	{
+		print_error(ERROR_1);
+		exit(0);
+	}
 	count = 0;
 	string = get_next_line(fd);
 	while (string != NULL)
@@ -54,10 +57,13 @@ char	**makematrix(char *file_name, int count_cols)
 	return (matriz_malloc);
 }
 
-int	read_content(char *file_name)
+void	read_content(char *file_name)
 {
 	t_map s_map;
 
 	s_map.name_file = file_name;
-	s_map.matrix = makematrix(file_name, countcols(file_name));
+	s_map.countcols = countcols(file_name);
+	s_map.matrix = makematrix(file_name, s_map.countcols);
+	validate_map(s_map);
 }
+

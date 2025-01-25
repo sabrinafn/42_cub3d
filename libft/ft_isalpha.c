@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izanoni <izanoni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 15:08:34 by izanoni           #+#    #+#             */
-/*   Updated: 2023/05/11 20:43:16 by izanoni          ###   ########.fr       */
+/*   Created: 2023/05/03 13:17:11 by mgonzaga          #+#    #+#             */
+/*   Updated: 2023/05/27 23:24:27 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int i)
+int	ft_isalpha(int c)
 {
-	if ((i >= 65 && i <= 90) || (i >= 97 && i <= 122))
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);
 	else
 		return (0);

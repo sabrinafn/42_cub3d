@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: izanoni <izanoni@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 17:38:08 by izanoni           #+#    #+#             */
-/*   Updated: 2023/05/28 15:34:32 by izanoni          ###   ########.fr       */
+/*   Created: 2023/05/20 12:59:18 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/01/24 18:07:40 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*c_alloc;
-	size_t	alloc_size;
+	void	*ptr;
+	size_t	total_size;
+	size_t	i;
 
-	alloc_size = nmemb * size;
-	if (alloc_size != 0 && alloc_size / size != nmemb)
+	total_size = nmemb * size;
+	if (total_size != 0 && nmemb > total_size / size)
 		return (NULL);
-	c_alloc = malloc(alloc_size);
-	if (!c_alloc)
+	ptr = malloc(total_size);
+	if (ptr == NULL)
 		return (NULL);
-	ft_bzero (c_alloc, alloc_size);
-	return (c_alloc);
+	i = 0;
+	while (i < total_size)
+	{
+		((unsigned char *)ptr)[i] = 0;
+		i++;
+	}
+	return (ptr);
 }

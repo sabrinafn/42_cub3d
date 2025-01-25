@@ -1,34 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub_3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/24 15:07:46 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/25 19:58:15 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB_3D_H
+# define CUB_3D_H
 
 
-# include "./libft/libft.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 
+
+# include "libft/libft.h"
+# include "libft/get_next_line/get_next_line.h"
 # define ERROR_1 "Impossible to read the file\n"
-# define ERROR_2 "Empty Map\n"
+# define ERROR_2 "Empty File\n"
 # define ERROR_3 "Invalid malloc\n"
+
 
 typedef struct s_map
 {
-	char **matrix;
+	char	**matrix;
 	char	*name_file;
-}t_map;
+	int		countcols;
+	char	*no_texture;
+	char	*so_texture;
+	char	*we_texture;
+	char	*ea_texture;
+	char	*f_color;
+	char	*c_color;
+}			t_map;
 
+int check_arguments(int argc, char *argv);
+int check_name(char *argv);
+int	print_error(char *e);
+int	countcols(char *file_name);
+char	**makematrix(char *file_name, int count_cols);
+void	read_content(char *file_name);
+int ampy_file(char *argv);
+int find_map(t_map s_map);
+int find_map2(t_map s_map);
+int validate_map(t_map s_map);
 #endif 
