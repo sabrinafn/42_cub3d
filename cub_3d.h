@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/26 14:29:05 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:15:43 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-
+# include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 # include "libft/get_next_line/get_next_line.h"
 # define ERROR_1 "Impossible to read the file\n"
@@ -47,7 +47,7 @@ int check_name(char *argv);
 int	print_error(char *e);
 int	countcols(char *file_name);
 char	**makematrix(char *file_name, int count_cols);
-void	read_content(char *file_name);
+int	read_content(char *file_name);
 int ampy_file(char *argv);
 int find_map(t_map s_map);
 int find_map2(t_map s_map);
@@ -57,5 +57,7 @@ int find_player(t_map s_map);
 int	invalid_character(t_map s_map, int cols);
 int valide_wall(t_map s_map);
 int check_wall(char **matrix, int cols, int i);
+int size_map(t_map s_map);
+int walk_spaces(char *string);
 
 #endif 

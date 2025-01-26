@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:13:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/26 11:51:30 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:25:08 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,19 @@ char	**makematrix(char *file_name, int count_cols)
 	return (matriz_malloc);
 }
 
-void	read_content(char *file_name)
+int	read_content(char *file_name)
 {
 	t_map s_map;
 
 	s_map.name_file = file_name;
 	s_map.countcols = countcols(file_name);
 	s_map.matrix = makematrix(file_name, s_map.countcols);
-	validate_map(s_map);
+	s_map.map_position = find_map2(s_map);
+	if (validate_map(s_map) == 1)
+	{
+		//dar free
+		return(1);
+	}
+	return(0);	
 }
 

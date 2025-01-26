@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:38:13 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/26 14:27:56 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:12:32 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,24 @@ int check_wall(char **matrix, int cols, int i)
 	|| matrix[cols + 1][i] == '\0'
 	|| matrix[cols - 1][i] == '\0')
 		return(1);
-	return(0);	
-		
+	return(0);		
+}
+
+int size_map(t_map s_map)
+{
+	int i;
+	int count;
+
+	count = 0;
+	if((s_map.countcols - s_map.map_position) < 9)
+		return(1);
+	i = walk_spaces(s_map.matrix[0]);
+	while(s_map.matrix[0][i] != '\0')
+	{
+		count++;
+		i++;
+	}
+	if(count < 9)
+		return(1);
+	return(0);		
 }

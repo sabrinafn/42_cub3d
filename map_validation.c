@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:34:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/26 14:00:59 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:03:47 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int validate_map(t_map s_map)
 {
-	s_map.map_position = find_map2(s_map);
 	if(invalid_character(s_map, s_map.map_position) == 1)
 	{
 		write(1, "Invalid character in map\n", 24);
@@ -30,5 +29,11 @@ int validate_map(t_map s_map)
 		write(1, "Invalid wall\n", 14);	
 		return(1);
 	}
+	if(size_map(s_map))
+	{
+		write(1, "Map size invalide\n", 19);	
+		return(1);		
+	}
 	return(0);	
 }
+
