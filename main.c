@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/25 19:55:08 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:45:18 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	print_error(char *e)
 {
 	printf("Error\n%s", e);
-	return (0);
+	return (1);
 }
 
 int check_name(char *argv)

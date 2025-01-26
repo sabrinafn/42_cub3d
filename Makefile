@@ -6,7 +6,7 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:38:48 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/01/25 18:56:25 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/01/26 14:01:55 by mgonzaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = cub3d
 
 LIBFT = libft/libft.a
 
-FILES = main.c read_content.c map_validation.c
+FILES = main.c read_content.c find_map.c map_validation.c \
+find_player.c wall_validation.c
 OBJ = $(FILES:%.c=%.o)
 
 all: libft $(NAME)
