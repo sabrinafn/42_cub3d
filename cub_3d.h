@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/26 16:15:43 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:43:59 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define ERROR_1 "Impossible to read the file\n"
 # define ERROR_2 "Empty File\n"
 # define ERROR_3 "Invalid malloc\n"
+
+# define WIDTH 800
+# define HEIGHT 600
 
 
 typedef struct s_map
@@ -59,5 +62,6 @@ int valide_wall(t_map s_map);
 int check_wall(char **matrix, int cols, int i);
 int size_map(t_map s_map);
 int walk_spaces(char *string);
+void	free_matrix(char **malloc_string);
 
 #endif 

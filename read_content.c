@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:13:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/26 16:25:08 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:30:28 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	read_content(char *file_name)
 	s_map.map_position = find_map2(s_map);
 	if (validate_map(s_map) == 1)
 	{
-		//dar free
+		free_matrix(s_map.matrix);
 		return(1);
 	}
 	return(0);	
