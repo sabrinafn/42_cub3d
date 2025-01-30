@@ -6,7 +6,7 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:38:48 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/01/26 17:31:15 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/01/29 20:17:08 by mgonzaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = cub3d
 LIBFT = libft/libft.a
 
 FILES = main.c read_content.c find_map.c map_validation.c \
-find_player.c wall_validation.c free_things.c
+find_player.c wall_validation.c free_things.c parsing_content.c
 OBJ = $(FILES:%.c=%.o)
 MLX_FLAGS = -lm -ldl -pthread -lglfw
 

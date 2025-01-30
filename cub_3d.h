@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/27 17:43:59 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:05:50 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,9 @@ int check_wall(char **matrix, int cols, int i);
 int size_map(t_map s_map);
 int walk_spaces(char *string);
 void	free_matrix(char **malloc_string);
+int valide_content(t_map s_map);
+int	validate_element(char **matrix);
+int	six_content(char **matrix);
+int valide_numbers(char **matrix);
 
 #endif 

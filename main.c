@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/29 18:00:13 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:52:10 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int main(int argc, char **argv)
 		return(1);
 	if(read_content(argv[1]) == 1)
 		return(1);
+	mlx_t* mlx = mlx_init(1024, 1024, "Cub3D", true);
+	mlx_loop(mlx);	
 	return(0);
 }
 
