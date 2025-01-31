@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/29 20:33:42 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/30 19:54:13 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int valide_content(t_map s_map)
 	if(validate_element(s_map.matrix) == 1)
 		return(1);
 	if(valide_numbers(s_map.matrix) == 1)
-		return(1);	
+		return(1);
+	if(texture_path(s_map.matrix) == 1)
+		return(1);		
 	return(0);	
 }
 
@@ -120,5 +122,32 @@ int valide_numbers(char **matrix)
 		cols++;
 	}
 	free(temp);
+	return(0);
+}
+
+int texture_path(char **matrix)
+{
+	int cols;
+	char **temp;
+	int fd;
+	
+	temp = NULL;
+	cols = 0;
+	while(matrix[cols] != NULL)
+	{
+		if(ft_strchr(matrix[cols], 'N') != NULL || ft_strchr(matrix[cols], 'W') != NULL \
+		|| ft_strchr(matrix[cols], 'S') != NULL || ft_strchr(matrix[cols], 'E') != NULL)
+			{
+				temp = ft_split(matrix[cols], ' ');
+				printf("%s\n", temp[1]);
+				fd = open(temp[1], O_RDONLY);
+				if(fd == -1)
+				{
+					close(fd);
+					return(1);
+				}
+			}
+		cols++;	
+	}
 	return(0);
 }

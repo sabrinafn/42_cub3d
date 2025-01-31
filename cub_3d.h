@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/29 20:05:50 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/30 19:54:29 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ int valide_content(t_map s_map);
 int	validate_element(char **matrix);
 int	six_content(char **matrix);
 int valide_numbers(char **matrix);
+int texture_path(char **matrix);
 
 #endif 
