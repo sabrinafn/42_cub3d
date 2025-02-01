@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:25:28 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/26 11:35:40 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:40:04 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int walk_spaces(char *string)
 	int i;
 
 	i = 0;
-	while(string[i] == ' ' || string[i] == '\n')
+	while(string[i] == ' ' || string[i] == '\n' || string[i] == '\t')
 		i++;
 	return(i);	
 }

@@ -6,7 +6,7 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:38:48 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/01/29 20:17:08 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/01/31 15:27:10 by mgonzaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ clean:
 	make clean -C libft
 	rm -f -r MLX42/build  
 v: all
-	valgrind --leak-check=full --show-leak-kinds=all $(NAME) $(FILE)
+	valgrind --leak-check=full --show-leak-kinds=all $(NAME) $(FILES)
 re: fclean all
 
 .PHONY: all fclean clean re libft

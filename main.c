@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/29 18:52:10 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:42:21 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int ampy_file(char *argv)
 	string = get_next_line(fd);
 	if(string == NULL)
 		return(print_error(ERROR_2));
-
+	free(string);
+	close(fd);
 	return(0);
 }
 

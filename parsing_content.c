@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/30 19:54:13 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/01 19:56:59 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int valide_content(t_map s_map)
 		return(1);
 	if(valide_numbers(s_map.matrix) == 1)
 		return(1);
-	if(texture_path(s_map.matrix) == 1)
-		return(1);		
+	//if(texture_path(s_map.matrix) == 1)
+	  	//return(1);		
 	return(0);	
 }
 
@@ -36,19 +36,22 @@ int	six_content(char **matrix)
 	count = 0;	
 	while(matrix[cols] != NULL)
 	{
-		if(count == 6)
-			break;
 		line = walk_spaces(matrix[cols]);
 		if(matrix[cols][line] == '\0' || matrix[cols][line] == '\n')
 			cols++;
 		else
 		{
+			if(matrix[cols][line] == '1')
+				break;
 			cols++;
 			count++;
 		}
 	}
 	if(count != 6)
+	{
+		printf("Invalid number of elements\n");	
 		return(1);
+	}
 	return(0);
 }
 
@@ -83,6 +86,7 @@ int	validate_element(char **matrix)
 				else
 				{
 					free(temp);
+					printf("invalid Elements\n");
 					return(1);		
 				}		
 			}
@@ -98,8 +102,12 @@ int valide_numbers(char **matrix)
 	int cols;
 	int count;
 	char **temp;
-	int number;
-	
+	//int number;
+	char **temp2;
+	int i;
+
+	i = 0;
+	temp2 = NULL;
 	temp = NULL;
 	count = 0;
 	cols = 0;
@@ -109,19 +117,36 @@ int valide_numbers(char **matrix)
 		{
 			count = 0;
 			temp = ft_split(matrix[cols], ' ');
-			temp = ft_split(temp[1], ',');
-			while(temp[count] != NULL)
+			temp2 = ft_split(temp[1], ',');
+			while(temp2[count] != NULL)
 			{
-				number = ft_atoi(temp[count]);
-				if(number < 0 || number > 255)
-					return(1);
+				while (temp2[count][i] != '\0')
+				{
+					printf("%c", temp2[count][i]);
+					// if(ft_strchr("1234567890", temp2[count][i]) == NULL)
+					// {
+					// 	free_matrix (temp);
+					// 	free_matrix (temp2);
+					// 	printf("Invalid colokjkljlkrs\n");	
+					// 	return(1);
+					// }
+					i++;
+				}
+				// number = ft_atoi(temp2[count]);
+				// if( number < 0 || number  > 255 || count > 3)
+				// {
+				// 	free_matrix (temp);
+				// 	free_matrix (temp2);
+				// 	printf("Invalid colors\n");	
+				// 	return(1);
+				// }
 				count++;
 			}
-			free (temp);
+			free_matrix (temp); 
+			free_matrix (temp2);
 		}
 		cols++;
 	}
-	free(temp);
 	return(0);
 }
 
@@ -129,7 +154,7 @@ int texture_path(char **matrix)
 {
 	int cols;
 	char **temp;
-	int fd;
+	mlx_texture_t* text;
 	
 	temp = NULL;
 	cols = 0;
@@ -139,13 +164,15 @@ int texture_path(char **matrix)
 		|| ft_strchr(matrix[cols], 'S') != NULL || ft_strchr(matrix[cols], 'E') != NULL)
 			{
 				temp = ft_split(matrix[cols], ' ');
-				printf("%s\n", temp[1]);
-				fd = open(temp[1], O_RDONLY);
-				if(fd == -1)
+				text = mlx_load_png(temp[1]);
+				if(text == NULL)
 				{
-					close(fd);
+					free_matrix(temp);
+					printf("invalid taxture\n");
 					return(1);
 				}
+				mlx_delete_texture(text);
+				free_matrix(temp);
 			}
 		cols++;	
 	}

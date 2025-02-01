@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:38:13 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/26 16:12:32 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/01 17:55:58 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int size_map(t_map s_map)
 	if((s_map.countcols - s_map.map_position) < 9)
 		return(1);
 	i = walk_spaces(s_map.matrix[0]);
-	while(s_map.matrix[0][i] != '\0')
+	while(s_map.matrix[s_map.map_position][i] != '\0')
 	{
 		count++;
 		i++;
@@ -76,4 +76,29 @@ int size_map(t_map s_map)
 	if(count < 9)
 		return(1);
 	return(0);		
+}
+
+int empy_line(t_map s_map)
+{
+	int cols;
+	int i;
+
+	cols = s_map.map_position;
+	while(s_map.matrix[cols] != NULL)
+	{
+		i = walk_spaces(s_map.matrix[cols]);
+		if(i > 1 && s_map.matrix[cols][i] == '\0')
+			return (1);
+		if(s_map.matrix[cols][i] == '\0')
+			break ;
+		cols++;	
+	}
+	while(s_map.matrix[cols] != NULL)
+	{
+		i = walk_spaces(s_map.matrix[cols]);
+		if(s_map.matrix[cols][i] != '\0')
+			return(1);
+		cols++;	
+	}
+	return(0);
 }
