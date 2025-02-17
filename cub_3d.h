@@ -22,7 +22,7 @@
 
 # include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
-# include "libft/get_next_line/get_next_line.h"
+# include "libft/gnl/get_next_line.h"
 # define ERROR_1 "Impossible to read the file\n"
 # define ERROR_2 "Empty File\n"
 # define ERROR_3 "Invalid malloc\n"
