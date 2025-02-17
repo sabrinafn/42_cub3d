@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_3d.h"
+#include "../cub_3d.h"
 
 void	free_matrix(char **malloc_string)
 {
