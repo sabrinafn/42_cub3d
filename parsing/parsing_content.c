@@ -122,7 +122,7 @@ int valide_numbers(char **matrix)
 			{
 				while (temp2[count][i] != '\0')
 				{
-					printf("%c", temp2[count][i]);
+					//printf("%c", temp2[count][i]);
 					// if(ft_strchr("1234567890", temp2[count][i]) == NULL)
 					// {
 					// 	free_matrix (temp);

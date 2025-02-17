@@ -61,7 +61,18 @@ int ampy_file(char *argv)
 	return(0);
 }
 
-
+/*
+typedef struct s_args
+{
+	char	*NO_wall;
+	char	*SO_wall;
+	char	*WE_wall;
+	char	*EA_wall;
+	char	*ceiling;
+	char	*floor;
+	char	**map;
+}			t_args;
+*/
 
 int main(int argc, char **argv)
 {
@@ -71,8 +82,7 @@ int main(int argc, char **argv)
 		return(1);
 	if(read_content(argv[1]) == 1)
 		return(1);
-	mlx_t* mlx = mlx_init(1024, 1024, "Cub3D", true);
-	mlx_loop(mlx);	
+	init_window();
 	return(0);
 }
 
