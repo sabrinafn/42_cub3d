@@ -4,7 +4,8 @@ WE ./assets/wall/brick-2d.png
 EA ./assets/wall/brick-1d.png
 
 F 220,100,0
-C 225,30,0
+C 225,30,0ls
+
 
         1111111111111111111111111
         1000000000110000000000001
