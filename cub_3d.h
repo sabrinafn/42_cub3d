@@ -14,7 +14,6 @@
 # define CUB_3D_H
 
 # include "MLX42/include/MLX42/MLX42.h"
-# include "libft/gnl/get_next_line.h"
 # include "libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>

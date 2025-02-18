@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 18:02:38 by mgonzaga          #+#    #+#             */
-/*   Updated: 2023/06/23 18:28:53 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2023/06/23 18:50:31 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*malloc_line(char *str)
 {
@@ -95,10 +95,10 @@ char	*get_next_line(int fd)
 {
 	char		*dest_file;
 	char		*temp;
-	static char	*rest;
+	static char	*rest[1024];
 	ssize_t		len_read;
 
-	temp = rest;
+	temp = rest[fd];
 	if (BUFFER_SIZE <= 0 && fd < 0)
 		return (NULL);
 	dest_file = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
@@ -109,11 +109,11 @@ char	*get_next_line(int fd)
 	{
 		len_read = read(fd, dest_file, BUFFER_SIZE);
 		if (len_read < 0)
-			return (len_free (dest_file, temp, &rest));
+			return (len_free(dest_file, temp, &rest[fd]));
 		dest_file[len_read] = '\0';
 		temp = ft_strjoin(temp, dest_file);
 	}
-	rest = get_rest(temp);
+	rest[fd] = get_rest(temp);
 	temp = get_line(temp);
 	free(dest_file);
 	return (temp);

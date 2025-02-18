@@ -25,15 +25,26 @@ int	countcols(char *file_name)
 		exit(0);
 	}
 	count = 0;
-	string = get_next_line(fd);
+	while (1)
+	{
+		string = get_next_line(fd);
+		if (!string)
+			break ;
+		printf("gnl return: %s\n", string);
+		count++;
+		free (string);
+
+	}
+	/*
 	while (string != NULL)
 	{
 		count++;
 		free(string);
 		string = get_next_line(fd);
-	}
+		printf("gnl return: %s\n", string);
+	}*/
+	//free(string);
 	close(fd);
-	free(string);
 	return (count);
 }
 
@@ -53,6 +64,8 @@ char	**makematrix(char *file_name, int count_cols)
 	while (count < count_cols)
 	{
 		matriz_malloc[count] = get_next_line(fd);
+		if (!matriz_malloc[count])
+			return (NULL);
 		count++;
 	}
 	return (matriz_malloc);
@@ -65,6 +78,7 @@ int	read_content(char *file_name)
 	s_map.name_file = file_name;
 	s_map.countcols = countcols(file_name);
 	s_map.matrix = makematrix(file_name, s_map.countcols);
+	printf("s_map.matrix[0]: %s\n", s_map.matrix[0]);
 	if(valide_content(s_map))
 	{
 		free_matrix(s_map.matrix);

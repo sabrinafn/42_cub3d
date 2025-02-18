@@ -6,16 +6,21 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 15:37:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2023/05/28 05:30:01 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:51:37 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
-# include <stdlib.h>
+# define BUFFER_SIZE 1
 
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+char	*get_next_line(int fd);
 int		ft_atoi(const char *str);
 void	*ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
@@ -45,10 +50,11 @@ char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+char	*get_next_line(int fd);
 
 #endif
