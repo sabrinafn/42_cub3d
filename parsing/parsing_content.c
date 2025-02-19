@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/01 19:56:59 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:04:10 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ int texture_path(char **matrix)
 					printf("invalid taxture\n");
 					return(1);
 				}
+				
 				mlx_delete_texture(text);
 				free_matrix(temp);
 			}

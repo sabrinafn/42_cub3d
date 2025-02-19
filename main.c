@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/31 15:42:21 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:30:05 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,6 @@ int ampy_file(char *argv)
 	close(fd);
 	return(0);
 }
-
-/*
-typedef struct s_args
-{
-	char	*NO_wall;
-	char	*SO_wall;
-	char	*WE_wall;
-	char	*EA_wall;
-	char	*ceiling;
-	char	*floor;
-	char	**map;
-}			t_args;
-*/
 
 int main(int argc, char **argv)
 {

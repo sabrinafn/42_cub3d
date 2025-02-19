@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/17 16:13:44 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:31:41 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,17 @@ typedef struct s_args
 	char	*floor;
 	char	**map;
 }			t_args;
+
+typedef struct s_content
+{
+	char	 **map;
+	char	*NO_path;
+	char	*SO_path;
+	char	*WE_path;
+	char	*EA_path;
+	char	*color_C;
+	char	*color_F;
+}			t_content;
 
 int			check_arguments(int argc, char *argv);
 int			check_name(char *argv);
