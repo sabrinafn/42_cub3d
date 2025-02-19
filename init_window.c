@@ -6,55 +6,60 @@
 /*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/02/17 20:22:33 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:22:14 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_3d.h"
 
 // RGB 244, 194, 194
+// # define WIDTH 800
+// # define HEIGHT 600
 
-unsigned int	rgb_to_hex(int r, int g, int b)
+int	get_rgba(int r, int g, int b, int a)
 {
-	return ((r << 16) | (g << 8) | b);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void	init_window(void)
+void	init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 {
-	mlx_t		*mlx;
 	mlx_image_t	*img;
+	int			i;
+	int			j;
 
-	// criar funcão pra converter char *str para 3 ints separados
-
-	int r, g, b;
-
-	r = 255;
-	g = 199;
-	b = 231;
-
-	unsigned int hex_colour = rgb_to_hex(r, g, b);
-	printf("hex color: %x\n", hex_colour);
-
-	mlx = mlx_init(1024, 1024, "Cub3D", true);
-	if (!mlx)
-		ft_putstr_fd("Error opening window\n", 2);
-	img = mlx_new_image(mlx, 256, 256);
+	i = 0;
+	j = 0;
+	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 		ft_putstr_fd("Error creating image\n", 2);
-	// Even after the image is being displayed, we can still modify the buffer.
-	int i = 0;
-	int j = 0;
-	while (i < 256)
+	while (i < WIDTH)
 	{
-		while (j < 256)
+		j = 0;
+		while (j < HEIGHT / 2)
 		{
-			mlx_put_pixel(img, i, j, 0xFF);
-			// está invertendo as cores 
+			mlx_put_pixel(img, i, j, ceiling);
+			j++;
+		}
+		while (j >= HEIGHT / 2 && j != HEIGHT)
+		{
+			mlx_put_pixel(img, i, j, floor);
 			j++;
 		}
 		i++;
 	}
-	// Register a hook and pass mlx as an optional param.
-	// NOTE: Do this before calling mlx_loop!
+}
+
+void	init_window(void)
+{
+	mlx_t			*mlx;
+	unsigned int	baby_pink;
+	unsigned int	violet;
+
+	baby_pink = get_rgba(255, 199, 231, 255);
+	violet = get_rgba(128, 112, 214, 255);
+	mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", true);
+	if (!mlx)
+		ft_putstr_fd("Error opening window\n", 2);
+	init_img(mlx, baby_pink, violet);
 	mlx_loop(mlx);
 }
