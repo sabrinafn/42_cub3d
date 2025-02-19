@@ -6,7 +6,7 @@
 /*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/02/19 16:22:14 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:25:32 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 void	init_window(void)
 {
 	mlx_t			*mlx;
-	unsigned int	baby_pink;
-	unsigned int	violet;
+	unsigned int	ceiling;
+	unsigned int	floor;
 
-	baby_pink = get_rgba(255, 199, 231, 255);
-	violet = get_rgba(128, 112, 214, 255);
+	ceiling = get_rgba(255, 199, 231, 255);
+	floor = get_rgba(128, 112, 214, 255);
 	mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", true);
 	if (!mlx)
 		ft_putstr_fd("Error opening window\n", 2);
-	init_img(mlx, baby_pink, violet);
+	init_img(mlx, ceiling, floor);
 	mlx_loop(mlx);
 }
