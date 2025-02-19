@@ -61,8 +61,11 @@ int ampy_file(char *argv)
 	return(0);
 }
 
+void	init_struct_basic()
+
 int main(int argc, char **argv)
 {
+
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
 	if(ampy_file(argv[1]) == 1)
