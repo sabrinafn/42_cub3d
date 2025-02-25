@@ -50,15 +50,13 @@ mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 	return (img);
 }
 
-	//M H
-	//M -> i *
-	//H -> j -	
 
-void	place_player_img(mlx_image_t *img, int x, int y)
+void	place_player_img(mlx_image_t *img, unsigned int wall)
 {
-
-	
-	mlx_put_pixel
+	double camera_x = 2 * 50 / (double)WIDTH - 1;
+	double ray_dir_x = 50 + 50 * camera_x;
+	double ray_dir_y = 50 + 50 * camera_x;
+	mlx_put_pixel(img, ray_dir_x, ray_dir_y, wall);
 }
 
 void	init_window(void)
@@ -75,7 +73,7 @@ void	init_window(void)
 		ft_putstr_fd("Error opening window\n", 2);
 	img = init_img(mlx, ceiling, floor);
 	
-	place_player_img(img, 50, 50);
+	place_player_img(img, 0x00000000);
 
 	mlx_loop(mlx);
 }

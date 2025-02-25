@@ -61,8 +61,6 @@ int ampy_file(char *argv)
 	return(0);
 }
 
-void	init_struct_basic()
-
 int main(int argc, char **argv)
 {
 
