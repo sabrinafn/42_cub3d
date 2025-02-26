@@ -30,7 +30,6 @@ int	countcols(char *file_name)
 		string = get_next_line(fd);
 		if (!string)
 			break ;
-		printf("gnl return: %s\n", string);
 		count++;
 		free (string);
 
@@ -78,7 +77,6 @@ int	read_content(char *file_name)
 	s_map.name_file = file_name;
 	s_map.countcols = countcols(file_name);
 	s_map.matrix = makematrix(file_name, s_map.countcols);
-	printf("s_map.matrix[0]: %s\n", s_map.matrix[0]);
 	if(valide_content(s_map))
 	{
 		free_matrix(s_map.matrix);

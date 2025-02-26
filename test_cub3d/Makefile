@@ -15,8 +15,8 @@ NAME = cub3d
 LIBFT = libft/libft.a
 
 FILES = main.c parsing/read_content.c parsing/find_map.c parsing/map_validation.c \
-		parsing/find_player.c parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
-		init_window.c init_player_struct.c
+parsing/find_player.c parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
+init_window.c
 
 OBJ = $(FILES:%.c=%.o)
 MLX_FLAGS = -lm -ldl -pthread -lglfw
@@ -29,7 +29,6 @@ mlx:
 	cmake -S MLX42 --build MLX42/build
 	make -j4 -C MLX42/build
 %.o: %.c 
-	cc -g3 -c $< -o $@ 
 	cc -g3 -Wall -Wextra -Werror  -c $< -o $@ 
 $(NAME): $(OBJ) $(LIBFT)
 	cc -g3 -Wall -Wextra -Werror $(OBJ) MLX42/build/libmlx42.a $(LIBFT) $(MLX_FLAGS) -o $(NAME)

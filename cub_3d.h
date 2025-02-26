@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/19 11:31:41 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:52:07 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define ERROR_3 "Invalid malloc\n"
 
 # define WIDTH 800
-# define HEIGHT 600
+# define HEIGHT 601
 
 typedef struct s_map
 {
@@ -48,7 +48,7 @@ typedef struct s_args
 
 typedef struct s_content
 {
-	char	 **map;
+	char	**map;
 	char	*NO_path;
 	char	*SO_path;
 	char	*WE_path;
@@ -56,6 +56,37 @@ typedef struct s_content
 	char	*color_C;
 	char	*color_F;
 }			t_content;
+
+typedef struct s_player
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}			t_player;
+
+typedef struct s_ray
+{
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}			t_ray;
 
 int			check_arguments(int argc, char *argv);
 int			check_name(char *argv);
@@ -81,6 +112,11 @@ int			six_content(char **matrix);
 int			valide_numbers(char **matrix);
 int			texture_path(char **matrix);
 int			empy_line(t_map s_map);
-void		init_window(void);
+
+// init window
+void		init_window(t_player *player);
+
+// init player_struct
+t_player	*init_player_struct(void);
 
 #endif

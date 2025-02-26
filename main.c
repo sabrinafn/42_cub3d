@@ -63,6 +63,7 @@ int ampy_file(char *argv)
 
 int main(int argc, char **argv)
 {
+	t_player	*player;
 
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
@@ -70,7 +71,8 @@ int main(int argc, char **argv)
 		return(1);
 	if(read_content(argv[1]) == 1)
 		return(1);
-	init_window();
+	player = init_player_struct();
+	init_window(player);
 	return(0);
 }
 

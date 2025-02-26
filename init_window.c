@@ -26,7 +26,7 @@ mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 	mlx_image_t	*img;
 	int			i;
 	int			j;
-
+	
 	i = 0;
 	j = 0;
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
@@ -35,14 +35,12 @@ mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 	while (i < WIDTH)
 	{
 		j = 0;
-		while (j < HEIGHT / 2)
+		while (j < HEIGHT)
 		{
-			mlx_put_pixel(img, i, j, ceiling);
-			j++;
-		}
-		while (j >= HEIGHT / 2 && j != HEIGHT)
-		{
-			mlx_put_pixel(img, i, j, floor);
+			if (j < HEIGHT / 2)
+				mlx_put_pixel(img, i, j, ceiling);
+			else
+				mlx_put_pixel(img, i, j, floor);
 			j++;
 		}
 		i++;
@@ -50,37 +48,39 @@ mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 	return (img);
 }
 
-
-void	place_player_img(mlx_image_t *img, unsigned int wall)
+void	calculate_rays(t_player *player)
 {
-	double camera_x = 2 * 50 / (double)WIDTH - 1;
-	double ray_dir_x = 50 + 50 * camera_x;
-	double ray_dir_y = 50 + 50 * camera_x;
-	mlx_put_pixel(img, ray_dir_x, ray_dir_y, wall);
+	int x;
+	t_ray	*ray;
+
+	ray = (t_ray *)malloc(sizeof(t_ray));
+	x = 0;
+	while (x < WIDTH)
+	{
+		ray->camera_x = 2 * x / (double)WIDTH - 1;
+		ray->dir_x = player->dir_x + (player->plane_x * ray->camera_x);
+		ray->dir_y = player->dir_y + (player->plane_y * ray->camera_x);
+		ray->map_x = (int)player->pos_x;
+		ray->map_y = (int)player->pos_y;
+		x++;
+	}
 }
 
-void	init_window(void)
+void	init_window(t_player *player)
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	unsigned int	ceiling;
 	unsigned int	floor;
-
+	
 	ceiling = get_rgba(255, 199, 231, 255);
 	floor = get_rgba(128, 112, 214, 255);
 	mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", true);
 	if (!mlx)
 		ft_putstr_fd("Error opening window\n", 2);
 	img = init_img(mlx, ceiling, floor);
+	mlx_image_to_window(mlx, img, WIDTH, HEIGHT);
 	
-	place_player_img(img, 0x00000000);
-
+	calculate_rays(player);
 	mlx_loop(mlx);
 }
-
-/*
- * locate player
- * check which way is the player facing
- * locate the wall that is right in front of it
- * draw it, but calculating how far it is to check how big the drawing will be
- * */
