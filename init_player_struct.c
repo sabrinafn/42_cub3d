@@ -48,7 +48,7 @@ t_args	*init_map_struct(void)
 	map->map[2] = ft_strdup("101001\n");
 	map->map[3] = ft_strdup("1100N1\n");
 	map->map[4] = ft_strdup("111111\n");
-	map->map[5] = ft_strdup(NULL);
+	map->map[5] = NULL;
 
 	return (map);
 }
