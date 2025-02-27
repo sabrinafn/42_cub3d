@@ -20,6 +20,7 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <unistd.h>
+# include <math.h>
 # define ERROR_1 "Impossible to read the file\n"
 # define ERROR_2 "Empty File\n"
 # define ERROR_3 "Invalid malloc\n"
@@ -114,9 +115,10 @@ int			texture_path(char **matrix);
 int			empy_line(t_map s_map);
 
 // init window
-void		init_window(t_player *player);
+void		init_window(t_player *player, t_args *map);
 
 // init player_struct
 t_player	*init_player_struct(void);
+t_args		*init_map_struct(void);
 
 #endif
