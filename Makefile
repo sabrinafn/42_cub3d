@@ -26,8 +26,8 @@ libft:
 	make all -C libft 
 mlx:
 	cmake -S MLX42 -B MLX42/build
-	cmake -S MLX42 --build MLX42/build
 	make -j4 -C MLX42/build
+#cmake -S MLX42 --build MLX42/build
 %.o: %.c 
 	cc -g3 -c $< -o $@ 
 	cc -g3 -Wall -Wextra -Werror  -c $< -o $@ 

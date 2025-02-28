@@ -51,6 +51,7 @@ mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 		}
 		i++;
 	}
+	printf("value of i: %d and value of j end of loop: %d\n", i, j);
 	return (img);
 }
 
@@ -68,8 +69,8 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 
 	ray = (t_ray *)malloc(sizeof(t_ray));
 	x = 250;
-	//while (x < WIDTH)
-	//{
+	while (x < WIDTH)
+	{
 		ray->camera_x = 2 * x / (double)WIDTH - 1;
 		ray->dir_x = player->dir_x + (player->plane_x * ray->camera_x);
 		ray->dir_y = player->dir_y + (player->plane_y * ray->camera_x);
@@ -182,14 +183,14 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 		color = (r << 24) | (g << 16) | (b << 8) | a;
 	}
 	i = ray->draw_start;
-//	while (i < ray->draw_end)
-//	{
+	while (i < ray->draw_end)
+	{
 		//if (i >= 0 && i < HEIGHT && x >= 0 && x < WIDTH)
 		mlx_put_pixel(img, x, i, color);
-//		i++;
-//	}
-	//x++;
-	//}
+		i++;
+	}
+	x++;
+	}
 }
 
 void	init_window(t_player *player, t_args *map)
@@ -201,12 +202,14 @@ void	init_window(t_player *player, t_args *map)
 
 	ceiling = get_rgba(255, 199, 231, 255);
 	floor = get_rgba(128, 112, 214, 255);
-	mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", true);
+	mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
 	if (!mlx)
 		ft_putstr_fd("Error opening window\n", 2);
 	img = init_img(mlx, ceiling, floor);
 	mlx_image_to_window(mlx, img, WIDTH, HEIGHT);
-	calculate_rays_direction(player, map, img);
+	(void)map;
+	(void)player;
+	//calculate_rays_direction(player, map, img);
 	mlx_loop(mlx);
 }
 /********************************************************************
