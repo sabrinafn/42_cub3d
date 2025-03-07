@@ -18,7 +18,7 @@ t_player	*init_player_struct(void)
 
 	player = (t_player *)malloc(sizeof(t_player));
 
-	player->pos_x = 4 + 0.5;
+	player->pos_x = 3 + 0.5;
 	player->pos_y = 5 + 0.5;
 	//if (direction == 'N')
 	player->dir_x = 0;
@@ -43,13 +43,13 @@ t_args	*init_map_struct(void)
 	map->ceiling = NULL;
 
 	map->map = (char **)malloc(sizeof(char *) * 8);
-	map->map[0] = ft_strdup("111111\n");
-	map->map[1] = ft_strdup("100001\n");
-	map->map[2] = ft_strdup("100001\n");
-	map->map[3] = ft_strdup("100001\n");
-	map->map[4] = ft_strdup("100001\n");
-	map->map[5] = ft_strdup("1000N1\n");
-	map->map[6] = ft_strdup("111111\n");
+	map->map[0] = ft_strdup("1111111\n");
+	map->map[1] = ft_strdup("1000001\n");
+	map->map[2] = ft_strdup("1000001\n");
+	map->map[3] = ft_strdup("1000001\n");
+	map->map[4] = ft_strdup("1000001\n");
+	map->map[5] = ft_strdup("100N001\n");
+	map->map[6] = ft_strdup("1111111\n");
 	map->map[7] = NULL;
 
 	return (map);
