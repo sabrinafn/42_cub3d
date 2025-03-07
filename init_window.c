@@ -66,6 +66,7 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 	uint8_t		b;
 	uint8_t		a;
 	int			i;
+	int			hit;
 
 	ray = (t_ray *)malloc(sizeof(t_ray));
 	x = 0;
@@ -99,7 +100,7 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 	// what direction to step in x or y-direction (either +1 or -1)
 	// int stepX;
 	// int stepY;
-	int hit = 0; // was there a wall hit?
+	hit = 0; // was there a wall hit?
 	// calculate steo and initial sideDist
 	if (ray->dir_x < 0)
 	{
@@ -112,6 +113,7 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 		ray->side_dist_x = (ray->map_x + 1.0 - player->pos_x)
 			* ray->delta_dist_x;
 	}
+
 	if (ray->dir_y < 0)
 	{
 		ray->step_y = -1;
@@ -140,35 +142,35 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 			ray->side = 1;
 		}
 		// Check if ray has hit a wall
-		// this part needs a proper function to check whether the character
-		// it has touched is a 1.
+		// this part needs a proper function to check whether the pixel
+		// has touched a char that is 1 or the player itself.
 		if (map->map[ray->map_x][ray->map_y] != '0' && map->map[ray->map_x][ray->map_y] != 'E' )
 			hit = 1;
 	}
-	if (hit == 0)
-		exit(0);
+	//added this after to get out of the program if it has not hit a wall?
+	//if (hit == 0)
+	//	exit(0);
 
 	// Calculate distance projected on camera direction
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->side_dist_x / ray->delta_dist_x);
+		ray->perp_wall_dist = (ray->side_dist_x - ray->delta_dist_x);
 	else
-		ray->perp_wall_dist = (ray->side_dist_y / ray->delta_dist_y);
+		ray->perp_wall_dist = (ray->side_dist_y - ray->delta_dist_y);
 
 
 	printf("perp_wall_dist = %f\n", ray->perp_wall_dist);
 
-	int win_height = HEIGHT;
 	// Calculate height of line to draw on screen
-	ray->line_height = (int)(win_height / ray->perp_wall_dist);
+	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
 	
 	// calculate lowest and highest pixel to fill in current stripe
-	ray->draw_start = (-ray->line_height / 2) + (win_height / 2);
+	ray->draw_start = (-ray->line_height / 2) + (HEIGHT / 2);
 	
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	ray->draw_end = (ray->line_height / 2) + (win_height / 2);
-	if (ray->draw_end >= win_height)
-		ray->draw_end = win_height - 1;
+	ray->draw_end = (ray->line_height / 2) + (HEIGHT / 2);
+	if (ray->draw_end >= HEIGHT)
+		ray->draw_end = HEIGHT - 1;
 	
 	color = RGB_Green;
 	
@@ -210,6 +212,7 @@ void	init_window(t_player *player, t_args *map)
 	img = init_img(mlx, ceiling, floor);
 	mlx_image_to_window(mlx, img, WIDTH, HEIGHT);
 	calculate_rays_direction(player, map, img);
+	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_loop(mlx);
 }
 /********************************************************************
