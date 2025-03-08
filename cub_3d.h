@@ -25,8 +25,8 @@
 # define ERROR_2 "Empty File\n"
 # define ERROR_3 "Invalid malloc\n"
 
-# define WIDTH 800
-# define HEIGHT 601
+# define WIDTH 1200
+# define HEIGHT 1200
 
 typedef struct s_map
 {
@@ -45,6 +45,8 @@ typedef struct s_args
 	char	*ceiling;
 	char	*floor;
 	char	**map;
+	int		map_max_x;
+	int		map_max_y;
 }			t_args;
 
 typedef struct s_content

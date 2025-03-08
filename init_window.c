@@ -72,6 +72,7 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 	x = 0;
 	while (x < WIDTH)
 	{
+		printf("x: %d\n", x);
 		ray->camera_x = 2 * x / (double)WIDTH - 1;
 		ray->dir_x = player->dir_x + (player->plane_x * ray->camera_x);
 		ray->dir_y = player->dir_y + (player->plane_y * ray->camera_x);
@@ -99,16 +100,18 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 		// what direction to step in x or y-direction (either +1 or -1)
 		// int stepX;
 		// int stepY;
-		hit = 0; // was there a wall hit?
-		// calculate steo and initial sideDist
+
+		hit = 0; // has it found a wall?
+
+		// calculate step and initial sideDist
 		if (ray->dir_x < 0)
 		{
-			// ray->step_x = -1;
+			ray->step_x = -1;
 			ray->side_dist_x = (player->pos_x - ray->map_x) * ray->delta_dist_x;
 		}
 		else
 		{
-			// ray->step_x = 1;
+			ray->step_x = 1;
 			ray->side_dist_x = (ray->map_x + 1.0 - player->pos_x)
 				* ray->delta_dist_x;
 		}
@@ -124,11 +127,12 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 			ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y)
 				* ray->delta_dist_y;
 		}
+
 		// perform DDA
 		while (hit == 0)
 		{
 			// jump to next map square, either in x-direction, or in y-direction
-			if (ray->side_dist_x < ray->side_dist_y)
+			if (ray->side_dist_x <=ray->side_dist_y)
 			{
 				ray->side_dist_x += ray->delta_dist_x;
 				ray->map_x += ray->step_x;
@@ -143,8 +147,10 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 			// Check if ray has hit a wall
 			// this part needs a proper function to check whether the pixel
 			// has touched a char that is 1 or the player itself.
-			if (map->map[ray->map_x][ray->map_y] != '0' && map->map[ray->map_x][ray->map_y] != 'E' )
+			if (map->map[ray->map_y][ray->map_x] == '1'
+				&& ray->map_x < map->map_max_x && ray->map_y < map->map_max_y)
 				hit = 1;
+
 		}
 
 		// Calculate distance projected on camera direction
@@ -152,14 +158,9 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 			ray->perp_wall_dist = (ray->side_dist_x - ray->delta_dist_x);
 		else
 			ray->perp_wall_dist = (ray->side_dist_y - ray->delta_dist_y);
-		printf("ray->side_dist_x = [%f]\n", ray->side_dist_x);
-		printf("ray->side_dist_y = [%f]\n", ray->side_dist_y);
-
-		printf("perp_wall_dist = %f\n", ray->perp_wall_dist);
 
 		// Calculate height of line to draw on screen
 		ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
-		printf("ray->line_height = [%d]\n", ray->line_height);
 		
 		// calculate lowest and highest pixel to fill in current stripe
 		ray->draw_start = -ray->line_height / 2 + (HEIGHT / 2);
