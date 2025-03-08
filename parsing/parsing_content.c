@@ -6,21 +6,21 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/19 11:04:10 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:51:05 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int valide_content(t_map s_map)
+int  valide_content(t_map *s_map)
 {
-	if(six_content(s_map.matrix) == 1)
+	if(six_content(s_map->matrix) == 1)
 		return(1);
-	if(validate_element(s_map.matrix) == 1)
+	if(validate_element(s_map->matrix) == 1)
 		return(1);
-	if(valide_numbers(s_map.matrix) == 1)
+	if(valide_numbers(s_map->matrix) == 1)
 		return(1);
-	//if(texture_path(s_map.matrix) == 1)
+	//if(texture_path(s_map->matrix) == 1)
 	  	//return(1);		
 	return(0);	
 }

@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/19 11:30:05 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:55:07 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ int main(int argc, char **argv)
 	t_player	*player;
 	t_args		*map;
 
+	t_map s_map;
+	
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
 	if(ampy_file(argv[1]) == 1)
 		return(1);
-	if(read_content(argv[1]) == 1)
+	if(read_content(&s_map, argv[1]) == 1)
 		return(1);
 	player = init_player_struct();
 	map = init_map_struct();

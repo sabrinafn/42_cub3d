@@ -96,11 +96,11 @@ int			check_name(char *argv);
 int			print_error(char *e);
 int			countcols(char *file_name);
 char		**makematrix(char *file_name, int count_cols);
-int			read_content(char *file_name);
+int			read_content(t_map *s_map, char *file_name);
 int			ampy_file(char *argv);
-int			find_map(t_map s_map);
-int			find_map2(t_map s_map);
-int			validate_map(t_map s_map);
+int			find_map(t_map *s_map);
+int			find_map2(t_map *s_map);
+int			validate_map(t_map *s_map);
 int			only_player(char *string);
 int			find_player(t_map s_map);
 int			invalid_character(t_map s_map, int cols);
@@ -109,7 +109,7 @@ int			check_wall(char **matrix, int cols, int i);
 int			size_map(t_map s_map);
 int			walk_spaces(char *string);
 void		free_matrix(char **malloc_string);
-int			valide_content(t_map s_map);
+int			valide_content(t_map *s_map);
 int			validate_element(char **matrix);
 int			six_content(char **matrix);
 int			valide_numbers(char **matrix);
@@ -122,5 +122,10 @@ void		init_window(t_player *player, t_args *map);
 // init player_struct
 t_player	*init_player_struct(void);
 t_args		*init_map_struct(void);
+
+int			getmap(t_map s_map, t_content *s_content);
+int 		get_color(char **matrix, t_content *s_content);
+int 		get_texture_path(char **matrix, t_content *s_content);
+int 		malloc_path(char *path, char *temp);
 
 #endif

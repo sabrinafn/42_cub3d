@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:25:28 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/01 16:40:04 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:17:17 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int walk_spaces(char *string)
 		i++;
 	return(i);	
 }
-int find_map(t_map s_map)
+int find_map(t_map *s_map)
 {
 	int cols;
 	int line;
@@ -30,12 +30,12 @@ int find_map(t_map s_map)
 	cols = 0;
 	line = 0;
 	count = 0;	
-	while(s_map.matrix[cols] != NULL)
+	while(s_map->matrix[cols] != NULL)
 	{
 		if(count == 6)
 			break;
-		line = walk_spaces(s_map.matrix[cols]);
-		if(s_map.matrix[cols][line] == '\0' || s_map.matrix[cols][line] == '\n')
+		line = walk_spaces(s_map->matrix[cols]);
+		if(s_map->matrix[cols][line] == '\0' || s_map->matrix[cols][line] == '\n')
 			cols++;
 		else
 		{
@@ -45,16 +45,16 @@ int find_map(t_map s_map)
 	}
 	return(cols);
 }
-int find_map2(t_map s_map)
+int find_map2(t_map *s_map)
 {
 	int cols;
 	int line;
 
 	cols = find_map(s_map);
-	while(s_map.matrix[cols] != NULL)
+	while(s_map->matrix[cols] != NULL)
 	{	
-		line = walk_spaces(s_map.matrix[cols]);
-		if(s_map.matrix[cols][line] == '\0')
+		line = walk_spaces(s_map->matrix[cols]);
+		if(s_map->matrix[cols][line] == '\0')
 			cols++;
 		else	
 			break;	
