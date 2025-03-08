@@ -82,7 +82,7 @@ int	read_content(t_map *s_map, char *file_name)
 		return(1);
 	}
 	s_map->map_position = find_map2(s_map);
-	if (validate_map(s_map) == 1)
+	if (validate_map(*s_map) == 1)
 	{
 		free_matrix(s_map->matrix);
 		return(1);

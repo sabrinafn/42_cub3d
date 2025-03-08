@@ -100,7 +100,7 @@ int			read_content(t_map *s_map, char *file_name);
 int			ampy_file(char *argv);
 int			find_map(t_map *s_map);
 int			find_map2(t_map *s_map);
-int			validate_map(t_map *s_map);
+int			validate_map(t_map s_map);
 int			only_player(char *string);
 int			find_player(t_map s_map);
 int			invalid_character(t_map s_map, int cols);
