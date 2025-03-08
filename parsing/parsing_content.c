@@ -12,13 +12,13 @@
 
 #include "../cub_3d.h"
 
-int  valide_content(t_map *s_map)
+int  validate_content(t_map *s_map)
 {
 	if(six_content(s_map->matrix) == 1)
 		return(1);
 	if(validate_element(s_map->matrix) == 1)
 		return(1);
-	if(valide_numbers(s_map->matrix) == 1)
+	if(validate_numbers(s_map->matrix) == 1)
 		return(1);
 	//if(texture_path(s_map->matrix) == 1)
 	  	//return(1);		
@@ -97,7 +97,7 @@ int	validate_element(char **matrix)
 	return(0);
 }
 
-int valide_numbers(char **matrix)
+int validate_numbers(char **matrix)
 {
 	int cols;
 	int count;

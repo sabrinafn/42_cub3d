@@ -61,7 +61,7 @@ int find_map2(t_map *s_map)
 	}
 	return(cols);
 }
-int	valide_char(char *string)
+int	validate_char(char *string)
 {
 	int	i;
 
@@ -79,7 +79,7 @@ int	invalid_character(t_map s_map, int cols)
 {
 	while(s_map.matrix[cols] != NULL)
 	{
-		if(valide_char(s_map.matrix[cols]) == 1)
+		if(validate_char(s_map.matrix[cols]) == 1)
 			return(1);
 		cols++;	
 	}

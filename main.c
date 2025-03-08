@@ -47,7 +47,7 @@ int check_arguments(int argc, char *argv)
 	}
 	return(0);
 }
-int ampy_file(char *argv)
+int empty_file(char *argv)
 {
 	int fd;
 	char *string;
@@ -65,12 +65,11 @@ int main(int argc, char **argv)
 {
 	t_player	*player;
 	t_args		*map;
-
-	t_map s_map;
+	t_map		s_map;
 	
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
-	if(ampy_file(argv[1]) == 1)
+	if(empty_file(argv[1]) == 1)
 		return(1);
 	if(read_content(&s_map, argv[1]) == 1)
 		return(1);

@@ -12,7 +12,7 @@
 
 #include "../cub_3d.h"
 
-int valide_wall(t_map s_map)
+int validate_wall(t_map s_map)
 {
 	int cols;
 	int i;
@@ -78,7 +78,7 @@ int size_map(t_map s_map)
 	return(0);		
 }
 
-int empy_line(t_map s_map)
+int empty_line(t_map s_map)
 {
 	int cols;
 	int i;

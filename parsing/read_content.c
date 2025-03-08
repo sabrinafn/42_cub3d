@@ -34,15 +34,6 @@ int	countcols(char *file_name)
 		free (string);
 
 	}
-	/*
-	while (string != NULL)
-	{
-		count++;
-		free(string);
-		string = get_next_line(fd);
-		printf("gnl return: %s\n", string);
-	}*/
-	//free(string);
 	close(fd);
 	return (count);
 }
@@ -75,7 +66,7 @@ int	read_content(t_map *s_map, char *file_name)
 	s_map->name_file = file_name;
 	s_map->countcols = countcols(file_name);
 	s_map->matrix = makematrix(file_name, s_map->countcols);
-	if(valide_content(s_map))
+	if(validate_content(s_map))
 	{
 		free_matrix(s_map->matrix);
 		printf("deu errado");

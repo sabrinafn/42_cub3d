@@ -16,9 +16,9 @@ int get_texture_path(char **matrix, t_content *s_content)
 {
 	int cols;
 	char **temp;
-	int valide;
+	int valid;
 
-	valide = 0;
+	valid = 0;
 	temp = NULL;
 	cols = 0;
 	while(matrix[cols] != NULL)
@@ -27,15 +27,15 @@ int get_texture_path(char **matrix, t_content *s_content)
 		{
 			temp = ft_split(matrix[cols], ' ');
 			if(ft_strchr(matrix[cols], 'N') != NULL)
-				valide = malloc_path(s_content->NO_path,temp[1]);
+				valid = malloc_path(s_content->NO_path,temp[1]);
 			else if(ft_strchr(matrix[cols], 'W') != NULL)
-				valide = malloc_path(s_content->WE_path, temp[1]);	
+				valid = malloc_path(s_content->WE_path, temp[1]);	
 			else if(ft_strchr(matrix[cols], 'S') != NULL)
-				valide = malloc_path(s_content->SO_path, temp[1]);
+				valid = malloc_path(s_content->SO_path, temp[1]);
 			else if(ft_strchr(matrix[cols], 'E') != NULL)
-				valide = malloc_path(s_content->EA_path,temp[1]);
+				valid = malloc_path(s_content->EA_path,temp[1]);
 			free_matrix(temp);
-			if(valide == 1)
+			if(valid == 1)
 				return(1);
 		}
 		cols++;	
@@ -59,9 +59,9 @@ int get_color(char **matrix, t_content *s_content)
 {
 		int cols;
 	char **temp;
-	int valide;
+	int valid;
 
-	valide = 0;
+	valid = 0;
 	temp = NULL;
 	cols = 0;
 	while(matrix[cols] != NULL)
@@ -70,11 +70,11 @@ int get_color(char **matrix, t_content *s_content)
 		{
 			temp = ft_split(matrix[cols], ' ');
 			if(ft_strchr(matrix[cols], 'F') != NULL)
-				valide = malloc_path(s_content->color_F, temp[1]);
+				valid = malloc_path(s_content->color_F, temp[1]);
 			else if(ft_strchr(matrix[cols], 'C') != NULL)
-				valide = malloc_path(s_content->color_C, temp[1]);
+				valid = malloc_path(s_content->color_C, temp[1]);
 			free_matrix(temp);
-			if(valide == 1)
+			if(valid == 1)
 				return(1);
 		}
 		cols++;	
@@ -83,7 +83,7 @@ int get_color(char **matrix, t_content *s_content)
 }
 	
 
-int getmap(t_map s_map, t_content *s_content)
+int get_map(t_map s_map, t_content *s_content)
 {
 	int count;
 	int i;
@@ -112,7 +112,7 @@ int getmap(t_map s_map, t_content *s_content)
 }
 void get_info(t_map s_map, t_content *s_content)
 {
-	if(getmap(s_map, s_content) == 1)
+	if(get_map(s_map, s_content) == 1)
 		return(1);
 	if(get_color(s_map.matrix, s_content) == 1)
 		return(1);
