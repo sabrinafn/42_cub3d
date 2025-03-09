@@ -121,7 +121,7 @@ void		init_window(t_player *player, t_map *map);
 
 // init player_struct
 t_player	*init_player_struct(void);
-t_map		*init_args_struct(void);
+t_map		*init_map_struct(char *path);
 
 int			get_args(t_args s_map, t_content *s_content);
 int 		get_color(char **matrix, t_content *s_content);
