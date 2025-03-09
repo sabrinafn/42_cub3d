@@ -12,7 +12,7 @@
 
 #include "../cub_3d.h"
 
-int validate_map(t_map s_map)
+int validate_map(t_args s_map)
 {
 	if(size_map(s_map))
 	{
@@ -29,7 +29,7 @@ int validate_map(t_map s_map)
 		write(1, "Invalid player\n", 15);	
 		return(1);	
 	}
-	if(valid_wall(s_map))
+	if(validate_wall(s_map))
 	{
 		write(1, "Invalid wall\n", 14);	
 		return(1);

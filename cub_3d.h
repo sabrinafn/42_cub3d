@@ -28,15 +28,15 @@
 # define WIDTH 1200
 # define HEIGHT 1200
 
-typedef struct s_map
+typedef struct s_args
 {
 	char	**matrix;
 	char	*name_file;
 	int		countcols;
 	int		map_position;
-}			t_map;
+}			t_args;
 
-typedef struct s_args
+typedef struct s_map
 {
 	char	*NO_wall;
 	char	*SO_wall;
@@ -47,7 +47,7 @@ typedef struct s_args
 	char	**map;
 	int		map_max_x;
 	int		map_max_y;
-}			t_args;
+}			t_map;
 
 typedef struct s_content
 {
@@ -96,34 +96,34 @@ int			check_name(char *argv);
 int			print_error(char *e);
 int			countcols(char *file_name);
 char		**makematrix(char *file_name, int count_cols);
-int			read_content(t_map *s_map, char *file_name);
+int			read_content(char *file_name);
 int			empty_file(char *argv);
-int			find_map(t_map *s_map);
-int			find_map2(t_map *s_map);
-int			validate_map(t_map s_map);
+int			find_map(t_args *s_map);
+int			find_map2(t_args *s_map);
+int			validate_map(t_args s_map);
 int			only_player(char *string);
-int			find_player(t_map s_map);
-int			invalid_character(t_map s_map, int cols);
-int			validate_wall(t_map s_map);
+int			find_player(t_args s_map);
+int			invalid_character(t_args s_map, int cols);
+int			validate_wall(t_args s_map);
 int			check_wall(char **matrix, int cols, int i);
-int			size_map(t_map s_map);
+int			size_map(t_args s_map);
 int			walk_spaces(char *string);
 void		free_matrix(char **malloc_string);
-int			validate_content(t_map *s_map);
+int			validate_content(t_args *s_map);
 int			validate_element(char **matrix);
 int			six_content(char **matrix);
 int			validate_numbers(char **matrix);
 int			texture_path(char **matrix);
-int			empty_line(t_map s_map);
+int			empty_line(t_args s_map);
 
 // init window
-void		init_window(t_player *player, t_args *map);
+void		init_window(t_player *player, t_map *map);
 
 // init player_struct
 t_player	*init_player_struct(void);
-t_args		*init_map_struct(void);
+t_map		*init_args_struct(void);
 
-int			get_map(t_map s_map, t_content *s_content);
+int			get_args(t_args s_map, t_content *s_content);
 int 		get_color(char **matrix, t_content *s_content);
 int 		get_texture_path(char **matrix, t_content *s_content);
 int 		malloc_path(char *path, char *temp);

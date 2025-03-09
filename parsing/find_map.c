@@ -21,7 +21,7 @@ int walk_spaces(char *string)
 		i++;
 	return(i);	
 }
-int find_map(t_map *s_map)
+int find_map(t_args *s_map)
 {
 	int cols;
 	int line;
@@ -45,7 +45,7 @@ int find_map(t_map *s_map)
 	}
 	return(cols);
 }
-int find_map2(t_map *s_map)
+int find_map2(t_args *s_map)
 {
 	int cols;
 	int line;
@@ -75,7 +75,7 @@ int	validate_char(char *string)
 	return(0);			
 }
 
-int	invalid_character(t_map s_map, int cols)
+int	invalid_character(t_args s_map, int cols)
 {
 	while(s_map.matrix[cols] != NULL)
 	{

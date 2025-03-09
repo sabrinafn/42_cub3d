@@ -29,11 +29,11 @@ t_player	*init_player_struct(void)
 	return (player);
 }
 
-t_args	*init_map_struct(void)
+t_map	*init_args_struct(void)
 {
-	t_args	*map;
+	t_map	*map;
 
-	map = (t_args *)malloc(sizeof(t_args));
+	map = (t_map *)malloc(sizeof(t_map));
 
 	map->NO_wall = NULL;
 	map->SO_wall = NULL;

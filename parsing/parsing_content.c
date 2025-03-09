@@ -12,7 +12,7 @@
 
 #include "../cub_3d.h"
 
-int  validate_content(t_map *s_map)
+int  validate_content(t_args *s_map)
 {
 	if(six_content(s_map->matrix) == 1)
 		return(1);

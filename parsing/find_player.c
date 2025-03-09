@@ -27,7 +27,7 @@ int only_player(char *string)
 	}
 	return(count);	
 }
-int find_player(t_map s_map)
+int find_player(t_args s_map)
 {
 	int cols;
 	int	count;

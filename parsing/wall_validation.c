@@ -12,7 +12,7 @@
 
 #include "../cub_3d.h"
 
-int validate_wall(t_map s_map)
+int validate_wall(t_args s_map)
 {
 	int cols;
 	int i;
@@ -59,7 +59,7 @@ int check_wall(char **matrix, int cols, int i)
 	return(0);		
 }
 
-int size_map(t_map s_map)
+int size_map(t_args s_map)
 {
 	int i;
 	int count;
@@ -78,7 +78,7 @@ int size_map(t_map s_map)
 	return(0);		
 }
 
-int empty_line(t_map s_map)
+int empty_line(t_args s_map)
 {
 	int cols;
 	int i;

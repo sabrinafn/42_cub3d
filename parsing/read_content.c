@@ -40,7 +40,7 @@ int	countcols(char *file_name)
 
 char	**makematrix(char *file_name, int count_cols)
 {
-	char	**matriz_malloc;
+	char	**matrix_malloc;
 	int		count;
 	int		fd;
 	
@@ -48,21 +48,24 @@ char	**makematrix(char *file_name, int count_cols)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		exit(print_error(ERROR_1));
-	matriz_malloc = ft_calloc (count_cols + 1, sizeof(char *));
-	if (matriz_malloc == NULL)
+	matrix_malloc = ft_calloc (count_cols + 1, sizeof(char *));
+	if (matrix_malloc == NULL)
 		exit(print_error(ERROR_3));
 	while (count < count_cols)
 	{
-		matriz_malloc[count] = get_next_line(fd);
-		if (!matriz_malloc[count])
+		matrix_malloc[count] = get_next_line(fd);
+		if (!matrix_malloc[count])
 			return (NULL);
 		count++;
 	}
-	return (matriz_malloc);
+	return (matrix_malloc);
 }
 
-int	read_content(t_map *s_map, char *file_name)
+int	read_content(char *file_name)
 {
+	t_args		*s_map;
+
+	s_map = malloc(sizeof(t_args));
 	s_map->name_file = file_name;
 	s_map->countcols = countcols(file_name);
 	s_map->matrix = makematrix(file_name, s_map->countcols);

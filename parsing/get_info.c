@@ -83,7 +83,7 @@ int get_color(char **matrix, t_content *s_content)
 }
 	
 
-int get_map(t_map s_map, t_content *s_content)
+int get_args(t_args s_map, t_content *s_content)
 {
 	int count;
 	int i;
@@ -110,9 +110,9 @@ int get_map(t_map s_map, t_content *s_content)
 	}
 	return(0);
 }
-void get_info(t_map s_map, t_content *s_content)
+void get_info(t_args s_map, t_content *s_content)
 {
-	if(get_map(s_map, s_content) == 1)
+	if(get_args(s_map, s_content) == 1)
 		return(1);
 	if(get_color(s_map.matrix, s_content) == 1)
 		return(1);
