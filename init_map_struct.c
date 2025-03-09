@@ -12,11 +12,29 @@
 
 #include "cub_3d.h"
 
+char	**read_file(char *path)
+{
+	int		fd;
+	char	**matrix;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		printf("error opening file read_file function\n");
+		return (NULL);
+	}
+	matrix =
+
+}
+
 t_map	*init_map_struct(char *path)
 {
+	char	**full_map;
 	t_map	*map;
 
 	map = (t_map *)malloc(sizeof(t_map));
+
+	full_map = read_file(path);
 
 	map->NO_wall = NULL;
 	map->SO_wall = NULL;

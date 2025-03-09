@@ -123,7 +123,7 @@ void		init_window(t_player *player, t_map *map);
 t_player	*init_player_struct(void);
 t_map		*init_map_struct(char *path);
 
-int			get_args(t_args s_map, t_content *s_content);
+int			get_map(t_args s_map, t_content *s_content);
 int 		get_color(char **matrix, t_content *s_content);
 int 		get_texture_path(char **matrix, t_content *s_content);
 int 		malloc_path(char *path, char *temp);
