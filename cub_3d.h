@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/10 15:31:34 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:27:32 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int			check_name(char *argv);
 int			print_error(char *e);
 int			countcols(char *file_name);
 char		**makematrix(char *file_name, int count_cols);
-int			read_content(t_args *s_map);
+int			read_content(char *file_name, t_args *s_map);
 int			empty_file(char *argv);
 int			find_map(t_args *s_map);
 int			find_map2(t_args *s_map);

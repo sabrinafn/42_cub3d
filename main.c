@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/10 17:42:02 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:30:13 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int check_name(char *argv)
 
 int check_arguments(int argc, char *argv)
 {
-
 	if(argc == 1)
 	{
 		write(1, "Error: Not enough params!", 24);
@@ -69,16 +68,12 @@ int main(int argc, char **argv)
 	
 	//player = NULL;
 	s_map = malloc(sizeof(t_args));
-	s_map->name_file = argv[1];
-	s_map->countcols = countcols(argv[1]);
-	s_map->matrix = makematrix(argv[1], s_map->countcols);
-	s_map->map_position = find_map2(s_map);
 	content = malloc(sizeof(t_content));
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
 	if(empty_file(argv[1]) == 1)
 		return(1);
-	if(read_content(s_map) == 1)
+	if(read_content(argv[1], s_map) == 1)
 		return(1);
 	if(get_info(s_map, content) == 1)
 		return(1);
