@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/19 16:24:24 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:51:46 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,9 @@ int malloc_path(char *path, char *temp)
 
 int get_color(char **matrix, t_content *s_content)
 {
-		int cols;
+	int cols;
 	char **temp;
-	int valid;
 
-	valid = 0;
 	temp = NULL;
 	cols = 0;
 	while(matrix[cols] != NULL)
@@ -70,15 +68,21 @@ int get_color(char **matrix, t_content *s_content)
 		{
 			temp = ft_split(matrix[cols], ' ');
 			if(ft_strchr(matrix[cols], 'F') != NULL)
-				valid = malloc_path(s_content->color_F, temp[1]);
+			{
+				s_content->color_F = malloc((ft_strlen(temp[1]) + 1) * sizeof(char));
+				ft_strlcpy(s_content->color_F, temp[1], ft_strlen(temp[1]));
+			}
 			else if(ft_strchr(matrix[cols], 'C') != NULL)
-				valid = malloc_path(s_content->color_C, temp[1]);
+			{
+				s_content->color_C = malloc((ft_strlen(temp[1]) + 1) * sizeof(char));
+				ft_strlcpy(s_content->color_C, temp[1], ft_strlen(temp[1]));
+			}
 			free_matrix(temp);
-			if(valid == 1)
-				return(1);
 		}
 		cols++;	
 	}
+	if(!s_content->color_C || !s_content->color_F)
+		return(1);
 	return(0);
 }
 	
@@ -88,19 +92,24 @@ int get_map(t_args *s_map, t_content *s_content)
 	int count;
 	int i;
 	int j;
-
+	int lines_map;
+	
 	j = 0;
 	i = 0;
-	printf("s_map->map_position = [%d]\n", s_map->map_position);
+	lines_map = 0;
 	count = s_map->map_position;
-
-	printf("s_map.countcols = [%d]\n", s_map->countcols);
-	s_content->map = (char **)malloc((s_map->countcols + 1) * sizeof(char *));
+	while(s_map->matrix[count] != NULL)
+	{
+		lines_map++;
+		count++;
+	}
+	s_content->map = malloc((lines_map + 1) * sizeof(char *));
 	if(!s_content->map)
 	{
 		printf("return error - malloc - matrix s_content\n");
 		return(1);
 	}
+	count = s_map->map_position;
 	while (s_map->matrix[count] != NULL)
 	{
 		i = ft_strlen(s_map->matrix[count]);
@@ -137,15 +146,23 @@ void	get_map_sizes(t_args *s_map, t_content *s_content)
 
 int get_info(t_args *s_map, t_content *s_content)
 {
+	printf("estou aqui2");
 	if(get_map(s_map, s_content) == 1)
 	{
 		printf("error when creating map\n");
 		return(1);
 	}
+	printf("estou aqui");
 	if(get_color(s_map->matrix, s_content) == 1)
+	{
+		printf("error when creating color\n");
 		return(1);
+	}
 	if(get_texture_path(s_map->matrix, s_content) == 1)
+	{
+		printf("error when creating texture\n");
 		return(1);
+	}
 	get_map_sizes(s_map, s_content);
 	return (0);
 }

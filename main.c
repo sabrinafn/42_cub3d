@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/19 14:55:07 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:42:02 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,27 @@ int empty_file(char *argv)
 
 int main(int argc, char **argv)
 {
-	t_player	*player;
+	//t_player	*player;
 	t_args		*s_map;
 	t_content	*content;
 	
-	player = NULL;
-	content = NULL;
-	s_map = NULL;
+	//player = NULL;
+	s_map = malloc(sizeof(t_args));
+	s_map->name_file = argv[1];
+	s_map->countcols = countcols(argv[1]);
+	s_map->matrix = makematrix(argv[1], s_map->countcols);
+	s_map->map_position = find_map2(s_map);
+	content = malloc(sizeof(t_content));
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
 	if(empty_file(argv[1]) == 1)
 		return(1);
-	if(read_content(argv[1], s_map) == 1)
+	if(read_content(s_map) == 1)
 		return(1);
-	init_player_struct(player);
-	get_info(s_map, content);
-	init_window(player, content);
+	if(get_info(s_map, content) == 1)
+		return(1);
+	//init_player_struct(player);
+	//init_window(player, content);
 	return(0);
 }
 
