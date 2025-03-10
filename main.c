@@ -72,8 +72,8 @@ int main(int argc, char **argv)
 		return(1);
 	if(read_content(argv[1]) == 1)
 		return(1);
-	player = init_player_struct();
 	map = init_map_struct();
+	player = init_player_struct(map);
 	init_window(player, map);
 	return(0);
 }

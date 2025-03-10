@@ -28,6 +28,12 @@
 # define WIDTH 1200
 # define HEIGHT 1200
 
+typedef struct s_position {
+	char	direction;
+	int 	x;
+	int		y;
+} 	t_position;
+
 typedef struct s_map
 {
 	char	**matrix;
@@ -120,7 +126,7 @@ int			empy_line(t_map s_map);
 void		init_window(t_player *player, t_args *map);
 
 // init player_struct
-t_player	*init_player_struct(void);
+t_player	*init_player_struct(t_args *map);
 t_args		*init_map_struct(void);
 
 #endif

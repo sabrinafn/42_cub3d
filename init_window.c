@@ -72,7 +72,7 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 	x = 0;
 	while (x < WIDTH)
 	{
-		printf("x: %d\n", x);
+		//printf("x: %d\n", x);
 		ray->camera_x = 2 * x / (double)WIDTH - 1;
 		ray->dir_x = player->dir_x + (player->plane_x * ray->camera_x);
 		ray->dir_y = player->dir_y + (player->plane_y * ray->camera_x);
