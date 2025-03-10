@@ -55,7 +55,7 @@ mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 	return (img);
 }
 
-void	calculate_rays_direction(t_player *player, t_map *map,
+void	calculate_rays_direction(t_player *player, t_content *map,
 		mlx_image_t *img)
 {
 	int			x;
@@ -197,7 +197,7 @@ void	calculate_rays_direction(t_player *player, t_map *map,
 	}
 }
 
-void	init_window(t_player *player, t_map *map)
+void	init_window(t_player *player, t_content *map)
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;

@@ -64,17 +64,21 @@ int empty_file(char *argv)
 int main(int argc, char **argv)
 {
 	t_player	*player;
-	t_map		*map;
+	t_args		*s_map;
+	t_content	*content;
 	
+	player = NULL;
+	content = NULL;
+	s_map = NULL;
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
 	if(empty_file(argv[1]) == 1)
 		return(1);
-	if(read_content(argv[1]) == 1)
+	if(read_content(argv[1], s_map) == 1)
 		return(1);
-	player = init_player_struct();
-	map = init_map_struct(argv[1]);
-	init_window(player, map);
+	init_player_struct(player);
+	get_info(s_map, content);
+	init_window(player, content);
 	return(0);
 }
 

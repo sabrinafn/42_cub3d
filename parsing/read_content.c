@@ -61,10 +61,8 @@ char	**makematrix(char *file_name, int count_cols)
 	return (matrix_malloc);
 }
 
-int	read_content(char *file_name)
+int	read_content(char *file_name, t_args *s_map)
 {
-	t_args		*s_map;
-
 	s_map = malloc(sizeof(t_args));
 	s_map->name_file = file_name;
 	s_map->countcols = countcols(file_name);
@@ -81,7 +79,7 @@ int	read_content(char *file_name)
 		free_matrix(s_map->matrix);
 		return(1);
 	}
-	free_matrix(s_map->matrix);
+	//free_matrix(s_map->matrix);
 	return(0);	
 }
 

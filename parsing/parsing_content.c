@@ -18,8 +18,8 @@ int  validate_content(t_args *s_map)
 		return(1);
 	if(validate_element(s_map->matrix) == 1)
 		return(1);
-	if(validate_numbers(s_map->matrix) == 1)
-		return(1);
+	//if(validate_numbers(s_map->matrix) == 1)
+		//return(1);
 	//if(texture_path(s_map->matrix) == 1)
 	  	//return(1);		
 	return(0);	

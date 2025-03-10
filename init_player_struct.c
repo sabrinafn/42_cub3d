@@ -12,11 +12,11 @@
 
 #include "cub_3d.h"
 
-t_player	*init_player_struct(void)
+int	init_player_struct(t_player *player)
 {
-	t_player	*player;
-
 	player = (t_player *)malloc(sizeof(t_player));
+	if (!player)
+		return (0);
 
 	player->pos_x = 3 + 0.5;
 	player->pos_y = 5 + 0.5;
@@ -26,5 +26,5 @@ t_player	*init_player_struct(void)
 	player->plane_x = 0.66;
 	player->plane_y = 0;
 
-	return (player);
+	return (1);
 }

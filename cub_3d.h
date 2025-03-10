@@ -36,7 +36,7 @@ typedef struct s_args
 	int		map_position;
 }			t_args;
 
-typedef struct s_map
+/*typedef struct s_map
 {
 	char	*NO_wall;
 	char	*SO_wall;
@@ -47,7 +47,7 @@ typedef struct s_map
 	char	**map;
 	int		map_max_x;
 	int		map_max_y;
-}			t_map;
+}			t_map;*/
 
 typedef struct s_content
 {
@@ -58,6 +58,8 @@ typedef struct s_content
 	char	*EA_path;
 	char	*color_C;
 	char	*color_F;
+	int		map_max_x; // value to store height size
+	int		map_max_y; // value to store width size
 }			t_content;
 
 typedef struct s_player
@@ -96,7 +98,7 @@ int			check_name(char *argv);
 int			print_error(char *e);
 int			countcols(char *file_name);
 char		**makematrix(char *file_name, int count_cols);
-int			read_content(char *file_name);
+int			read_content(char *file_name, t_args *s_map);
 int			empty_file(char *argv);
 int			find_map(t_args *s_map);
 int			find_map2(t_args *s_map);
@@ -117,15 +119,17 @@ int			texture_path(char **matrix);
 int			empty_line(t_args s_map);
 
 // init window
-void		init_window(t_player *player, t_map *map);
+void		init_window(t_player *player, t_content *map);
 
 // init player_struct
-t_player	*init_player_struct(void);
-t_map		*init_map_struct(char *path);
+int			init_player_struct(t_player *player);
+t_content	*init_content_struct(char *path);
 
-int			get_map(t_args s_map, t_content *s_content);
+int			get_content(t_args *s_map, t_content *s_content);
 int 		get_color(char **matrix, t_content *s_content);
 int 		get_texture_path(char **matrix, t_content *s_content);
 int 		malloc_path(char *path, char *temp);
+
+int		get_info(t_args *s_map, t_content *s_content);
 
 #endif
