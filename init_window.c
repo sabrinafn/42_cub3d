@@ -80,9 +80,6 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 		// which box of the map we're in
 		ray->map_x = (int)player->pos_x;
 		ray->map_y = (int)player->pos_y;
-	
-		//printf("ray->dir_x = %f ray->dir_y = %f\n", ray->dir_x, ray->dir_y);
-		//printf("ray->map_x = %d ray->map_y = %d\n", ray->map_x, ray->map_y);
 
 		// length of ray from current position to next x or y-side
 		if (ray->dir_x == 0)
@@ -93,8 +90,6 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 			ray->delta_dist_y = 1e30;
 		else
 			ray->delta_dist_y = fabs(1 / ray->dir_y);
-
-		//printf("delta_dist_x = %f & delta_dist_y = %f\n", ray->delta_dist_x, ray->delta_dist_y);
 
 		// double perpWallDist;
 		// what direction to step in x or y-direction (either +1 or -1)

@@ -24,29 +24,24 @@ t_position	*find_char(char **map, int map_height, int map_width)
 	pos = (t_position *)malloc(sizeof(t_position));
 	if (!pos)
 		return (NULL);
-
-	pos->x = -1;
-	pos->y = -1;
-	pos->direction = '\0';
+	pos->x = 3;
+	pos->y = 3;
+	pos->direction = 'N';
+	return (pos);
+	printf("did not return\n");
 	if (map == NULL)
 		return (pos);
-	printf("map_height = [%d]\nmap_width = [%d]\n", map_height, map_width);
-	printf("y = [%d]\nx = [%d]\n", y, x);
 	while (y < map_height && map[y] != NULL)
 	{
-		printf("map[y] = [%s]\n", map[y]);
 		x = 0;
         while (x < map_width)
 		{
-			printf("hi\n");
-            if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'W' || map[y][x] == 'E')
+            if (map[y][x] == 'N' || map[y][x] == 'S'
+				|| map[y][x] == 'W' || map[y][x] == 'E')
 			{
                 pos->x = x;
                 pos->y = y;
 				pos->direction = map[y][x];
-				printf("pos->x = [%d]\n", pos->x);
-				printf("pos->y = [%d]\n", pos->y);
-				printf("pos->direction = [%c]\n", pos->direction);
                 return (pos);
 			}
 			x++;
@@ -68,6 +63,7 @@ t_player	*init_player_struct(t_args *map)
 	player->pos_y = pos->y + 0.5;
 	if (pos->direction == 'N')
 	{
+		printf("found north\n");
 		player->dir_x = 0;
 		player->dir_y = -1;
 		player->plane_x = 0.66;
@@ -75,6 +71,7 @@ t_player	*init_player_struct(t_args *map)
 	}
 	else if (pos->direction == 'S')
 	{
+		printf("found south\n");
 		player->dir_x = 0;
 		player->dir_y = 1;
 		player->plane_x = -0.66;
@@ -82,6 +79,7 @@ t_player	*init_player_struct(t_args *map)
 	}
 	else if (pos->direction == 'E')
 	{
+		printf("found east\n");
 		player->dir_x = 1;
 		player->dir_y = 0;
 		player->plane_x = 0;
@@ -89,6 +87,7 @@ t_player	*init_player_struct(t_args *map)
 	}
 	else if (pos->direction == 'W')
 	{
+		printf("found west\n");
 		player->dir_x = -1;
 		player->dir_y = 0;
 		player->plane_x = 0;
@@ -115,9 +114,9 @@ t_args	*init_map_struct(void)
 	map->map = (char **)malloc(sizeof(char *) * 8);
 	map->map[0] = ft_strdup("1111111\n");
 	map->map[1] = ft_strdup("1001001\n");
-	map->map[2] = ft_strdup("1010101\n");
-	map->map[3] = ft_strdup("1000001\n");
-	map->map[4] = ft_strdup("101E001\n");
+	map->map[2] = ft_strdup("1000001\n");
+	map->map[3] = ft_strdup("100N001\n");
+	map->map[4] = ft_strdup("1000001\n");
 	map->map[5] = ft_strdup("1000001\n");
 	map->map[6] = ft_strdup("1111111\n");
 	map->map[7] = NULL;
