@@ -1,0 +1,3 @@
+Este projeto consiste em um gráfico 3D “realista” que contem a representação do interior de um labirinto a partir de um perspectiva em primeira pessoa.
+
+O game foi criado usando a técnica de Ray-Casting, que simula a visão de uma câmera 3D em uma projeção 2D, envolve cálculos trigonométricos e vetoriais. Além da técnica de Scanline usada para renderizar polígonos em gráficos 2D. Ele percorre as linhas horizontais da tela e preenche os pixels entre as arestas do polígono, determinando quais pixels devem ser coloridos e a utilização do Algoritmo de Bresenham para desenhar linhas em uma grade de pixels.
