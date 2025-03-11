@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/10 18:27:32 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:51:48 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int			read_content(char *file_name, t_args *s_map);
 int			empty_file(char *argv);
 int			find_map(t_args *s_map);
 int			find_map2(t_args *s_map);
-int			validate_map(t_args s_map);
+int			validate_map(t_args **s_map);
 int			only_player(char *string);
 int			find_player(t_args s_map);
 int			invalid_character(t_args s_map, int cols);
@@ -111,7 +111,7 @@ int			check_wall(char **matrix, int cols, int i);
 int			size_map(t_args s_map);
 int			walk_spaces(char *string);
 void		free_matrix(char **malloc_string);
-int			validate_content(t_args *s_map);
+int			validate_content(t_args **s_map);
 int			validate_element(char **matrix);
 int			six_content(char **matrix);
 int			validate_numbers(char **matrix);

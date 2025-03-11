@@ -6,13 +6,13 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/10 19:39:53 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:50:50 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int  validate_content(t_args *s_map)
+int  validate_content(t_args **s_map)
 {
 	if(six_content(s_map->matrix) == 1)
 		return(1);
@@ -37,15 +37,15 @@ int	six_content(char **matrix)
 	while(matrix[cols] != NULL)
 	{
 		line = walk_spaces(matrix[cols]);
-		if(matrix[cols][line] == '\0' || matrix[cols][line] == '\n')
-			cols++;
-		else
+		if(matrix[cols][line] != '\0' || matrix[cols][line] != '\n')
 		{
-			if(matrix[cols][line] == '1')
+			line = walk_spaces(matrix[cols]);
+			if(matrix[cols][line] == '1' || matrix[cols][line] == '0')
 				break;
-			cols++;
-			count++;
+			else
+				count++;
 		}
+		cols++;
 	}
 	if(count != 6)
 	{
@@ -97,12 +97,46 @@ int	validate_element(char **matrix)
 	return(0);
 }
 
+// int validate_numbers(char **matrix)
+// {
+// 	int cols;
+// 	int count;
+// 	char *temp;
+// 	int number;
+
+// 	number = 0;
+// 	count = 0;
+// 	cols = 0;
+// 	temp = NULL;
+// 	while(matrix[cols] != NULL)
+// 	{ 
+// 		count = walk_spaces(matrix[cols]);
+// 		if(matrix[cols][count] == 'F' || matrix[cols][count] == 'C')
+// 		{
+// 					count = 0;
+// 					if(ft_strchr("1234567890", matrix[cols][count]))
+// 					{
+// 						while(ft_strchr("1234567890", matrix[cols][count]))
+// 						{
+								
+// 							count++;
+// 						}
+// 					}
+// 					count++;
+// 				}
+
+// 			}
+
+// 	return(0);
+//}
+
+
 int validate_numbers(char **matrix)
 {
 	int cols;
 	int count;
 	char **temp;
-	//int number;
+	int number;
 	char **temp2;
 	int i;
 
@@ -122,24 +156,24 @@ int validate_numbers(char **matrix)
 			{
 				while (temp2[count][i] != '\0')
 				{
-					//printf("%c", temp2[count][i]);
-					// if(ft_strchr("1234567890", temp2[count][i]) == NULL)
-					// {
-					// 	free_matrix (temp);
-					// 	free_matrix (temp2);
-					// 	printf("Invalid colokjkljlkrs\n");	
-					// 	return(1);
-					// }
+					printf("%c", temp2[count][i]);
+					if(ft_strchr("1234567890", temp2[count][i]) == NULL)
+					{
+						free_matrix (temp);
+						free_matrix (temp2);
+						printf("Invalid colokjkljlkrs\n");	
+						return(1);
+					}
 					i++;
 				}
-				// number = ft_atoi(temp2[count]);
-				// if( number < 0 || number  > 255 || count > 3)
-				// {
-				// 	free_matrix (temp);
-				// 	free_matrix (temp2);
-				// 	printf("Invalid colors\n");	
-				// 	return(1);
-				// }
+				number = ft_atoi(temp2[count]);
+				if( number < 0 || number  > 255 || count > 3)
+				{
+					free_matrix (temp);
+					free_matrix (temp2);
+					printf("Invalid colors\n");	
+					return(1);
+				}
 				count++;
 			}
 			free_matrix (temp); 
