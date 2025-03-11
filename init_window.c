@@ -127,7 +127,7 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 		while (hit == 0)
 		{
 			// jump to next map square, either in x-direction, or in y-direction
-			if (ray->side_dist_x <=ray->side_dist_y)
+			if (ray->side_dist_x <= ray->side_dist_y)
 			{
 				ray->side_dist_x += ray->delta_dist_x;
 				ray->map_x += ray->step_x;

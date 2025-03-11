@@ -24,11 +24,9 @@ t_position	*find_char(char **map, int map_height, int map_width)
 	pos = (t_position *)malloc(sizeof(t_position));
 	if (!pos)
 		return (NULL);
-	pos->x = 3;
-	pos->y = 3;
-	pos->direction = 'N';
-	return (pos);
-	printf("did not return\n");
+	pos->x = -1;
+	pos->y = -1;
+	pos->direction = '\0';
 	if (map == NULL)
 		return (pos);
 	while (y < map_height && map[y] != NULL)
@@ -61,6 +59,9 @@ t_player	*init_player_struct(t_args *map)
 
 	player->pos_x = pos->x + 0.5;
 	player->pos_y = pos->y + 0.5;
+//	printf("player->pos-x = [%d]\n", pos->x);
+//	printf("player->pos-y = [%d]\n", pos->y);
+//	printf("player->direction = [%c]\n", pos->direction);
 	if (pos->direction == 'N')
 	{
 		printf("found north\n");
@@ -113,10 +114,10 @@ t_args	*init_map_struct(void)
 
 	map->map = (char **)malloc(sizeof(char *) * 8);
 	map->map[0] = ft_strdup("1111111\n");
-	map->map[1] = ft_strdup("1001001\n");
-	map->map[2] = ft_strdup("1000001\n");
-	map->map[3] = ft_strdup("100N001\n");
-	map->map[4] = ft_strdup("1000001\n");
+	map->map[1] = ft_strdup("1000001\n");
+	map->map[2] = ft_strdup("1010101\n");
+	map->map[3] = ft_strdup("10000W1\n");
+	map->map[4] = ft_strdup("1010101\n");
 	map->map[5] = ft_strdup("1000001\n");
 	map->map[6] = ft_strdup("1111111\n");
 	map->map[7] = NULL;
