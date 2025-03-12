@@ -6,28 +6,28 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:38:13 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/11 19:31:26 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/12 19:45:56 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int validate_wall(t_args s_map)
+int validate_wall(t_args *s_map)
 {
 	int cols;
 	int i;
 	
-	cols = s_map.map_position;
+	cols = s_map->map_position;
 	i = 0;
-	while(s_map.matrix[cols] != NULL)
+	while(s_map->matrix[cols] != NULL)
 	{
 		i = 0;
-		while(s_map.matrix[cols][i] != '\0')
+		while(s_map->matrix[cols][i] != '\0')
 		{
-			if(s_map.matrix[cols][i] == '0'
-			|| ft_strchr("NSEW", s_map.matrix[cols][i]))
+			if(s_map->matrix[cols][i] == '0'
+			|| ft_strchr("NSEW", s_map->matrix[cols][i]))
 			{
-				if(check_wall(s_map.matrix, cols, i))
+				if(check_wall(s_map->matrix, cols, i))
 				return(1);
 			}
 			i++;	
@@ -59,16 +59,16 @@ int check_wall(char **matrix, int cols, int i)
 	return(0);		
 }
 
-int size_map(t_args s_map)
+int size_map(t_args *s_map)
 {
 	int i;
 	int count;
 
 	count = 0;
-	if((s_map.countcols - s_map.map_position) < 9)
+	if((s_map->countcols - s_map->map_position) < 9)
 		return(1);
-	i = walk_spaces(s_map.matrix[0]);
-	while(s_map.matrix[s_map.map_position][i] != '\0')
+	i = walk_spaces(s_map->matrix[0]);
+	while(s_map->matrix[s_map->map_position][i] != '\0')
 	{
 		count++;
 		i++;
@@ -78,25 +78,25 @@ int size_map(t_args s_map)
 	return(0);		
 }
 
-int empty_line(t_args s_map)
+int empty_line(t_args *s_map)
 {
 	int cols;
 	int i;
 
-	cols = s_map.map_position;
-	while(s_map.matrix[cols] != NULL)
+	cols = s_map->map_position;
+	while(s_map->matrix[cols] != NULL)
 	{
-		i = walk_spaces(s_map.matrix[cols]);
-		if(i > 1 && s_map.matrix[cols][i] == '\0')
+		i = walk_spaces(s_map->matrix[cols]);
+		if(i > 1 && s_map->matrix[cols][i] == '\0')
 			return (1);
-		if(s_map.matrix[cols][i] == '\0')
+		if(s_map->matrix[cols][i] == '\0')
 			break ;
 		cols++;	
 	}
-	while(s_map.matrix[cols] != NULL)
+	while(s_map->matrix[cols] != NULL)
 	{
-		i = walk_spaces(s_map.matrix[cols]);
-		if(s_map.matrix[cols][i] != '\0')
+		i = walk_spaces(s_map->matrix[cols]);
+		if(s_map->matrix[cols][i] != '\0')
 			return(1);
 		cols++;	
 	}

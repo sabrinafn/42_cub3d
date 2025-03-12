@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:25:28 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/11 18:43:25 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:02:29 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,19 @@ int find_map(t_args *s_map)
 
 	cols = 0;
 	line = 0;
-	count = 0;
+	count = 0;	
 	while(s_map->matrix[cols] != NULL)
 	{
 		if(count == 6)
 			break;
 		line = walk_spaces(s_map->matrix[cols]);
-		if(s_map->matrix[cols][line] != '\0' || s_map->matrix[cols][line] != '\n')
+		if(s_map->matrix[cols][line] == '\0' || s_map->matrix[cols][line] == '\n')
+			cols++;
+		else
+		{
+			cols++;
 			count++;
-		cols++;
+		}
 	}
 	return(cols);
 }
@@ -71,11 +75,11 @@ int	validate_char(char *string)
 	return(0);			
 }
 
-int	invalid_character(t_args s_map, int cols)
+int	invalid_character(t_args *s_map, int cols)
 {
-	while(s_map.matrix[cols] != NULL)
+	while(s_map->matrix[cols] != NULL)
 	{
-		if(validate_char(s_map.matrix[cols]) == 1)
+		if(validate_char(s_map->matrix[cols]) == 1)
 			return(1);
 		cols++;	
 	}

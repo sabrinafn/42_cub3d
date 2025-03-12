@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/11 18:51:48 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/12 19:12:23 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,25 +98,25 @@ int			check_name(char *argv);
 int			print_error(char *e);
 int			countcols(char *file_name);
 char		**makematrix(char *file_name, int count_cols);
-int			read_content(char *file_name, t_args *s_map);
+int			read_content(t_args *s_map);
 int			empty_file(char *argv);
 int			find_map(t_args *s_map);
 int			find_map2(t_args *s_map);
-int			validate_map(t_args **s_map);
+int			validate_map(t_args *s_map);
 int			only_player(char *string);
-int			find_player(t_args s_map);
-int			invalid_character(t_args s_map, int cols);
-int			validate_wall(t_args s_map);
+int			find_player(t_args *s_map);
+int			invalid_character(t_args *s_map, int cols);
+int			validate_wall(t_args *s_map);
 int			check_wall(char **matrix, int cols, int i);
-int			size_map(t_args s_map);
+int			size_map(t_args *s_map);
 int			walk_spaces(char *string);
 void		free_matrix(char **malloc_string);
-int			validate_content(t_args **s_map);
+int			validate_content(t_args *s_map);
 int			validate_element(char **matrix);
 int			six_content(char **matrix);
 int			validate_numbers(char **matrix);
 int			texture_path(char **matrix);
-int			empty_line(t_args s_map);
+int			empty_line(t_args *s_map);
 
 // init window
 void		init_window(t_player *player, t_content *map);

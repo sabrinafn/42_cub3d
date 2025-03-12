@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/11 18:28:01 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/12 20:30:32 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,30 @@ int main(int argc, char **argv)
 	//t_player	*player;
 	t_args		*s_map;
 	t_content	*content;
-	
+	int i = 0;	
 	//player = NULL;
 	s_map = malloc(sizeof(t_args));
 	content = malloc(sizeof(t_content));
+	content->map = NULL;
+	s_map->name_file = argv[1];
+	s_map->countcols = countcols(argv[1]);
+	s_map->matrix = makematrix(argv[1], s_map->countcols);
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
 	if(empty_file(argv[1]) == 1)
 		return(1);
-	if(read_content(argv[1], s_map) == 1)
-		return(1);
-	if(get_info(s_map, content) == 1)
+	if(read_content(s_map) == 1)
 		return(1);
 	//init_player_struct(player);
+	if(get_info(s_map, content) == 1)
+		return(1);	
+	while(content->map[i] != NULL)
+	{
+		printf("%s", content->map[i]);
+		i++;
+	}
 	//init_window(player, content);
 	return(0);
 }
+
 

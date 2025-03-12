@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/10 18:16:02 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/12 20:27:58 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ int get_info(t_args *s_map, t_content *s_content)
 		printf("error when creating map\n");
 		return(1);
 	}
-	printf("estou aqui");
+	printf("%s", s_content->map[0]);
 	if(get_color(s_map->matrix, s_content) == 1)
 	{
 		printf("error when creating color\n");
