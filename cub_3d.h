@@ -93,11 +93,11 @@ typedef struct s_ray
 	double	perp_wall_dist;
 	int		step_x;
 	int		step_y;
-	int		hit;
 	int		side;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+	int		hit;
 }			t_ray;
 
 typedef struct s_game
