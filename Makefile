@@ -6,7 +6,7 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:38:48 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/01/31 15:27:10 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/03/13 17:56:31 by mgonzaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIBFT = libft/libft.a
 
 FILES = main.c parsing/read_content.c parsing/find_map.c parsing/map_validation.c \
 		parsing/find_player.c parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
-		init_window.c init_player_struct.c parsing/get_info.c #init_map_struct.c 
+		init_window.c init_player_struct.c parsing/get_info.c parsing/check_funcitions.c #init_map_struct.c 
 
 OBJ = $(FILES:%.c=%.o)
 MLX_FLAGS = -lm -ldl -pthread -lglfw

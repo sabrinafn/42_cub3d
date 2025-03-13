@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/12 19:12:23 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/13 19:30:40 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ int			size_map(t_args *s_map);
 int			walk_spaces(char *string);
 void		free_matrix(char **malloc_string);
 int			validate_content(t_args *s_map);
-int			validate_element(char **matrix);
-int			six_content(char **matrix);
+int			validate_element(char *matrix_line, int line_number);
+int			check_elements(char **matrix);
 int			validate_numbers(char **matrix);
 int			texture_path(char **matrix);
 int			empty_line(t_args *s_map);

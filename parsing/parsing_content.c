@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/12 20:33:30 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/13 20:43:48 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int  validate_content(t_args *s_map)
 {
-	if(six_content(s_map->matrix) == 1)
-		return(1);
-	if(validate_element(s_map->matrix) == 1)
+	if(!check_elements(s_map->matrix))
 		return(1);
 	//if(validate_numbers(s_map->matrix) == 1)
 		//return(1);
@@ -25,7 +23,7 @@ int  validate_content(t_args *s_map)
 	return(0);	
 }
 
-int	six_content(char **matrix)
+int	check_elements(char **matrix)
 {
 	int cols;
 	int line;
@@ -39,9 +37,11 @@ int	six_content(char **matrix)
 		line = walk_spaces(matrix[cols]);
 		if(matrix[cols][line] != '\0' && matrix[cols][line] != '\n')
 		{
-			line = walk_spaces(matrix[cols]);
-			if(matrix[cols][line] == '1')
+			printf("%s\n", matrix[cols]);
+			if(matrix[cols][line] == '1' || matrix[cols][line] == '0')
 				break;
+			if(!validate_element(matrix[cols], line))
+				return(0);
 			else
 				count++;
 		}
@@ -49,52 +49,30 @@ int	six_content(char **matrix)
 	}
 	if(count != 6)
 	{
-		printf("Invalid number of elements\n");	
-		return(1);
+		printf("Invalid Numbers Elements\n");	
+		return(0);
 	}
-	return(0);
+	return(1);
 }
 
-int	validate_element(char **matrix)
+int	validate_element(char *matrix_line, int line_number)
 {
-	int cols;
-	int line;
-	int count;
 	char *temp;
 	
-	cols = 0;
-	line = 0;
 	temp = malloc(4 * sizeof(char));
-	count = 0;
-	while(matrix[cols] != NULL)
-	{
-		if(count > 6)
-			break;
-		line = walk_spaces(matrix[cols]);
-		if(matrix[cols][line] != '\0')
+	temp[0] = matrix_line[line_number];
+	temp[1] = matrix_line[line_number + 1];
+	temp[2] = matrix_line[line_number + 2];
+	temp[3] = '\0';
+	if(ft_strncmp(temp, "NO ", 3) == 0 || ft_strncmp(temp, "SO ", 3) == 0 \
+		|| ft_strncmp(temp, "WE ", 3) == 0 || ft_strncmp(temp, "EA ", 3) == 0 \
+		|| ft_strncmp(temp, "F ", 2) == 0 || ft_strncmp(temp, "C ", 2) == 0)
+			return(1);
+	else
 		{
-			if(count < 6)
-			{
-				temp[0] = matrix[cols][line];
-				temp[1] = matrix[cols][line + 1];
-				temp[2] = matrix[cols][line + 2];
-				temp[3] = '\0';
-				if(ft_strncmp(temp, "NO ", 3) == 0 || ft_strncmp(temp, "SO ", 3) == 0 \
-					|| ft_strncmp(temp, "WE ", 3) == 0 || ft_strncmp(temp, "EA ", 3) == 0 \
-					|| ft_strncmp(temp, "F ", 2) == 0 || ft_strncmp(temp, "C ", 2) == 0)
-						count++;		
-				else
-				{
-					free(temp);
-					printf("invalid Elements\n");
-					return(1);		
-				}		
-			}
+			printf("Invalid Elements\n");	
+			return(0);
 		}
-		cols++;
-	}
-	free(temp);
-	return(0);
 }
 
 int validate_numbers(char **matrix)
