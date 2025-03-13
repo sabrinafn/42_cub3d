@@ -27,8 +27,11 @@
 
 # define WIDTH 1200
 # define HEIGHT 1200
+# define MOVE_SPEED 0.05
+# define ROTATION_SPEED 0.03
 
-typedef struct s_position {
+typedef struct s_position
+{
 	char	direction;
 	int 	x;
 	int		y;
@@ -97,6 +100,15 @@ typedef struct s_ray
 	int		draw_end;
 }			t_ray;
 
+typedef struct s_game
+{
+	t_ray		*ray_struct;
+	t_player	*player_struct;
+	t_args		*map_struct;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+}	t_game;
+
 int			check_arguments(int argc, char *argv);
 int			check_name(char *argv);
 int			print_error(char *e);
@@ -123,10 +135,13 @@ int			texture_path(char **matrix);
 int			empy_line(t_map s_map);
 
 // init window
-void		init_window(t_player *player, t_args *map);
+void		init_window(t_game *game);
 
 // init player_struct
 t_player	*init_player_struct(t_args *map);
 t_args		*init_map_struct(void);
+
+// player movements
+void	move_player_w(t_game *game);
 
 #endif

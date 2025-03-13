@@ -51,7 +51,6 @@ mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 		}
 		i++;
 	}
-	printf("value of i: %d and value of j end of loop: %d\n", i, j);
 	return (img);
 }
 
@@ -72,7 +71,6 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 	x = 0;
 	while (x < WIDTH)
 	{
-		//printf("x: %d\n", x);
 		ray->camera_x = 2 * x / (double)WIDTH - 1;
 		ray->dir_x = player->dir_x + (player->plane_x * ray->camera_x);
 		ray->dir_y = player->dir_y + (player->plane_y * ray->camera_x);
@@ -192,23 +190,60 @@ void	calculate_rays_direction(t_player *player, t_args *map,
 	}
 }
 
-void	init_window(t_player *player, t_args *map)
+void	key_pressed_function(mlx_key_data_t keydata, void *param)
 {
-	mlx_t			*mlx;
-	mlx_image_t		*img;
+	t_game	*game;
+
+	game = param;
+	(void)keydata;
+
+	// W 
+	// A
+	// S
+	// D
+	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(game->mlx);
+	printf("after first if\n");
+	//if (mlx_is_key_down(game->mlx, MLX_KEY_W))
+	//	move_player_w(game);
+}
+
+void	move_player_w(t_game *game)
+{
+	printf("move_player_w\n");
+	int	new_pos_x;
+	int	new_pos_y;
+
+	new_pos_x = game->player_struct->pos_x + game->ray_struct->dir_x * MOVE_SPEED;
+	new_pos_y = game->player_struct->pos_y + game->ray_struct->dir_y * MOVE_SPEED;
+
+	if (game->map_struct->map[new_pos_y][new_pos_x] != '1'
+		&& new_pos_x < game->map_struct->map_max_x
+		&& new_pos_y < game->map_struct->map_max_y)
+	{
+		printf("inside if statement\n");
+		game->player_struct->pos_x = new_pos_x;
+		game->player_struct->pos_y = new_pos_y;
+		calculate_rays_direction(game->player_struct, game->map_struct, game->img);
+	}
+}
+
+void	init_window(t_game *game)
+{
 	unsigned int	ceiling;
 	unsigned int	floor;
 
 	ceiling = get_rgba(255, 199, 231, 255);
 	floor = get_rgba(128, 112, 214, 255);
-	mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
-	if (!mlx)
+	game->mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
+	if (!game->mlx)
 		ft_putstr_fd("Error opening window\n", 2);
-	img = init_img(mlx, ceiling, floor);
-	mlx_image_to_window(mlx, img, WIDTH, HEIGHT);
-	calculate_rays_direction(player, map, img);
-	mlx_image_to_window(mlx, img, 0, 0);
-	mlx_loop(mlx);
+	game->img = init_img(game->mlx, ceiling, floor);
+	mlx_image_to_window(game->mlx, game->img, WIDTH, HEIGHT);
+	calculate_rays_direction(game->player_struct, game->map_struct, game->img);
+	mlx_image_to_window(game->mlx, game->img, 0, 0);
+	mlx_key_hook(game->mlx, &key_pressed_function, game);
+	mlx_loop(game->mlx);
 }
 /********************************************************************
 Implement Raycasting Loop:
