@@ -109,7 +109,7 @@ t_args	*init_map_struct(void)
 	map->EA_wall = NULL;
 	map->floor = NULL;
 	map->ceiling = NULL;
-	map->map_max_x = 39;
+/*	map->map_max_x = 39;
 	map->map_max_y = 15;
 
 	map->map = (char **)malloc(sizeof(char *) * 15);
@@ -121,15 +121,18 @@ t_args	*init_map_struct(void)
 	map->map[5] = ft_strdup("1000000010000000100000000010000000001\n");
 	map->map[6] = ft_strdup("1111111111111111111111111111110111111\n");
 	map->map[7] = ft_strdup("1110000000000000000000000000000000001\n");
-	map->map[8] = ft_strdup("11110000000000000000W0000000000000111\n");
+	map->map[8] = ft_strdup("1111000000000000000000000000000000111\n");
 	map->map[9] = ft_strdup("1000000010000000100000000010000001001\n");
-	map->map[10] = ft_strdup("1000000010000000100000000010000001111\n");
+	map->map[10] = ft_strdup("10000000100000001000000000100N0001111\n");
 	map->map[11] = ft_strdup("1111110000000000000000000000111111111\n");
 	map->map[12] = ft_strdup("1111111111111111000000011111111111111\n");
 	map->map[13] = ft_strdup("1111111111111111111111111111111111111\n");
 	map->map[14] = NULL;
+*/
 
-/*
+	map->map_max_x = 8;
+	map->map_max_y = 8;
+
 	map->map = (char **)malloc(sizeof(char *) * 8);
 	map->map[0] = ft_strdup("1111111\n");
 	map->map[1] = ft_strdup("1000001\n");
@@ -139,6 +142,6 @@ t_args	*init_map_struct(void)
 	map->map[5] = ft_strdup("100N001\n");
 	map->map[6] = ft_strdup("1111111\n");
 	map->map[7] = NULL;
-*/
+
 	return (map);
 }
