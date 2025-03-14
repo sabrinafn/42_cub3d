@@ -144,6 +144,8 @@ t_args		*init_map_struct(void);
 // player movements
 void	move_player_w(t_game *game);
 void	move_player_s(t_game *game);
+void	move_player_a(t_game *game);
+void	move_player_d(t_game *game);
 
 // calculate_rays
 void	init_ray_pos_and_dir(int x, t_ray *ray, t_player *player);
