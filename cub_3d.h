@@ -27,8 +27,8 @@
 
 # define WIDTH 1200
 # define HEIGHT 1200
-# define MOVE_SPEED 0.05
-# define ROTATION_SPEED 0.03
+# define MOVE_SPEED 0.03
+# define ROTATION_SPEED 0.01
 
 typedef struct s_position
 {
@@ -146,6 +146,8 @@ void	move_player_w(t_game *game);
 void	move_player_s(t_game *game);
 void	move_player_a(t_game *game);
 void	move_player_d(t_game *game);
+void	move_player_vision_left(t_game *game);
+void	move_player_vision_right(t_game *game);
 
 // calculate_rays
 void	init_ray_pos_and_dir(int x, t_ray *ray, t_player *player);

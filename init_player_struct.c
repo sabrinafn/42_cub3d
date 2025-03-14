@@ -109,7 +109,7 @@ t_args	*init_map_struct(void)
 	map->EA_wall = NULL;
 	map->floor = NULL;
 	map->ceiling = NULL;
-/*	map->map_max_x = 39;
+	map->map_max_x = 39;
 	map->map_max_y = 15;
 
 	map->map = (char **)malloc(sizeof(char *) * 15);
@@ -128,8 +128,8 @@ t_args	*init_map_struct(void)
 	map->map[12] = ft_strdup("1111111111111111000000011111111111111\n");
 	map->map[13] = ft_strdup("1111111111111111111111111111111111111\n");
 	map->map[14] = NULL;
-*/
 
+/*
 	map->map_max_x = 8;
 	map->map_max_y = 8;
 
@@ -142,6 +142,6 @@ t_args	*init_map_struct(void)
 	map->map[5] = ft_strdup("100N001\n");
 	map->map[6] = ft_strdup("1111111\n");
 	map->map[7] = NULL;
-
+*/
 	return (map);
 }
