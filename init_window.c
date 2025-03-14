@@ -90,6 +90,8 @@ void	key_pressed_function(mlx_key_data_t keydata, void *param)
 		mlx_close_window(game->mlx);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
 		move_player_w(game);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
+		move_player_s(game);
 }
 
 void	move_player_w(t_game *game)
@@ -101,6 +103,28 @@ void	move_player_w(t_game *game)
 
 	new_y = game->player_struct->pos_y + game->player_struct->dir_y * MOVE_SPEED;
 	new_x = game->player_struct->pos_x + game->player_struct->dir_x * MOVE_SPEED;
+	new_pos_x = (int)new_x;
+	new_pos_y = (int)new_y;
+	if (game->map_struct->map[new_pos_y][new_pos_x] != '1'
+		&& new_x < game->map_struct->map_max_x
+		&& new_y < game->map_struct->map_max_y)
+	{
+		game->player_struct->pos_x = new_x;
+		game->player_struct->pos_y = new_y;
+		render_raycast_frame(game);
+	}
+	
+}
+
+void	move_player_s(t_game *game)
+{
+	double	new_x;
+	double	new_y;
+	int	new_pos_x;
+	int	new_pos_y;
+
+	new_y = game->player_struct->pos_y - game->player_struct->dir_y * MOVE_SPEED;
+	new_x = game->player_struct->pos_x - game->player_struct->dir_x * MOVE_SPEED;
 	new_pos_x = (int)new_x;
 	new_pos_y = (int)new_y;
 	if (game->map_struct->map[new_pos_y][new_pos_x] != '1'
