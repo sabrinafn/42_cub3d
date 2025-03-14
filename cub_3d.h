@@ -27,8 +27,8 @@
 
 # define WIDTH 1200
 # define HEIGHT 1200
-# define MOVE_SPEED 0.03
-# define ROTATION_SPEED 0.01
+# define MOVE_SPEED 0.1
+# define ROTATION_SPEED 0.1
 
 typedef struct s_position
 {
