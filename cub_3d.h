@@ -135,7 +135,7 @@ int			texture_path(char **matrix);
 int			empy_line(t_map s_map);
 
 // init window
-void		init_window(t_game *game);
+void		init_game(t_game *game);
 void		render_raycast_frame(t_game *game);
 
 // init player_struct
