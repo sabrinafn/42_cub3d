@@ -82,19 +82,16 @@ void	perform_dda(t_ray *ray, t_args *map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		// Check if ray has hit a wall
-		// this part needs a proper function to check whether the pixel
-		// has touched a char that is 1 or the player itself.
 		if (map->map[ray->map_y][ray->map_x] == '1'
 			&& ray->map_x < map->map_max_x && ray->map_y < map->map_max_y)
 			ray->hit = 1;
 	}
-
 }
 
-void	calculate_rays(int x, t_ray *ray, t_player *player)
+void	calculate_rays(int x, t_game *game)
 {
-	init_ray_pos_and_dir(x, ray, player);
-	init_delta_distance(ray);
-	init_step_and_sidedist(ray, player);
+	init_ray_pos_and_dir(x, game->ray_struct, game->player_struct);
+	init_delta_distance(game->ray_struct);
+	init_step_and_sidedist(game->ray_struct, game->player_struct);
+	perform_dda(game->ray_struct, game->map_struct);
 }

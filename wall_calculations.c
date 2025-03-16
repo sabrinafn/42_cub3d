@@ -40,7 +40,7 @@ void	get_wall_height(t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
-void	draw_wall(int x, t_ray *ray, mlx_image_t *img)
+void	draw_walls(int x, t_ray *ray, mlx_image_t *img)
 {
 	uint32_t	color;
 	uint8_t		r;

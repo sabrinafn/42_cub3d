@@ -155,11 +155,11 @@ void	init_ray_pos_and_dir(int x, t_ray *ray, t_player *player);
 void	init_delta_distance(t_ray *ray);
 void	init_step_and_sidedist(t_ray *ray, t_player *player);
 void	perform_dda(t_ray *ray, t_args *map);
-void	calculate_rays(int x, t_ray *ray, t_player *player);
+void	calculate_rays(int x, t_game *game);
 
 // wall_calculations.c
 void	get_wall_height(t_ray *ray);
-void	draw_wall(int x, t_ray *ray, mlx_image_t *img);
+void	draw_walls(int x, t_ray *ray, mlx_image_t *img);
 
 // key_hooks.c
 void	key_pressed_function(mlx_key_data_t keydata, void *param);

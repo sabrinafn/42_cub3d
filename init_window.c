@@ -27,16 +27,28 @@ int	get_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
+mlx_image_t	*init_img(t_game *game)
 {
-	mlx_image_t	*img;
+	mlx_image_t *img;
+
+	img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	if (!game->img || (mlx_image_to_window(game->mlx, img, 0, 0) < 0))
+		ft_putstr_fd("Error creating image\n", 2);
+	return (img);
+}
+
+void	draw_ceiling_and_floor(t_game *game)
+{
 	int			i;
 	int			j;
+	unsigned int	ceiling;
+	unsigned int	floor;
 
 	i = 0;
 	j = 0;
-	img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
+	ceiling = get_rgba(255, 199, 231, 255);
+	floor = get_rgba(128, 112, 214, 255);
+	if (!game->img)
 		ft_putstr_fd("Error creating image\n", 2);
 	while (i < WIDTH)
 	{
@@ -44,45 +56,38 @@ mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 		while (j < HEIGHT)
 		{
 			if (j < HEIGHT / 2)
-				mlx_put_pixel(img, i, j, ceiling);
+				mlx_put_pixel(game->img, i, j, floor);
 			else
-				mlx_put_pixel(img, i, j, floor);
+				mlx_put_pixel(game->img, i, j, ceiling);
 			j++;
 		}
 		i++;
 	}
-	return (img);
 }
 
 void	render_raycast_frame(t_game *game)
 {
-	unsigned int	ceiling;
-	unsigned int	floor;
 	int			x;
 
-	ceiling = get_rgba(255, 199, 231, 255);
-	floor = get_rgba(128, 112, 214, 255);
-	game->img = init_img(game->mlx, ceiling, floor);
 	x = 0;
+	draw_ceiling_and_floor(game);
 	while (x < WIDTH)
 	{
-		calculate_rays(x, game->ray_struct, game->player_struct);
-		perform_dda(game->ray_struct, game->map_struct);
-		draw_wall(x, game->ray_struct, game->img);
+		calculate_rays(x, game);
+		draw_walls(x, game->ray_struct, game->img);
 		x++;
 	}
 }
 
 void	init_window(t_game *game)
 {
-
-	game->ray_struct = (t_ray *)malloc(sizeof(t_ray));
-	if (!game->ray_struct)
-		printf("ray_struct error\n");
 	game->mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
 	if (!game->mlx)
 		ft_putstr_fd("Error opening window\n", 2);
-	//mlx_image_to_window(game->mlx, game->img, WIDTH, HEIGHT);
+	game->img = init_img(game);
+	game->ray_struct = (t_ray *)malloc(sizeof(t_ray));
+	if (!game->ray_struct)
+		printf("ray_struct error\n");
 	render_raycast_frame(game);
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
