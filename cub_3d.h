@@ -136,6 +136,7 @@ int			empy_line(t_map s_map);
 
 // init window
 void		init_window(t_game *game);
+void		render_raycast_frame(t_game *game);
 
 // init player_struct
 t_player	*init_player_struct(t_args *map);
@@ -159,5 +160,8 @@ void	calculate_rays(int x, t_ray *ray, t_player *player);
 // wall_calculations.c
 void	get_wall_height(t_ray *ray);
 void	draw_wall(int x, t_ray *ray, mlx_image_t *img);
+
+// key_hooks.c
+void	key_pressed_function(mlx_key_data_t keydata, void *param);
 
 #endif
