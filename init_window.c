@@ -32,15 +32,18 @@ mlx_image_t	*init_img(t_game *game)
 	mlx_image_t *img;
 
 	img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-	if (!game->img || (mlx_image_to_window(game->mlx, img, 0, 0) < 0))
-		ft_putstr_fd("Error creating image\n", 2);
+	if (!img)
+	{
+		ft_putstr_fd("Error creating image2\n", 2);
+		return (NULL);
+	}
 	return (img);
 }
 
 void	draw_ceiling_and_floor(t_game *game)
 {
-	int			i;
-	int			j;
+	int				i;
+	int				j;
 	unsigned int	ceiling;
 	unsigned int	floor;
 
@@ -49,7 +52,9 @@ void	draw_ceiling_and_floor(t_game *game)
 	ceiling = get_rgba(255, 199, 231, 255);
 	floor = get_rgba(128, 112, 214, 255);
 	if (!game->img)
-		ft_putstr_fd("Error creating image\n", 2);
+	{
+		ft_putstr_fd("Error creating imageaaa\n", 2);
+	}
 	while (i < WIDTH)
 	{
 		j = 0;
@@ -77,6 +82,7 @@ void	render_raycast_frame(t_game *game)
 		draw_walls(x, game->ray_struct, game->img);
 		x++;
 	}
+	mlx_image_to_window(game->mlx, game->img, 0, 0);
 }
 
 void	init_window(t_game *game)
@@ -89,7 +95,7 @@ void	init_window(t_game *game)
 	if (!game->ray_struct)
 		printf("ray_struct error\n");
 	render_raycast_frame(game);
-	mlx_image_to_window(game->mlx, game->img, 0, 0);
+	//mlx_image_to_window(game->mlx, game->img, 0, 0);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
 	mlx_loop(game->mlx);
 }
