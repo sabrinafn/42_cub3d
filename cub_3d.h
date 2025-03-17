@@ -100,6 +100,14 @@ typedef struct s_ray
 	int		hit;
 }			t_ray;
 
+typedef struct s_textures
+{
+	mlx_texture_t	*NO_wall;
+	mlx_texture_t	*SO_wall;
+	mlx_texture_t	*WE_wall;
+	mlx_texture_t	*EA_wall;
+}	t_textures;
+
 typedef struct s_game
 {
 	t_ray		*ray_struct;
@@ -107,6 +115,7 @@ typedef struct s_game
 	t_args		*map_struct;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	t_textures	*textures;
 }	t_game;
 
 int			check_arguments(int argc, char *argv);
@@ -159,7 +168,7 @@ void	calculate_rays(int x, t_game *game);
 
 // wall_calculations.c
 void	get_wall_height(t_ray *ray);
-void	draw_walls(int x, t_ray *ray, mlx_image_t *img);
+void	draw_walls(int x, t_game *game);
 
 // key_hooks.c
 void	key_pressed_function(mlx_key_data_t keydata, void *param);

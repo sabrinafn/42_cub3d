@@ -40,7 +40,42 @@ void	get_wall_height(t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
-void	draw_walls(int x, t_ray *ray, mlx_image_t *img)
+void	get_wall_texture(t_game *game)
+{
+	t_textures	*tex;
+	mlx_texture_t		*wall_tex;
+
+	tex = (t_textures *)malloc(sizeof(t_textures));
+	if (!tex)
+		printf("error in malloc textures\n");
+	game->textures = tex;
+	wall_tex = mlx_load_png(game->map_struct->NO_wall);
+	game->textures->NO_wall = wall_tex;
+	game->textures->SO_wall = wall_tex;
+	game->textures->WE_wall = wall_tex;
+	game->textures->EA_wall = wall_tex;
+
+	//mlx_texture_t has the texture's width 
+
+    //calculate value of wallX
+	double wall_x; //where exactly the wall was hit
+	if (game->ray_struct->side == 0)
+		wall_x = game->player_struct->pos_y + game->ray_struct->perp_wall_dist * game->ray_struct->dir_y;
+	else
+		wall_x = game->player_struct->pos_x + game->ray_struct->perp_wall_dist * game->ray_struct->dir_x;
+	wall_x -= floor((wall_x));
+
+  	//x coordinate on the texture
+	int tex_x = (int)(wall_x * (double)(game->textures->NO_wall->width));
+	if (game->ray_struct->side == 0 && game->ray_struct->dir_x > 0)
+		tex_x = game->textures->NO_wall->width - tex_x - 1;
+	if (game->ray_struct->side == 1 && game->ray_struct->dir_y < 0)
+		tex_x = game->textures->NO_wall->width - tex_x - 1;
+
+	//mlx_delete_texture(wall_texture);
+}
+
+void	draw_walls(int x, t_game *game)
 {
 	uint32_t	color;
 	uint8_t		r;
@@ -49,9 +84,9 @@ void	draw_walls(int x, t_ray *ray, mlx_image_t *img)
 	uint8_t		a;
 	int			i;
 
-	get_wall_height(ray);
+	get_wall_height(game->ray_struct);
 	color = RGB_Green;;
-	if (ray->side == 1)
+	if (game->ray_struct->side == 1)
 	{
 		// Darken the color when it is a side wall (divide each component by 2)
 		r = (color >> 24) & 0xFF;
@@ -63,11 +98,35 @@ void	draw_walls(int x, t_ray *ray, mlx_image_t *img)
 		b /= 2;
 		color = (r << 24) | (g << 16) | (b << 8) | a;
 	}
-	i = ray->draw_start;
-	while (i < ray->draw_end)
+	i = game->ray_struct->draw_start;
+	while (i < game->ray_struct->draw_end)
 	{
 		if (i >= 0 && i < HEIGHT && x >= 0 && x < WIDTH)
-			mlx_put_pixel(img, x, i, color);
+			mlx_put_pixel(game->img, x, i, color);
 		i++;
 	}
 }
+
+/*void	place_wall(mlx_t *mlx, t_game *game)
+{
+	mlx_image_t		*wall;
+	mlx_texture_t	*wall_texture;
+	int				i;
+	int				j;
+
+	wall_texture = mlx_load_png("./images/wall.png");
+	wall = mlx_texture_to_image(mlx, wall_texture);
+	i = 0;
+	while (i < game->height)
+	{
+		j = 0;
+		while (j < game->length)
+		{
+			if (game->map[i][j] == '1')
+				mlx_image_to_window(mlx, wall, j * TILE_SIZE, i * TILE_SIZE);
+			j++;
+		}
+		i++;
+	}
+	mlx_delete_texture(wall_texture);
+}*/

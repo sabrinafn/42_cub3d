@@ -75,7 +75,7 @@ void	render_raycast_frame(t_game *game)
 	while (x < WIDTH)
 	{
 		calculate_rays(x, game);
-		draw_walls(x, game->ray_struct, game->img);
+		draw_walls(x, game);
 		x++;
 	}
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
@@ -112,13 +112,9 @@ int	init_window(t_game *game)
 void	init_game(t_game *game)
 {
 	if (!init_window(game))
-	{
 		exit(0);
-	}
 	if (!init_structs_in_game(game))
-	{
 		exit(0);
-	}
 	render_raycast_frame(game);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
 	mlx_loop(game->mlx);
