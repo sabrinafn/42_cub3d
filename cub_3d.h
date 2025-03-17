@@ -37,15 +37,15 @@ typedef struct s_position
 	int		y;
 } 	t_position;
 
-typedef struct s_args
+typedef struct s_map
 {
 	char	**matrix;
 	char	*name_file;
 	int		countcols;
 	int		map_position;
-}			t_args;
+}			t_map;
 
-/*typedef struct s_map
+typedef struct s_args
 {
 	char	*NO_wall;
 	char	*SO_wall;
@@ -56,7 +56,7 @@ typedef struct s_args
 	char	**map;
 	int		map_max_x;
 	int		map_max_y;
-}			t_map;*/
+}			t_args;
 
 typedef struct s_content
 {
@@ -67,8 +67,6 @@ typedef struct s_content
 	char	*EA_path;
 	char	*color_C;
 	char	*color_F;
-	int		map_max_x; // value to store height size
-	int		map_max_y; // value to store width size
 }			t_content;
 
 typedef struct s_player
@@ -116,39 +114,27 @@ int			check_name(char *argv);
 int			print_error(char *e);
 int			countcols(char *file_name);
 char		**makematrix(char *file_name, int count_cols);
-int			read_content(char *file_name, t_args *s_map);
-int			empty_file(char *argv);
-int			find_map(t_args *s_map);
-int			find_map2(t_args *s_map);
-int			validate_map(t_args s_map);
+//int			read_content(char *file_name);
+int			ampy_file(char *argv);
+int			find_map(t_map s_map);
+int			find_map2(t_map s_map);
+int			validate_map(t_map s_map);
 int			only_player(char *string);
-int			find_player(t_args s_map);
-int			invalid_character(t_args s_map, int cols);
-int			validate_wall(t_args s_map);
+int			find_player(t_map s_map);
+int			invalid_character(t_map s_map, int cols);
+int			valide_wall(t_map s_map);
 int			check_wall(char **matrix, int cols, int i);
-int			size_map(t_args s_map);
+int			size_map(t_map s_map);
 int			walk_spaces(char *string);
 void		free_matrix(char **malloc_string);
-int			validate_content(t_args *s_map);
+int			valide_content(t_map s_map);
 int			validate_element(char **matrix);
 int			six_content(char **matrix);
-int			validate_numbers(char **matrix);
+int			valide_numbers(char **matrix);
 int			texture_path(char **matrix);
-int			empty_line(t_args s_map);
+int			empy_line(t_map s_map);
 
 // init window
-void		init_window(t_player *player, t_content *map);
-
-// init player_struct
-int			init_player_struct(t_player *player);
-t_content	*init_content_struct(char *path);
-
-int			get_content(t_args *s_map, t_content *s_content);
-int 		get_color(char **matrix, t_content *s_content);
-int 		get_texture_path(char **matrix, t_content *s_content);
-int 		malloc_path(char *path, char *temp);
-
-int		get_info(t_args *s_map, t_content *s_content);
 void		init_game(t_game *game);
 void		render_raycast_frame(t_game *game);
 

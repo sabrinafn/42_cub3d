@@ -65,18 +65,20 @@ int main(int argc, char **argv)
 {
 	t_game		*game;
 
+	(void)argc;
+	(void)argv;
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 	{
 		printf("!game malloc\n");
 		return (0);
 	}
-	if(check_arguments(argc, argv[1]) == 1)
-		return(1);
-	if(empty_file(argv[1]) == 1)
-		return(1);
-	if(read_content(argv[1], s_map) == 1)
-		return(1);
+	//if(check_arguments(argc, argv[1]) == 1)
+	//	return(1);
+	//if(empty_file(argv[1]) == 1)
+	//	return(1);
+	//if(read_content(argv[1], s_map) == 1)
+	//	return(1);
 	game->map_struct = init_map_struct();
 	game->player_struct = init_player_struct(game->map_struct);
 	init_game(game);

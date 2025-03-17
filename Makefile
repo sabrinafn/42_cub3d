@@ -14,9 +14,9 @@ NAME = cub3d
 
 LIBFT = libft/libft.a
 
-FILES = main.c parsing/read_content.c parsing/find_map.c parsing/map_validation.c \
-		parsing/find_player.c parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
-		init_game.c init_player_struct.c calculate_rays.c wall_calculations.c key_hooks.c
+FILES = main.c init_game.c init_player_struct.c calculate_rays.c wall_calculations.c key_hooks.c
+#parsing/read_content.c parsing/find_map.c parsing/map_validation.c \
+		parsing/find_player.c parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c
 
 OBJ = $(FILES:%.c=%.o)
 MLX_FLAGS = -lm -ldl -pthread -lglfw
