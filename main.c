@@ -63,22 +63,23 @@ int empty_file(char *argv)
 
 int main(int argc, char **argv)
 {
-	t_player	*player;
-	t_args		*s_map;
-	t_content	*content;
-	
-	player = NULL;
-	content = NULL;
-	s_map = NULL;
+	t_game		*game;
+
+	game = (t_game *)malloc(sizeof(t_game));
+	if (!game)
+	{
+		printf("!game malloc\n");
+		return (0);
+	}
 	if(check_arguments(argc, argv[1]) == 1)
 		return(1);
 	if(empty_file(argv[1]) == 1)
 		return(1);
 	if(read_content(argv[1], s_map) == 1)
 		return(1);
-	init_player_struct(player);
-	get_info(s_map, content);
-	init_window(player, content);
+	game->map_struct = init_map_struct();
+	game->player_struct = init_player_struct(game->map_struct);
+	init_game(game);
 	return(0);
 }
 

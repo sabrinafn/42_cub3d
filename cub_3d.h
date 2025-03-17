@@ -27,6 +27,15 @@
 
 # define WIDTH 1200
 # define HEIGHT 1200
+# define MOVE_SPEED 0.1
+# define ROTATION_SPEED 0.1
+
+typedef struct s_position
+{
+	char	direction;
+	int 	x;
+	int		y;
+} 	t_position;
 
 typedef struct s_args
 {
@@ -86,12 +95,21 @@ typedef struct s_ray
 	double	perp_wall_dist;
 	int		step_x;
 	int		step_y;
-	int		hit;
 	int		side;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+	int		hit;
 }			t_ray;
+
+typedef struct s_game
+{
+	t_ray		*ray_struct;
+	t_player	*player_struct;
+	t_args		*map_struct;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+}	t_game;
 
 int			check_arguments(int argc, char *argv);
 int			check_name(char *argv);
@@ -131,5 +149,33 @@ int 		get_texture_path(char **matrix, t_content *s_content);
 int 		malloc_path(char *path, char *temp);
 
 int		get_info(t_args *s_map, t_content *s_content);
+void		init_game(t_game *game);
+void		render_raycast_frame(t_game *game);
+
+// init player_struct
+t_player	*init_player_struct(t_args *map);
+t_args		*init_map_struct(void);
+
+// player movements
+void	move_player_w(t_game *game);
+void	move_player_s(t_game *game);
+void	move_player_a(t_game *game);
+void	move_player_d(t_game *game);
+void	move_player_vision_left(t_game *game);
+void	move_player_vision_right(t_game *game);
+
+// calculate_rays
+void	init_ray_pos_and_dir(int x, t_ray *ray, t_player *player);
+void	init_delta_distance(t_ray *ray);
+void	init_step_and_sidedist(t_ray *ray, t_player *player);
+void	perform_dda(t_ray *ray, t_args *map);
+void	calculate_rays(int x, t_game *game);
+
+// wall_calculations.c
+void	get_wall_height(t_ray *ray);
+void	draw_walls(int x, t_ray *ray, mlx_image_t *img);
+
+// key_hooks.c
+void	key_pressed_function(mlx_key_data_t keydata, void *param);
 
 #endif
