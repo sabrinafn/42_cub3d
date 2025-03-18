@@ -12,16 +12,6 @@
 
 #include "cub_3d.h"
 
-// RGB 244, 194, 194
-// # define WIDTH 800
-// # define HEIGHT 601
-
-#define RGB_Red 0xFF0000FF    // Red
-#define RGB_Green 0x00FF00FF  // Green
-#define RGB_Blue 0x0000FFFF   // Blue
-#define RGB_White 0xFFFFFFFF  // White
-#define RGB_Yellow 0xFFFF00FF // Yellow
-
 int	get_rgba(int r, int g, int b, int a)
 {
 	return (r << 24 | g << 16 | b << 8 | a);

@@ -40,12 +40,35 @@ void	get_wall_height(t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
-void	get_wall_texture(int x, t_game *game)
+mlx_texture_t	*get_wall_texture(t_game *game)
 {
-	//mlx_texture_t has the texture's width 
+	mlx_texture_t	*texture;
 
+    if (game->ray_struct->side == 0)
+	{
+		if (game->ray_struct->dir_x > 0)
+            texture = game->textures->EA_wall;
+		else
+			texture = game->textures->WE_wall;
+
+    }
+	else
+	{
+        if (game->ray_struct->dir_y > 0)
+			texture = game->textures->SO_wall;
+        else
+			texture = game->textures->NO_wall;
+    }
+	return (texture);
+}
+
+void	draw_walls_with_texture(int x, t_game *game)
+{
     //calculate value of wallX
 	double wall_x; //where exactly the wall was hit
+	mlx_texture_t	*texture;
+
+	texture = get_wall_texture(game);
 
 	if (game->ray_struct->side == 0)
 		wall_x = game->player_struct->pos_y + game->ray_struct->perp_wall_dist * game->ray_struct->dir_y;
@@ -54,14 +77,14 @@ void	get_wall_texture(int x, t_game *game)
 	wall_x -= floor((wall_x));
 
   	//x coordinate on the texture
-	int tex_x = (int)(wall_x * (double)(game->textures->NO_wall->width));
+	int tex_x = (int)(wall_x * (double)(texture->width));
 	if (game->ray_struct->side == 0 && game->ray_struct->dir_x > 0)
-		tex_x = game->textures->NO_wall->width - tex_x - 1;
+		tex_x = texture->width - tex_x - 1;
 	if (game->ray_struct->side == 1 && game->ray_struct->dir_y < 0)
-		tex_x = game->textures->NO_wall->width - tex_x - 1;
+		tex_x = texture->width - tex_x - 1;
 
 	// How much to increase the texture coordinate per screen pixel
-	double step = 1.0 * game->textures->NO_wall->height / game->ray_struct->line_height;
+	double step = 1.0 * texture->height / game->ray_struct->line_height;
 	// Starting texture coordinate
 	double tex_pos = (game->ray_struct->draw_start - HEIGHT / 2 + game->ray_struct->line_height / 2) * step;
 	
@@ -70,16 +93,18 @@ void	get_wall_texture(int x, t_game *game)
 	while (y < game->ray_struct->draw_end)
 	{
 		// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-		int tex_y = (int)tex_pos & (game->textures->NO_wall->height - 1);
+		int tex_y = (int)tex_pos & (texture
+->height - 1);
 
 		tex_pos += step;
 		//uint32 color = texture[texNum][texHeight * texY + texX];
 		// replaced by ->
-		int pixel_index = (tex_y * game->textures->NO_wall->width + tex_x) * 4;
-		uint8_t red = game->textures->NO_wall->pixels[pixel_index];
-		uint8_t green = game->textures->NO_wall->pixels[pixel_index + 1];
-		uint8_t blue = game->textures->NO_wall->pixels[pixel_index + 2];
-		uint8_t alpha = game->textures->NO_wall->pixels[pixel_index + 3];
+		int pixel_index = (tex_y * texture
+->width + tex_x) * 4;
+		uint8_t red = texture->pixels[pixel_index];
+		uint8_t green = texture->pixels[pixel_index + 1];
+		uint8_t blue = texture->pixels[pixel_index + 2];
+		uint8_t alpha = texture->pixels[pixel_index + 3];
 
 		uint32_t color = get_rgba(red, green, blue, alpha);
 		
@@ -104,9 +129,8 @@ void	draw_walls(int x, t_game *game)
 	uint8_t		a;
 	int			i;
 */
-	(void)x;
 	get_wall_height(game->ray_struct);
-	get_wall_texture(x, game);
+	draw_walls_with_texture(x, game);
 	/*
 	color = RGB_Green;
 	if (game->ray_struct->side == 1)
