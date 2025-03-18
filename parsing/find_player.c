@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:32:30 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/12 18:02:43 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:16:19 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int find_player(t_args *s_map)
 		cols++;
 	}
 	if(count > 1 || count == 0)
-		return(1);
-	return(0);
+		return(0);
+	return(1);
 }
 

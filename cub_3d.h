@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/13 19:30:40 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:28:06 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@
 # define ERROR_1 "Impossible to read the file\n"
 # define ERROR_2 "Empty File\n"
 # define ERROR_3 "Invalid malloc\n"
+# define ERROR_4 "Error: Not enough params!\n"
+# define ERROR_5 "Error: Too many params!\n"
+# define ERROR_6 "Error: The file need be .cub\n"
+# define ERROR_7 "Invalid Numbers Elements\n"
+# define ERROR_8 "Invalid Elements\n"
+# define ERROR_9 "Wrong color number\n"
+# define ERROR_10 "Invalid taxture\n"
+# define ERROR_11 "Invalid Map\n"
+# define ERROR_12 "Invalid player\n"
+
 
 # define WIDTH 1200
 # define HEIGHT 1200
