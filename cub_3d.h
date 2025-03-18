@@ -51,8 +51,8 @@ typedef struct s_args
 	char	*SO_wall;
 	char	*WE_wall;
 	char	*EA_wall;
-	char	*ceiling;
-	char	*floor;
+	char	*ceiling; // uint
+	char	*floor; // uint
 	char	**map;
 	int		map_max_x;
 	int		map_max_y;
@@ -172,5 +172,8 @@ void	draw_walls(int x, t_game *game);
 
 // key_hooks.c
 void	key_pressed_function(mlx_key_data_t keydata, void *param);
+
+// get_rgba
+int	get_rgba(int r, int g, int b, int a);
 
 #endif

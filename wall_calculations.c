@@ -59,6 +59,7 @@ void	get_wall_texture(t_game *game)
 
     //calculate value of wallX
 	double wall_x; //where exactly the wall was hit
+
 	if (game->ray_struct->side == 0)
 		wall_x = game->player_struct->pos_y + game->ray_struct->perp_wall_dist * game->ray_struct->dir_y;
 	else
@@ -72,20 +73,55 @@ void	get_wall_texture(t_game *game)
 	if (game->ray_struct->side == 1 && game->ray_struct->dir_y < 0)
 		tex_x = game->textures->NO_wall->width - tex_x - 1;
 
+	// How much to increase the texture coordinate per screen pixel
+	double step = 1.0 * game->textures->NO_wall->height / game->ray_struct->line_height;
+	// Starting texture coordinate
+	double tex_pos = (game->ray_struct->draw_start - HEIGHT / 2 + game->ray_struct->line_height / 2) * step;
+	
+	int y = game->ray_struct->draw_start;
+
+	while (y < game->ray_struct->draw_end)
+	{
+		// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+		int tex_y = (int)tex_pos & (game->textures->NO_wall->height - 1);
+
+		tex_pos += step;
+		//uint32 color = texture[texNum][texHeight * texY + texX];
+		// replaced by ->
+		int pixel_index = (tex_y * game->textures->NO_wall->width + tex_x) * 4;
+		uint8_t red = game->textures->NO_wall->pixels[pixel_index];
+		uint8_t green = game->textures->NO_wall->pixels[pixel_index + 1];
+		uint8_t blue = game->textures->NO_wall->pixels[pixel_index + 2];
+		uint8_t alpha = game->textures->NO_wall->pixels[pixel_index + 3];
+
+		uint32_t color = get_rgba(red, green, blue, alpha);
+		
+		//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+		if(game->ray_struct->side == 1)
+			color = (color >> 1) & 8355711;
+		//buffer[y][x] = color;
+		if (y >= 0 && y < HEIGHT && tex_x >= 0 && tex_x < WIDTH)
+			mlx_put_pixel(game->img, tex_x, y, color);
+		y++;
+	}
+
 	//mlx_delete_texture(wall_texture);
 }
 
 void	draw_walls(int x, t_game *game)
 {
-	uint32_t	color;
+	/*uint32_t	color;
 	uint8_t		r;
 	uint8_t		g;
 	uint8_t		b;
 	uint8_t		a;
 	int			i;
-
+*/
+	(void)x;
 	get_wall_height(game->ray_struct);
-	color = RGB_Green;;
+	get_wall_texture(game);
+	/*
+	color = RGB_Green;
 	if (game->ray_struct->side == 1)
 	{
 		// Darken the color when it is a side wall (divide each component by 2)
@@ -104,7 +140,7 @@ void	draw_walls(int x, t_game *game)
 		if (i >= 0 && i < HEIGHT && x >= 0 && x < WIDTH)
 			mlx_put_pixel(game->img, x, i, color);
 		i++;
-	}
+	}*/
 }
 
 /*void	place_wall(mlx_t *mlx, t_game *game)
