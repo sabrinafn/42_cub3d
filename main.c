@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/13 18:22:25 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:34:52 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		return(1);
 	if(empty_file(argv[1]) == 1)
 		return(1);
-	if(validate_content(s_map))
+	if(!validate_content(s_map))
 		return(1);
 	if(validate_map(s_map))
 		return(1);
