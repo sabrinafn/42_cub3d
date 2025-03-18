@@ -25,8 +25,8 @@
 # define ERROR_2 "Empty File\n"
 # define ERROR_3 "Invalid malloc\n"
 
-# define WIDTH 1200
-# define HEIGHT 1200
+# define WIDTH 800
+# define HEIGHT 800
 # define MOVE_SPEED 0.1
 # define ROTATION_SPEED 0.1
 

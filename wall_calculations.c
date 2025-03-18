@@ -40,7 +40,7 @@ void	get_wall_height(t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
-void	get_wall_texture(t_game *game)
+void	get_wall_texture(int x, t_game *game)
 {
 	//mlx_texture_t has the texture's width 
 
@@ -84,11 +84,11 @@ void	get_wall_texture(t_game *game)
 		uint32_t color = get_rgba(red, green, blue, alpha);
 		
 		//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-		//if(game->ray_struct->side == 1)
-		//	color = (color >> 1) & 8355711;
+		if(game->ray_struct->side == 1)
+			color = (color >> 1) & 8355711;
 		//buffer[y][x] = color;
-		if (y >= 0 && y < HEIGHT && tex_x >= 0 && tex_x < WIDTH)
-			mlx_put_pixel(game->img, tex_x, y, color);
+		if (y >= 0 && y < HEIGHT && x >= 0 && x < WIDTH)
+			mlx_put_pixel(game->img, x, y, color);
 		y++;
 	}
 
@@ -106,7 +106,7 @@ void	draw_walls(int x, t_game *game)
 */
 	(void)x;
 	get_wall_height(game->ray_struct);
-	get_wall_texture(game);
+	get_wall_texture(x, game);
 	/*
 	color = RGB_Green;
 	if (game->ray_struct->side == 1)
