@@ -115,6 +115,21 @@ void	init_game(t_game *game)
 		exit(0);
 	if (!init_structs_in_game(game))
 		exit(0);
+	
+	t_textures	*tex;
+	mlx_texture_t	*wall_tex;
+		tex = (t_textures *)malloc(sizeof(t_textures));
+	if (!tex)
+		printf("error in malloc textures\n");
+	game->textures = tex;
+	printf("before load_png\n");
+	wall_tex = mlx_load_png(game->map_struct->NO_wall);
+	printf("after load_png\n");
+	game->textures->NO_wall = wall_tex;
+	game->textures->SO_wall = wall_tex;
+	game->textures->WE_wall = wall_tex;
+	game->textures->EA_wall = wall_tex;
+		
 	render_raycast_frame(game);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
 	mlx_loop(game->mlx);

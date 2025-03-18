@@ -103,10 +103,10 @@ t_args	*init_map_struct(void)
 
 	map = (t_args *)malloc(sizeof(t_args));
 
-	map->NO_wall = "maps/textures/ollie_polite_cat-256x256.png";
-	map->SO_wall = "maps/textures/ollie_polite_cat-256x256.png";
-	map->WE_wall = "maps/textures/ollie_polite_cat-256x256.png";
-	map->EA_wall = "maps/textures/ollie_polite_cat-256x256.png";
+	map->NO_wall = "./assets/textures/ollie_polite_cat-256x256.png";
+	map->SO_wall = "./assets/textures/ollie_polite_cat-256x256.png";
+	map->WE_wall = "./assets/textures/ollie_polite_cat-256x256.png";
+	map->EA_wall = "./assets/textures/ollie_polite_cat-256x256.png";
 	map->floor = NULL;
 	map->ceiling = NULL;
 	map->map_max_x = 39;
@@ -122,14 +122,14 @@ t_args	*init_map_struct(void)
 	map->map[6] = ft_strdup("1011110111111111111111111111111101111\n");
 	map->map[7] = ft_strdup("1010000100000000000000000000000100001\n");
 	map->map[8] = ft_strdup("1011000100000000000000000000000100111\n");
-	map->map[9] = ft_strdup("1000100110000000100000000010011101001\n");
-	map->map[10] = ft_strdup("10010010100000001000000000101N0001111\n");
+	map->map[9] = ft_strdup("1000100110000000100000N00010011101001\n");
+	map->map[10] = ft_strdup("1001001010000000100000000010100001111\n");
 	map->map[11] = ft_strdup("1000001000000000000000000000111111111\n");
 	map->map[12] = ft_strdup("1001111111111111000000011111111111111\n");
 	map->map[13] = ft_strdup("1111111111111111111111111111111111111\n");
 	map->map[14] = NULL;
-
 /*
+
 	map->map_max_x = 8;
 	map->map_max_y = 8;
 
@@ -137,9 +137,9 @@ t_args	*init_map_struct(void)
 	map->map[0] = ft_strdup("1111111\n");
 	map->map[1] = ft_strdup("1000001\n");
 	map->map[2] = ft_strdup("1000101\n");
-	map->map[3] = ft_strdup("1000001\n");
+	map->map[3] = ft_strdup("100N001\n");
 	map->map[4] = ft_strdup("1000101\n");
-	map->map[5] = ft_strdup("100N001\n");
+	map->map[5] = ft_strdup("1000001\n");
 	map->map[6] = ft_strdup("1111111\n");
 	map->map[7] = NULL;
 */

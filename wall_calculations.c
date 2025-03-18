@@ -42,19 +42,6 @@ void	get_wall_height(t_ray *ray)
 
 void	get_wall_texture(t_game *game)
 {
-	t_textures	*tex;
-	mlx_texture_t		*wall_tex;
-
-	tex = (t_textures *)malloc(sizeof(t_textures));
-	if (!tex)
-		printf("error in malloc textures\n");
-	game->textures = tex;
-	wall_tex = mlx_load_png(game->map_struct->NO_wall);
-	game->textures->NO_wall = wall_tex;
-	game->textures->SO_wall = wall_tex;
-	game->textures->WE_wall = wall_tex;
-	game->textures->EA_wall = wall_tex;
-
 	//mlx_texture_t has the texture's width 
 
     //calculate value of wallX
@@ -97,8 +84,8 @@ void	get_wall_texture(t_game *game)
 		uint32_t color = get_rgba(red, green, blue, alpha);
 		
 		//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-		if(game->ray_struct->side == 1)
-			color = (color >> 1) & 8355711;
+		//if(game->ray_struct->side == 1)
+		//	color = (color >> 1) & 8355711;
 		//buffer[y][x] = color;
 		if (y >= 0 && y < HEIGHT && tex_x >= 0 && tex_x < WIDTH)
 			mlx_put_pixel(game->img, tex_x, y, color);
