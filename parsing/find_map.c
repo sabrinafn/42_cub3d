@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:25:28 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/12 18:02:29 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:08:30 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,20 @@ int	validate_char(char *string)
 	while(string[i] != '\0')
 	{
 		if(ft_strchr("0NSEW1 \n", string[i]) == NULL)
-			return(1);
+			return(0);
 		i++;		
 	}
-	return(0);			
+	return(1);			
 }
 
 int	invalid_character(t_args *s_map, int cols)
 {
 	while(s_map->matrix[cols] != NULL)
 	{
-		if(validate_char(s_map->matrix[cols]) == 1)
-			return(1);
+		if(!validate_char(s_map->matrix[cols]))
+			return(0);
 		cols++;	
 	}
-	return(0);	
+	return(1);	
 }
 

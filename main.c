@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/18 18:55:53 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:06:25 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,17 @@ int main(int argc, char **argv)
 		return(1);
 	if(!validate_content(s_map))
 		return(1);
-	//if(!validate_map(s_map))
-	//	return(1);
+	if(!validate_map(s_map))
+		return(1);
 	//init_player_struct(player);
 	if(!get_info(s_map, s_content))
 	 	return(1);
-	printf("%s\n", s_content->NO_path);
-	printf("%s\n", s_content->SO_path);	
-	printf("%s\n", s_content->WE_path);	
-	printf("%s\n", s_content->EA_path);	
-	printf("%s\n", s_content->color_C);
-	printf("%s\n", s_content->color_F);
-	int i = 0;
-	while (s_content->map[i] != NULL)
-	{
-		printf("%s\n", s_content->map[i]);
-		i++;
-	}
+	 int i = 0;
+	 while (s_content->map[i] != NULL)
+	 {
+	 	printf("7%s\n", s_content->map[i]);
+	 	i++;
+	 }
 	//init_window(player, content);
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:38:13 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/18 16:18:02 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:13:10 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int empty_line(t_args *s_map)
 	{
 		i = walk_spaces(s_map->matrix[cols]);
 		if(s_map->matrix[cols][i] != '\0')
-			return(0);
+			return(1);
 		cols++;	
 	}
 	return(1);

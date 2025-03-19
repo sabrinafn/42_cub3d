@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/18 16:28:06 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:03:20 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int			check_elements(char **matrix);
 int			validate_numbers(char **matrix);
 int			texture_path(char **matrix);
 int			empty_line(t_args *s_map);
+char	 *get_string(char *string, int count);
 
 // init window
 void		init_window(t_player *player, t_content *map);

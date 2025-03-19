@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"algorithm": "c",
-		"cub_3d.h": "c"
+		"cub_3d.h": "c",
+		"string": "c"
 	}
 }
