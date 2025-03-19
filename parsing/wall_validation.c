@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:38:13 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/19 17:13:10 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:55:31 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int validate_wall(t_args *s_map)
 	int i;
 	
 	cols = s_map->map_position;
+	printf("%i essa é a posiçao\n", cols);
 	i = 0;
 	while(s_map->matrix[cols] != NULL)
 	{
@@ -39,6 +40,7 @@ int validate_wall(t_args *s_map)
 
 int check_wall(char **matrix, int cols, int i)
 {
+	
 	if(i == 0)
 		return(0);
 	else if(cols == 0 || !matrix[cols + 1])
@@ -59,24 +61,24 @@ int check_wall(char **matrix, int cols, int i)
 	return(1);		
 }
 
-int size_map(t_args *s_map)
-{
-	int i;
-	int count;
+// int size_map(t_args *s_map)
+// {
+// 	int i;
+// 	int count;
 
-	count = 0;
-	if((s_map->countcols - s_map->map_position) < 9)
-		return(1);
-	i = walk_spaces(s_map->matrix[0]);
-	while(s_map->matrix[s_map->map_position][i] != '\0')
-	{
-		count++;
-		i++;
-	}
-	if(count < 9)
-		return(0);
-	return(1);		
-}
+// 	count = 0;
+// 	if((s_map->countcols - s_map->map_position) < 9)
+// 		return(0);
+// 	i = walk_spaces(s_map->matrix[0]);
+// 	while(s_map->matrix[s_map->map_position][i] != '\0')
+// 	{
+// 		count++;
+// 		i++;
+// 	}
+// 	if(count < 9)
+// 		return(0);
+// 	return(1);		
+// }
 
 int empty_line(t_args *s_map)
 {
@@ -97,7 +99,7 @@ int empty_line(t_args *s_map)
 	{
 		i = walk_spaces(s_map->matrix[cols]);
 		if(s_map->matrix[cols][i] != '\0')
-			return(1);
+			return(0);
 		cols++;	
 	}
 	return(1);

@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/19 17:03:40 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:23:02 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ int get_color(char **matrix, t_content *s_content)
 
 int get_map(t_args *s_map, t_content *s_content)
 {
-	int count;
 	int i;
 	int j;
 	int lines_map;
@@ -111,18 +110,10 @@ int get_map(t_args *s_map, t_content *s_content)
 	j = 0;
 	i = 0;
 	lines_map = 0;
-	count = 0;
-	while(s_map->matrix[lines_map] != NULL)
-	{
-		count = walk_spaces(s_map->matrix[lines_map]);
-		if (s_map->matrix[lines_map][count] == '1')
-			break;
-		lines_map++;
-	}
+	lines_map = s_map->map_position;
 	s_content->map = malloc((lines_map + 1) * sizeof(char *));
 	if(!s_content->map)
 		return(print_error(ERROR_3));
-	count = 7;
 	while (s_map->matrix[lines_map] != NULL)
 	{
 		i = ft_strlen(s_map->matrix[lines_map]);

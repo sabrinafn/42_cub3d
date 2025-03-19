@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/19 17:03:20 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:46:08 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,6 @@ int			countcols(char *file_name);
 char		**makematrix(char *file_name, int count_cols);
 int			read_content(t_args *s_map);
 int			empty_file(char *argv);
-int			find_map(t_args *s_map);
-int			find_map2(t_args *s_map);
 int			validate_map(t_args *s_map);
 int			only_player(char *string);
 int			find_player(t_args *s_map);
@@ -142,5 +140,6 @@ int 		get_texture_path(char **matrix, t_content *s_content);
 int 		malloc_path(char *path, char *temp);
 
 int		get_info(t_args *s_map, t_content *s_content);
+int find_map(t_args *s_map);
 
 #endif
