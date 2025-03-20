@@ -100,8 +100,8 @@ t_args	*init_map_struct(void)
 	t_args	*map;
 
 	map = (t_args *)malloc(sizeof(t_args));
-	map->NO_wall = "./assets/textures/crying_cat.png";
-	map->SO_wall = "./assets/textures/crying_cat.png";
+	map->NO_wall = "./assets/textures/ollie_polite_cat-256x256.png";
+	map->SO_wall = "./assets/textures/ollie_polite_cat-256x256.png";
 	map->WE_wall = "./assets/textures/crying_cat.png";
 	map->EA_wall = "./assets/textures/crying_cat.png";
 	map->floor = NULL;
