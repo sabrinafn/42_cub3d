@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/02/27 17:38:00 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:45:29 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@
 #define RGB_White 0xFFFFFFFF  // White
 #define RGB_Yellow 0xFFFF00FF // Yellow
 
-int	get_rgba(int r, int g, int b, int a)
-{
-	return (r << 24 | g << 16 | b << 8 | a);
-}
+
 
 mlx_image_t	*init_img(mlx_t *mlx, unsigned int floor, unsigned int ceiling)
 {

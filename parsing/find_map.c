@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:25:28 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/19 19:16:37 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:32:50 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	validate_char(char *string)
 	i = 0;
 	while(string[i] != '\0')
 	{
-		if(ft_strchr("0NSEW1 \n\t", string[i]) == NULL)
+		if(ft_strchr("0NSEW1 \n", string[i]) == NULL)
 			return(0);
 		i++;		
 	}

@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/19 19:23:02 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:08:54 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int get_color(char **matrix, t_content *s_content)
 			i = 0;
 			if(matrix[cols][count] == 'F')
 			{
-				s_content->color_F = ft_calloc((ft_strlen(matrix[cols])), sizeof(char));
+				s_content->color_F = ft_calloc(4, sizeof(char *));
 				while (matrix[cols][count] && (matrix[cols][count] < '0' || matrix[cols][count] > '9'))
 					count++;
 				while (matrix[cols][count] != '\0')
@@ -83,12 +83,17 @@ int get_color(char **matrix, t_content *s_content)
 			}
 			else if(matrix[cols][count] == 'C')
 			{
-				s_content->color_C = ft_calloc((ft_strlen(matrix[cols])), sizeof(char));
+				s_content->color_C = ft_calloc(4, sizeof(char *));
 				while (matrix[cols][count] && (matrix[cols][count] < '0' || matrix[cols][count] > '9'))
 					count++;
 				while (matrix[cols][count] != '\0')
 				{
-					s_content->color_C[i] =  matrix[cols][count];
+					if(matrix[cols][count] == ',')
+					{
+						count++;
+						i++;		
+					}
+					s_content->color_C[i][] =  matrix[cols][count];
 					i++;
 					count++;
 				}
@@ -99,7 +104,11 @@ int get_color(char **matrix, t_content *s_content)
 		return(print_error(ERROR_3));
 	return(1);
 }
+
+void 	get_color_number(t_content *s_content)
+{
 	
+}
 
 int get_map(t_args *s_map, t_content *s_content)
 {

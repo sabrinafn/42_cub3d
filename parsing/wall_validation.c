@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:38:13 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/19 19:55:31 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:32:26 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int validate_wall(t_args *s_map)
 	int i;
 	
 	cols = s_map->map_position;
-	printf("%i essa é a posiçao\n", cols);
 	i = 0;
 	while(s_map->matrix[cols] != NULL)
 	{

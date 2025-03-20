@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/19 19:46:08 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:58:14 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@
 # define ERROR_8 "Invalid Elements\n"
 # define ERROR_9 "Wrong color number\n"
 # define ERROR_10 "Invalid taxture\n"
-# define ERROR_11 "Invalid Map\n"
-# define ERROR_12 "Invalid player\n"
+# define ERROR_11 "Invalid player in map\n"
+# define ERROR_12 "Invalid Wall in map\n"
+# define ERROR_13 "Invalid Character in map\n"
+# define ERROR_14 "Empty line in map\n"
+
+
 
 
 # define WIDTH 1200
@@ -66,8 +70,8 @@ typedef struct s_content
 	char	*SO_path;
 	char	*WE_path;
 	char	*EA_path;
-	char	*color_C;
-	char	*color_F;
+	char	**color_C;
+	char	**color_F;
 	int		map_max_x; // value to store height size
 	int		map_max_y; // value to store width size
 }			t_content;

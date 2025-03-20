@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/18 16:33:04 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:32:33 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	check_elements(char **matrix)
 		line = walk_spaces(matrix[cols]);
 		if(matrix[cols][line] != '\0' && matrix[cols][line] != '\n')
 		{
-			printf("%s\n", matrix[cols]);
 			if(matrix[cols][line] == '1' || matrix[cols][line] == '0')
 				break;
 			if(!validate_element(matrix[cols], line))
