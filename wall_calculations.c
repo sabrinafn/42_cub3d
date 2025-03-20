@@ -71,9 +71,15 @@ void	draw_walls_with_texture(int x, t_game *game)
 	texture = get_wall_texture(game);
 
 	if (game->ray_struct->side == 0)
-		wall_x = game->player_struct->pos_y + game->ray_struct->perp_wall_dist * game->ray_struct->dir_y;
+	{
+		wall_x = game->player_struct->pos_y
+		+ game->ray_struct->perp_wall_dist * game->ray_struct->dir_y;
+	}
 	else
-		wall_x = game->player_struct->pos_x + game->ray_struct->perp_wall_dist * game->ray_struct->dir_x;
+	{
+		wall_x = game->player_struct->pos_x
+		+ game->ray_struct->perp_wall_dist * game->ray_struct->dir_x;
+	}
 	wall_x -= floor((wall_x));
 
   	//x coordinate on the texture

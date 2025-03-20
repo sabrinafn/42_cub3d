@@ -6,7 +6,7 @@
 /*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 19:03:11 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/13 19:05:30 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:37:15 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	init_step_and_sidedist(t_ray *ray, t_player *player)
 		ray->side_dist_x = (ray->map_x + 1.0 - player->pos_x)
 			* ray->delta_dist_x;
 	}
-
 	if (ray->dir_y < 0)
 	{
 		ray->step_y = -1;

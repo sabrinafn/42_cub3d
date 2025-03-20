@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                      :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/02/27 17:38:00 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:39:27 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_rgba(int r, int g, int b, int a)
 
 mlx_image_t	*init_img(t_game *game)
 {
-	mlx_image_t *img;
+	mlx_image_t	*img;
 
 	img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!img)
@@ -58,7 +58,7 @@ void	draw_ceiling_and_floor(t_game *game)
 
 void	render_raycast_frame(t_game *game)
 {
-	int		x;
+	int	x;
 
 	x = 0;
 	draw_ceiling_and_floor(game);
@@ -101,14 +101,14 @@ int	init_window(t_game *game)
 
 void	init_game(t_game *game)
 {
+	t_textures		*tex;
+	mlx_texture_t	*wall_tex;
+
 	if (!init_window(game))
 		exit(0);
 	if (!init_structs_in_game(game))
 		exit(0);
-	
-	t_textures	*tex;
-	mlx_texture_t	*wall_tex;
-		tex = (t_textures *)malloc(sizeof(t_textures));
+	tex = (t_textures *)malloc(sizeof(t_textures));
 	if (!tex)
 		printf("error in malloc textures\n");
 	game->textures = tex;
@@ -119,7 +119,6 @@ void	init_game(t_game *game)
 	game->textures->SO_wall = wall_tex;
 	game->textures->WE_wall = wall_tex;
 	game->textures->EA_wall = wall_tex;
-		
 	render_raycast_frame(game);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
 	mlx_loop(game->mlx);
