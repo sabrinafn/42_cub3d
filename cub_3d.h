@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/20 18:58:14 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:27:08 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,17 @@ typedef struct s_args
 
 typedef struct s_content
 {
-	char	**map;
-	char	*NO_path;
-	char	*SO_path;
-	char	*WE_path;
-	char	*EA_path;
-	char	**color_C;
-	char	**color_F;
-	int		map_max_x; // value to store height size
-	int		map_max_y; // value to store width size
+	char		**map;
+	char		*NO_path;
+	char		*SO_path;
+	char		*WE_path;
+	char		*EA_path;
+	char		*color_C;
+	char		*color_F;
+	uint32_t	ceiling;
+	uint32_t	floor;
+	int			map_max_x; // value to store height size
+	int			map_max_y; // value to store width size
 }			t_content;
 
 typedef struct s_player
