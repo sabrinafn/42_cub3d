@@ -106,7 +106,7 @@ t_args	*init_map_struct(void)
 	map->EA_wall = "./assets/textures/crying_cat.png";
 	map->floor = NULL;
 	map->ceiling = NULL;
-	map->map_max_x = 38;
+	map->map_max_x = 39;
 	map->map_max_y = 15;
 	map->map = (char **)malloc(sizeof(char *) * 15);
 	map->map[0] = ft_strdup("		1111111111111111111111111\n");
