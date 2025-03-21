@@ -23,12 +23,14 @@ LIBFT_DIR := ./libft
 
 LIBFT := libft/libft.a
 
+MLXLIB := MLX42/build/libmlx42.a
+
 FILES := main.c init_game.c init_player_struct.c calculate_rays.c \
 		wall_calculations.c key_hooks.c
 
 OBJ := $(FILES:.c=.o)
 
-all: MLX42/build/libmlx42.a $(LIBFT) $(NAME)
+all: $(MLXLIB) $(LIBFT) $(NAME)
 
 %.o: %.c 
 	@$(CC) $(C_FLAGS) -c $< -o $@ > /dev/null 2>&1 
@@ -37,13 +39,13 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR) > /dev/null 2>&1
 	@echo "Compiling libft..."
 
-MLX42/build/libmlx42.a: 
+$(MLXLIB):
 	@cmake -S MLX42 -B MLX42/build > /dev/null 2>&1
 	@make -j4 -C MLX42/build > /dev/null 2>&1
 	@echo "Compiling mlx42..."
 
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(C_FLAGS) $(OBJ) MLX42/build/libmlx42.a $(LIBFT) $(MLX_FLAGS) -o $(NAME) > /dev/null 2>&1
+	@$(CC) $(C_FLAGS) $(OBJ) $(MLXLIB) $(LIBFT) $(MLX_FLAGS) -o $(NAME) > /dev/null 2>&1
 	@echo "Compiling cub3D..."
 	@$(MAKE) -s print_message
 
@@ -73,4 +75,4 @@ v: all
 
 re: fclean all
 
-.PHONY: all fclean clean re v mlx print_message
+.PHONY: all fclean clean re v print_message
