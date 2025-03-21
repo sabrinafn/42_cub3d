@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/20 19:27:08 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:55:07 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ typedef struct s_content
 	char		*SO_path;
 	char		*WE_path;
 	char		*EA_path;
-	char		*color_C;
-	char		*color_F;
+	char		**color_C;
+	char		**color_F;
 	uint32_t	ceiling;
 	uint32_t	floor;
 	int			map_max_x; // value to store height size
@@ -132,6 +132,7 @@ int			validate_numbers(char **matrix);
 int			texture_path(char **matrix);
 int			empty_line(t_args *s_map);
 char	 *get_string(char *string, int count);
+void	get_map_sizes_y(t_content *s_content);
 
 // init window
 void		init_window(t_player *player, t_content *map);
@@ -147,5 +148,6 @@ int 		malloc_path(char *path, char *temp);
 
 int		get_info(t_args *s_map, t_content *s_content);
 int find_map(t_args *s_map);
+void 	get_color_number(t_content *s_content);
 
 #endif

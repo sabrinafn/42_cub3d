@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/20 19:36:19 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:13:40 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,37 +61,32 @@ int get_color(char **matrix, t_content *s_content)
 	int cols;
 	int count;
 	int i;
-
+	char *temp;
+	
 	i = 0;
 	count = 0;
 	cols = 0;
+	temp = NULL;
 	while(matrix[cols] != NULL)
 	{
-			count = walk_spaces(matrix[cols]);	
-			i = 0;
-			if(matrix[cols][count] == 'F')
+		count = walk_spaces(matrix[cols]);	
+		i = 0;
+		if(matrix[cols][count] == 'F' || matrix[cols][count] == 'C')
+		{
+			temp = ft_calloc(ft_strlen(matrix[cols]), sizeof(char *));
+			while (matrix[cols][count] && (matrix[cols][count] < '0' || matrix[cols][count] > '9'))
+				count++;
+			while (matrix[cols][count] != '\0' && matrix[cols][count] != '\n')
 			{
-				s_content->color_F = ft_calloc(ft_strlen(matrix[cols]), sizeof(char *));
-				while (matrix[cols][count] && (matrix[cols][count] < '0' || matrix[cols][count] > '9'))
-					count++;
-				while (matrix[cols][count] != '\0')
-				{
-					s_content->color_F[i] =  matrix[cols][count];
-					i++;
-					count++;
-				}
+				temp[i] =  matrix[cols][count];
+				i++;
+				count++;
 			}
-			else if(matrix[cols][count] == 'C')
-			{
-				s_content->color_C = ft_calloc(ft_strlen(matrix[cols]), sizeof(char *));
-				while (matrix[cols][count] && (matrix[cols][count] < '0' || matrix[cols][count] > '9'))
-					count++;
-				while (matrix[cols][count] != '\0')
-				{
-					s_content->color_C[i] =  matrix[cols][count];
-					i++;
-					count++;
-				}
+			if(ft_strchr(matrix[cols], 'F') != NULL)
+				s_content->color_F = ft_split(temp, ',');
+			else if(ft_strchr(matrix[cols], 'C') != NULL)
+				s_content->color_C = ft_split(temp, ',');
+			free(temp);
 			}
 			cols++;	
 	}
@@ -100,18 +95,26 @@ int get_color(char **matrix, t_content *s_content)
 	return(1);
 }
 
-int	get_rgba(int r, int g, int b, int a)
+int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
-	return (r << 24 | g << 16 | b << 8 | 255);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
 void 	get_color_number(t_content *s_content)
 {
-	char **temp;
 	
-	temp = ft_split(s_content->color_C);
+	int number[3];
+	int number2[3];
 	
 	
+	number[0] = ft_atoi(s_content->color_F[0]);
+	number[1] = ft_atoi(s_content->color_F[1]);
+	number[2] = ft_atoi(s_content->color_F[2]);
+	s_content->floor = ft_pixel(number[0], number[1], number[2], 255);
+	number2[0] = ft_atoi(s_content->color_C[0]);
+	number2[1] = ft_atoi(s_content->color_C[1]);
+	number2[2] = ft_atoi(s_content->color_C[2]);
+	s_content->ceiling = ft_pixel(number2[0], number2[1], number2[2], 255);
 }
 
 int get_map(t_args *s_map, t_content *s_content)
@@ -143,23 +146,24 @@ int get_map(t_args *s_map, t_content *s_content)
 	return(1);
 }
 
-void	get_map_sizes(t_args *s_map, t_content *s_content)
-{
-	int	i;
-
-	i = 0;
-
-	while (s_map->matrix[i])
-		i++;
-	s_content->map_max_y = i;
-	if (s_content->map_max_y > 0)
-	{
-		i = 0;
-		while (s_map->matrix[0][i])
-			i++;
-		s_content->map_max_x = i;
-	}
-}
+// void	get_map_sizes_y(t_content *s_content)
+// {
+// 	int	i;
+// 	int count;
+// 	i = 0;
+// 	count = 0;
+// 	s_content->map_max_y = 0;
+// 	printf("%s essa é a primiera linha" ,s_content->map[i]);
+// 	while(s_content->map[i] != NULL)
+// 	{
+// 		while (s_content->map[i][count] == ' ')
+// 			count++;
+// 		if(s_content->map[i][count] == '\n' || s_content->map[i][count] == '\0')
+// 			break;
+// 		i++;
+// 	}
+// 	s_content->map_max_y = count;
+// }
 
 int get_info(t_args *s_map, t_content *s_content)
 {
@@ -178,6 +182,6 @@ int get_info(t_args *s_map, t_content *s_content)
 		printf("error when creating texture\n");
 		return(0);
 	}
-	//get_map_sizes(s_map, s_content);
+	get_color_number(s_content);
 	return (1);
 }

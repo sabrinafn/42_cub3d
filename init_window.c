@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/20 18:45:29 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:55:25 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,32 +194,32 @@ void	calculate_rays_direction(t_player *player, t_content *map,
 	}
 }
 
-void	init_window(t_player *player, t_content *map)
-{
-	mlx_t			*mlx;
-	mlx_image_t		*img;
-	unsigned int	ceiling;
-	unsigned int	floor;
+ //void	init_window(t_player *player, t_content *map)
+// // {
+// // 	mlx_t			*mlx;
+// // 	mlx_image_t		*img;
+// // 	unsigned int	ceiling;
+// // 	unsigned int	floor;
 
-	ceiling = get_rgba(255, 199, 231, 255);
-	floor = get_rgba(128, 112, 214, 255);
-	mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
-	if (!mlx)
-		ft_putstr_fd("Error opening window\n", 2);
-	img = init_img(mlx, ceiling, floor);
-	mlx_image_to_window(mlx, img, WIDTH, HEIGHT);
-	calculate_rays_direction(player, map, img);
-	mlx_image_to_window(mlx, img, 0, 0);
-	mlx_loop(mlx);
-}
-/********************************************************************
-Implement Raycasting Loop:
+// // 	ceiling = get_rgba(255, 199, 231, 255);
+// // 	floor = get_rgba(128, 112, 214, 255);
+// // 	mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
+// // 	if (!mlx)
+// // 		ft_putstr_fd("Error opening window\n", 2);
+// // 	img = init_img(mlx, ceiling, floor);
+// // 	mlx_image_to_window(mlx, img, WIDTH, HEIGHT);
+// // 	calculate_rays_direction(player, map, img);
+// // 	mlx_image_to_window(mlx, img, 0, 0);
+// // 	mlx_loop(mlx);
+// // }
+// /********************************************************************
+// Implement Raycasting Loop:
 
-- Create a function that iterates through each vertical screen column.
-- For each column:
-	- Calculate the ray direction.
-	- Call the DDA function to find the wall intersection.
-	- Calculate the distance to the wall.
-	- Calculate the wall height on the screen.
-	- Calculate the texture coordinate.
-********************************************************************/
+// - Create a function that iterates through each vertical screen column.
+// - For each column:
+// 	- Calculate the ray direction.
+// 	- Call the DDA function to find the wall intersection.
+// 	- Calculate the distance to the wall.
+// 	- Calculate the wall height on the screen.
+// // 	- Calculate the texture coordinate.
+// ********************************************************************/

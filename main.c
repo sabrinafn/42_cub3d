@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/19 17:06:25 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:14:20 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,16 @@ int main(int argc, char **argv)
 	if(!get_info(s_map, s_content))
 	 	return(1);
 	 int i = 0;
-	 while (s_content->map[i] != NULL)
+	 while (s_content->color_F[i] != NULL)
 	 {
-	 	printf("7%s\n", s_content->map[i]);
+	 	printf("%s\n", s_content->color_F[i]);
 	 	i++;
 	 }
+	 //get_map_sizes_y(s_content);
+	 printf("floor: %X\n", s_content->floor);
+	 printf("celing: %X\n", s_content->ceiling);
+	// printf("y: %i", s_content->map_max_y);
+
 	//init_window(player, content);
 	return(0);
 }
