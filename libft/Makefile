@@ -27,16 +27,16 @@ OBJ = $(FILES:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar -rcs $@ $^
+	@ar -rcs $@ $^ > /dev/null 2>&1
 
 %.o: %.c
-	gcc -Wall -Wextra -Werror -g -c $< -o $@ -Iget_next_line
+	@gcc -Wall -Wextra -Werror -g -c $< -o $@ -Iget_next_line > /dev/null 2>&1
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ) > /dev/null 2>&1
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME) > /dev/null 2>&1
 
 re: fclean all
 

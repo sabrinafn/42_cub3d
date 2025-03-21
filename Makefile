@@ -11,8 +11,6 @@
 # **************************************************************************** #
 
 
-#clock is behind - needs fixing
-
 NAME := cub3D
 
 CC := cc
@@ -30,33 +28,49 @@ FILES := main.c init_game.c init_player_struct.c calculate_rays.c \
 
 OBJ := $(FILES:.c=.o)
 
-all: mlx $(LIBFT) $(NAME)
+all: MLX42/build/libmlx42.a $(LIBFT) $(NAME)
 
 %.o: %.c 
-	$(CC) $(C_FLAGS) -c $< -o $@ 
+	@$(CC) $(C_FLAGS) -c $< -o $@ > /dev/null 2>&1 
 
 $(LIBFT): 
-	make -C $(LIBFT_DIR) 
+	@make -C $(LIBFT_DIR) > /dev/null 2>&1
+	@echo "Compiling libft..."
 
-mlx:
-	cmake -S MLX42 -B MLX42/build
-	make -j4 -C MLX42/build
+MLX42/build/libmlx42.a: 
+	@cmake -S MLX42 -B MLX42/build > /dev/null 2>&1
+	@make -j4 -C MLX42/build > /dev/null 2>&1
+	@echo "Compiling mlx42..."
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(C_FLAGS) $(OBJ) MLX42/build/libmlx42.a $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(C_FLAGS) $(OBJ) MLX42/build/libmlx42.a $(LIBFT) $(MLX_FLAGS) -o $(NAME) > /dev/null 2>&1
+	@echo "Compiling cub3D..."
+	@$(MAKE) -s print_message
 
 clean: 
-	rm -f $(OBJ)
-	make -C $(LIBFT_DIR) clean
+	@rm -f $(OBJ) > /dev/null 2>&1
+	@make -C $(LIBFT_DIR) clean > /dev/null 2>&1
+	@echo "Cleaning cub3D object files..."
+	@echo "Cleaning libft object files..."
 
 fclean: clean
-	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean 
-	rm -rf MLX42/build
+	@rm -f $(NAME) > /dev/null 2>&1
+	@make -C $(LIBFT_DIR) fclean  > /dev/null 2>&1
+	@rm -rf MLX42/build > /dev/null 2>&1
+	@echo "Cleaning cub3D..."
+	@echo "Cleaning libft directory..."
+	@echo "Cleaning mlx42/build directory..."
+
+print_message:
+	@echo "----------------------------------------"
+	@echo "|                                      |"
+	@echo "|       Program Fully Compiled!        |"
+	@echo "|                                      |"
+	@echo "----------------------------------------"
 
 v: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 re: fclean all
 
-.PHONY: all fclean clean re v mlx
+.PHONY: all fclean clean re v mlx print_message
