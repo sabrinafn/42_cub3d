@@ -26,8 +26,10 @@ void	draw_ceiling_and_floor(t_game *game)
 
 	i = 0;
 	j = 0;
-	ceiling = get_rgba(128, 112, 214, 255);
-	floor = get_rgba(255, 199, 231, 255);
+	//ceiling = get_rgba(128, 112, 214, 255);
+	//floor = get_rgba(255, 199, 231, 255);
+	ceiling = game->map_struct->ceiling;
+	floor = game->map_struct->floor;
 	while (i < WIDTH)
 	{
 		j = 0;
@@ -46,8 +48,8 @@ void	draw_ceiling_and_floor(t_game *game)
 int	init_structs_in_game(t_game *game)
 {
 	// the following two structs might have to be initialized in the main function
-	game->map_struct = init_map_struct();
-	game->player_struct = init_player_struct(game->map_struct);
+	//game->map_struct = init_map_struct();
+	
 	game->img = init_img(game);
 	if (!game->img)
 	{

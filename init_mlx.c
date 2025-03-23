@@ -22,10 +22,11 @@ t_textures	*init_textures(t_game *game)
 		printf("error in malloc textures\n");
 		return (NULL);
 	}
-	tex->NO_wall = mlx_load_png(game->map_struct->NO_wall);
-	tex->SO_wall = mlx_load_png(game->map_struct->SO_wall);
-	tex->WE_wall = mlx_load_png(game->map_struct->WE_wall);
-	tex->EA_wall = mlx_load_png(game->map_struct->EA_wall);
+	printf("string path: [%s]\n", game->map_struct->NO_path);
+	tex->NO_path = mlx_load_png(game->map_struct->NO_path);
+	tex->SO_path = mlx_load_png(game->map_struct->SO_path);
+	tex->WE_path = mlx_load_png(game->map_struct->WE_path);
+	tex->EA_path = mlx_load_png(game->map_struct->EA_path);
 	return (tex);
 }
 

@@ -51,14 +51,14 @@ typedef struct s_position
 	int		y;
 } 	t_position;
 
-typedef struct s_map
+typedef struct s_args
 {
 	char	**matrix;
 	char	*name_file;
 	int		countcols;
 	int		map_position;
-}			t_map;
-
+}			t_args;
+/*
 typedef struct s_args
 {
 	char	*NO_wall;
@@ -71,7 +71,7 @@ typedef struct s_args
 	int		map_max_x;
 	int		map_max_y;
 }			t_args;
-
+*/
 typedef struct s_content
 {
 	char		**map;
@@ -120,17 +120,17 @@ typedef struct s_ray
 
 typedef struct s_textures
 {
-	mlx_texture_t	*NO_wall;
-	mlx_texture_t	*SO_wall;
-	mlx_texture_t	*WE_wall;
-	mlx_texture_t	*EA_wall;
+	mlx_texture_t	*NO_path;
+	mlx_texture_t	*SO_path;
+	mlx_texture_t	*WE_path;
+	mlx_texture_t	*EA_path;
 }	t_textures;
 
 typedef struct s_game
 {
 	t_ray		*ray_struct;
 	t_player	*player_struct;
-	t_args		*map_struct;
+	t_content	*map_struct;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_textures	*textures;
@@ -177,7 +177,7 @@ void	draw_ceiling_and_floor(t_game *game);
 int	get_rgba(int r, int g, int b, int a);
 
 // init player_struct
-t_player	*init_player_struct(t_args *map);
+t_player	*init_player_struct(t_content *map);
 t_args		*init_map_struct(void);
 
 // player movements
@@ -192,7 +192,7 @@ void	move_player_vision_right(t_game *game);
 void	init_ray_pos_and_dir(int x, t_ray *ray, t_player *player);
 void	init_delta_distance(t_ray *ray);
 void	init_step_and_sidedist(t_ray *ray, t_player *player);
-void	perform_dda(t_ray *ray, t_args *map);
+void	perform_dda(t_ray *ray, t_content *map);
 void	calculate_rays(int x, t_game *game);
 int		get_info(t_args *s_map, t_content *s_content);
 int find_map(t_args *s_map);

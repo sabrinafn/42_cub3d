@@ -26,16 +26,16 @@ int main(int argc, char **argv)
 	}
 	t_args		*s_map;
 	t_content	*s_content;
-
+	
+	if(!check_arguments(argc, argv[1]))
+		return(1);
+	if(!empty_file(argv[1]))
+		return(1);
 	s_map = malloc(sizeof(t_args));
 	s_content = malloc(sizeof(t_content));
 	s_map->name_file = argv[1];
 	s_map->countcols = countcols(argv[1]);
 	s_map->matrix = makematrix(argv[1], s_map->countcols);
-	if(!check_arguments(argc, argv[1]))
-		return(1);
-	if(!empty_file(argv[1]))
-		return(1);
 	if(!validate_content(s_map))
 		return(1);
 	if(!validate_map(s_map))
@@ -44,6 +44,8 @@ int main(int argc, char **argv)
 	 	return(1);
 	s_content->map_max_y = get_map_sizes_y(s_content);
 	s_content->map_max_x = get_map_sizes_x(s_content);
+	game->map_struct = s_content;
+	game->player_struct = init_player_struct(game->map_struct);
 	init_game(game);
 	return(0);
 }

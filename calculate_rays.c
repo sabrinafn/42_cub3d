@@ -63,7 +63,7 @@ void	init_step_and_sidedist(t_ray *ray, t_player *player)
 	}
 }
 
-void	perform_dda(t_ray *ray, t_args *map)
+void	perform_dda(t_ray *ray, t_content *map)
 {
 	// perform DDA
 	while (ray->hit == 0)

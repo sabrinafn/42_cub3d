@@ -26,9 +26,10 @@ LIBFT := libft/libft.a
 MLXLIB := MLX42/build/libmlx42.a
 
 FILES := main.c init_game.c init_structs.c init_mlx.c init_player_struct.c \
-		calculate_rays.c wall_calculations.c key_hooks.c parsing/read_content.c parsing/find_map.c parsing/map_validation.c \
-		parsing/find_player.c parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
-		init_window.c init_player_struct.c parsing/get_info.c parsing/check_funcitions.c
+		calculate_rays.c wall_calculations.c key_hooks.c parsing/read_content.c \
+		parsing/find_map.c parsing/map_validation.c parsing/find_player.c \
+		parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
+		parsing/get_info.c parsing/check_funcitions.c
 
 OBJ := $(FILES:.c=.o)
 
@@ -47,7 +48,7 @@ $(MLXLIB):
 	@echo "Compiling mlx42..."
 
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(C_FLAGS) $(OBJ) $(MLXLIB) $(LIBFT) $(MLX_FLAGS) -o $(NAME) > /dev/null 2>&1
+	$(CC) $(C_FLAGS) $(OBJ) $(MLXLIB) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 	@echo "Compiling cub3D..."
 	@$(MAKE) -s print_message
 

@@ -47,7 +47,7 @@ char *get_string(char *string, int count)
 	result = ft_calloc((ft_strlen(string)), sizeof(char));
 	while (string[count] == ' ' || string[count] == '\t')
 			count++;
-	while (string[count] != '\0')
+	while (string[count] != '\0' && string[count] != '\n')
 	{
 		result[i] =  string[count];
 		i++;
