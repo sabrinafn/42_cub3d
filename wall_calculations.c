@@ -126,18 +126,17 @@ void	draw_walls_with_texture(int x, t_game *game)
 	//mlx_delete_texture(wall_texture);
 }
 
-void	draw_walls(int x, t_game *game)
+// update function to only draw wall with colors
+/*
+void	draw_walls_with_colors(int x, t_game *game)
 {
-	/*uint32_t	color;
+	uint32_t	color;
 	uint8_t		r;
 	uint8_t		g;
 	uint8_t		b;
 	uint8_t		a;
 	int			i;
-*/
-	get_wall_height(game->ray_struct);
-	draw_walls_with_texture(x, game);
-	/*
+
 	color = RGB_Green;
 	if (game->ray_struct->side == 1)
 	{
@@ -157,29 +156,6 @@ void	draw_walls(int x, t_game *game)
 		if (i >= 0 && i < HEIGHT && x >= 0 && x < WIDTH)
 			mlx_put_pixel(game->img, x, i, color);
 		i++;
-	}*/
+
 }
-
-/*void	place_wall(mlx_t *mlx, t_game *game)
-{
-	mlx_image_t		*wall;
-	mlx_texture_t	*wall_texture;
-	int				i;
-	int				j;
-
-	wall_texture = mlx_load_png("./images/wall.png");
-	wall = mlx_texture_to_image(mlx, wall_texture);
-	i = 0;
-	while (i < game->height)
-	{
-		j = 0;
-		while (j < game->length)
-		{
-			if (game->map[i][j] == '1')
-				mlx_image_to_window(mlx, wall, j * TILE_SIZE, i * TILE_SIZE);
-			j++;
-		}
-		i++;
-	}
-	mlx_delete_texture(wall_texture);
-}*/
+*/

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   init_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/20 14:39:27 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/23 12:30:00 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	init_structs_in_game(t_game *game)
 		return (0);
 	}
 	game->textures = init_textures(game);
-	if (!game->textures) 
+	if (!game->textures)
 	{
 		ft_putstr_fd("game->textures error\n", 2);
 		return (0);

@@ -143,7 +143,7 @@ int			valide_numbers(char **matrix);
 int			texture_path(char **matrix);
 int			empy_line(t_map s_map);
 
-// init game
+// init_game
 void		init_game(t_game *game);
 void		render_raycast_frame(t_game *game);
 
@@ -183,5 +183,6 @@ void	draw_walls(int x, t_game *game);
 // key_hooks.c
 void	key_pressed_function(mlx_key_data_t keydata, void *param);
 
+void	draw_walls_with_texture(int x, t_game *game);
 
 #endif

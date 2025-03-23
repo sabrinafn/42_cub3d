@@ -6,12 +6,11 @@
 /*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/20 14:39:27 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/23 12:28:55 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_3d.h"
-
 
 void	render_raycast_frame(t_game *game)
 {
@@ -22,7 +21,8 @@ void	render_raycast_frame(t_game *game)
 	while (x < WIDTH)
 	{
 		calculate_rays(x, game);
-		draw_walls(x, game);
+		get_wall_height(game->ray_struct);
+		draw_walls_with_texture(x, game);
 		x++;
 	}
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
