@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/23 15:23:45 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/23 15:43:59 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,27 @@ int	get_map_sizes_y(t_content *s_content)
 		i++;
 	}
 	return(i);
+}
+
+int get_map_sizes_x(t_content *s_content)
+{
+	int i;
+	int size_line;
+	int comp_size;
+	
+	i = 0;
+	size_line = 0;
+	comp_size = 0;
+
+	size_line = ft_strlen(s_content->map[i]);
+	while(s_content->map[i] != NULL)
+	{
+		comp_size = ft_strlen(s_content->map[i]);
+		if(comp_size > size_line)
+			size_line = comp_size;
+		i++;
+	}
+	return(size_line);
 }
 
 int get_info(t_args *s_map, t_content *s_content)
