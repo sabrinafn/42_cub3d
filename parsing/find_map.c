@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:25:28 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/19 15:17:17 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:32:50 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,46 +21,7 @@ int walk_spaces(char *string)
 		i++;
 	return(i);	
 }
-int find_map(t_args *s_map)
-{
-	int cols;
-	int line;
-	int count;
 
-	cols = 0;
-	line = 0;
-	count = 0;	
-	while(s_map->matrix[cols] != NULL)
-	{
-		if(count == 6)
-			break;
-		line = walk_spaces(s_map->matrix[cols]);
-		if(s_map->matrix[cols][line] == '\0' || s_map->matrix[cols][line] == '\n')
-			cols++;
-		else
-		{
-			cols++;
-			count++;
-		}
-	}
-	return(cols);
-}
-int find_map2(t_args *s_map)
-{
-	int cols;
-	int line;
-
-	cols = find_map(s_map);
-	while(s_map->matrix[cols] != NULL)
-	{	
-		line = walk_spaces(s_map->matrix[cols]);
-		if(s_map->matrix[cols][line] == '\0')
-			cols++;
-		else	
-			break;	
-	}
-	return(cols);
-}
 int	validate_char(char *string)
 {
 	int	i;
@@ -69,20 +30,20 @@ int	validate_char(char *string)
 	while(string[i] != '\0')
 	{
 		if(ft_strchr("0NSEW1 \n", string[i]) == NULL)
-			return(1);
+			return(0);
 		i++;		
 	}
-	return(0);			
+	return(1);			
 }
 
-int	invalid_character(t_args s_map, int cols)
+int	invalid_character(t_args *s_map, int cols)
 {
-	while(s_map.matrix[cols] != NULL)
+	while(s_map->matrix[cols] != NULL)
 	{
-		if(validate_char(s_map.matrix[cols]) == 1)
-			return(1);
+		if(!validate_char(s_map->matrix[cols]))
+			return(0);
 		cols++;	
 	}
-	return(0);	
+	return(1);	
 }
 

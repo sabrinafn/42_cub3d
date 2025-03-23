@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/19 14:51:05 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:32:33 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 int  validate_content(t_args *s_map)
 {
-	if(six_content(s_map->matrix) == 1)
-		return(1);
-	if(validate_element(s_map->matrix) == 1)
-		return(1);
-	//if(validate_numbers(s_map->matrix) == 1)
-		//return(1);
-	//if(texture_path(s_map->matrix) == 1)
-	  	//return(1);		
-	return(0);	
+	if(!check_elements(s_map->matrix))
+		return(0);
+	if(!validate_numbers(s_map->matrix))
+		return(0);
+	//if(!texture_path(s_map->matrix) == 1)
+	  	//return(0);		
+	return(1);	
 }
 
-int	six_content(char **matrix)
+int	check_elements(char **matrix)
 {
 	int cols;
 	int line;
@@ -37,118 +35,88 @@ int	six_content(char **matrix)
 	while(matrix[cols] != NULL)
 	{
 		line = walk_spaces(matrix[cols]);
-		if(matrix[cols][line] == '\0' || matrix[cols][line] == '\n')
-			cols++;
-		else
+		if(matrix[cols][line] != '\0' && matrix[cols][line] != '\n')
 		{
-			if(matrix[cols][line] == '1')
+			if(matrix[cols][line] == '1' || matrix[cols][line] == '0')
 				break;
-			cols++;
-			count++;
-		}
-	}
-	if(count != 6)
-	{
-		printf("Invalid number of elements\n");	
-		return(1);
-	}
-	return(0);
-}
-
-int	validate_element(char **matrix)
-{
-	int cols;
-	int line;
-	int count;
-	char *temp;
-	
-	cols = 0;
-	line = 0;
-	temp = malloc(4 * sizeof(char));
-	count = 0;
-	while(matrix[cols] != NULL)
-	{
-		if(count > 6)
-			break;
-		line = walk_spaces(matrix[cols]);
-		if(matrix[cols][line] != '\0')
-		{
-			if(count < 6)
-			{
-				temp[0] = matrix[cols][line];
-				temp[1] = matrix[cols][line + 1];
-				temp[2] = matrix[cols][line + 2];
-				temp[3] = '\0';
-				if(ft_strncmp(temp, "NO ", 3) == 0 || ft_strncmp(temp, "SO ", 3) == 0 \
-					|| ft_strncmp(temp, "WE ", 3) == 0 || ft_strncmp(temp, "EA ", 3) == 0 \
-					|| ft_strncmp(temp, "F ", 2) == 0 || ft_strncmp(temp, "C ", 2) == 0)
-						count++;		
-				else
-				{
-					free(temp);
-					printf("invalid Elements\n");
-					return(1);		
-				}		
-			}
+			if(!validate_element(matrix[cols], line))
+				return(0);
+			else
+				count++;
 		}
 		cols++;
 	}
-	free(temp);
-	return(0);
+	if(count != 6)	
+		return(print_error(ERROR_1));
+	return(1);
 }
+
+int	validate_element(char *matrix_line, int line_number)
+{
+	char *temp;
+	
+	temp = malloc(4 * sizeof(char));
+	temp[0] = matrix_line[line_number];
+	temp[1] = matrix_line[line_number + 1];
+	temp[2] = matrix_line[line_number + 2];
+	temp[3] = '\0';
+	if(ft_strncmp(temp, "NO ", 3) == 0 || ft_strncmp(temp, "SO ", 3) == 0 \
+		|| ft_strncmp(temp, "WE ", 3) == 0 || ft_strncmp(temp, "EA ", 3) == 0 \
+		|| ft_strncmp(temp, "F ", 2) == 0 || ft_strncmp(temp, "C ", 2) == 0)
+			return(1);
+	else
+			return(print_error(ERROR_8));
+}
+
 
 int validate_numbers(char **matrix)
 {
 	int cols;
 	int count;
-	char **temp;
-	//int number;
-	char **temp2;
+	char *temp;
+	int number;
 	int i;
-
+	
 	i = 0;
-	temp2 = NULL;
-	temp = NULL;
+	number = 0;
 	count = 0;
 	cols = 0;
+	temp = malloc(4 * sizeof(char));
 	while(matrix[cols] != NULL)
-	{
-		if(ft_strchr(matrix[cols], 'F') != NULL || ft_strchr(matrix[cols], 'C') != NULL)
+	{ 
+		count = walk_spaces(matrix[cols]);
+		if(matrix[cols][count] == 'F' || matrix[cols][count] == 'C')
 		{
-			count = 0;
-			temp = ft_split(matrix[cols], ' ');
-			temp2 = ft_split(temp[1], ',');
-			while(temp2[count] != NULL)
+			while(matrix[cols][count])
 			{
-				while (temp2[count][i] != '\0')
+				ft_bzero(temp, 4);
+				i = 0;
+				temp = malloc(4 * sizeof(char));
+				while (matrix[cols][count] && (matrix[cols][count] < '0' || matrix[cols][count] > '9'))
+					count++;
+				while (matrix[cols][count] && (matrix[cols][count] >= '0' && matrix[cols][count] <= '9'))
 				{
-					//printf("%c", temp2[count][i]);
-					// if(ft_strchr("1234567890", temp2[count][i]) == NULL)
-					// {
-					// 	free_matrix (temp);
-					// 	free_matrix (temp2);
-					// 	printf("Invalid colokjkljlkrs\n");	
-					// 	return(1);
-					// }
+					temp[i] = matrix[cols][count]; 
 					i++;
+					count++;
 				}
-				// number = ft_atoi(temp2[count]);
-				// if( number < 0 || number  > 255 || count > 3)
-				// {
-				// 	free_matrix (temp);
-				// 	free_matrix (temp2);
-				// 	printf("Invalid colors\n");	
-				// 	return(1);
-				// }
-				count++;
+				temp[i + 1] = '\0';
+				number = ft_atoi(temp);
+				if(number < 0 || number > 255)
+				{
+					free(temp);
+					return(print_error(ERROR_9));
+				}
+				if(matrix[cols][count] == '\0')
+					break;
 			}
-			free_matrix (temp); 
-			free_matrix (temp2);
 		}
 		cols++;
 	}
-	return(0);
+	free(temp);
+	return(1);
 }
+
 
 int texture_path(char **matrix)
 {
@@ -168,8 +136,7 @@ int texture_path(char **matrix)
 				if(text == NULL)
 				{
 					free_matrix(temp);
-					printf("invalid taxture\n");
-					return(1);
+					return(print_error(ERROR_9));
 				}
 				
 				mlx_delete_texture(text);
@@ -177,5 +144,5 @@ int texture_path(char **matrix)
 			}
 		cols++;	
 	}
-	return(0);
+	return(1);
 }
