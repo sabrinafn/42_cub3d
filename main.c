@@ -15,18 +15,18 @@
 int main(int argc, char **argv)
 {
 	t_game		*game;
+	t_args		*s_map;
+	t_content	*s_content;
 
-	(void)argc;
-	(void)argv;
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 	{
 		printf("!game malloc\n");
 		return (0);
 	}
-	t_args		*s_map;
-	t_content	*s_content;
-	
+
+	// tudo isso em uma outra função. tipo, só escrito: validando_mapa() e
+	// outra função só escrito inicialisando_estrutura do mapa()
 	if(!check_arguments(argc, argv[1]))
 		return(1);
 	if(!empty_file(argv[1]))
@@ -44,6 +44,8 @@ int main(int argc, char **argv)
 	 	return(1);
 	s_content->map_max_y = get_map_sizes_y(s_content);
 	s_content->map_max_x = get_map_sizes_x(s_content);
+	// até aqui
+
 	game->map_struct = s_content;
 	game->player_struct = init_player_struct(game->map_struct);
 	init_game(game);
