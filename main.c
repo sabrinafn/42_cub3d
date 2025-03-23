@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/21 18:14:20 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/23 15:37:56 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 	//init_player_struct(player);
 	if(!get_info(s_map, s_content))
 	 	return(1);
+	s_content->map_max_y = get_map_sizes_y(s_content);
 	 int i = 0;
 	 while (s_content->color_F[i] != NULL)
 	 {
@@ -41,8 +42,8 @@ int main(int argc, char **argv)
 	 	i++;
 	 }
 	 //get_map_sizes_y(s_content);
-	 printf("floor: %X\n", s_content->floor);
-	 printf("celing: %X\n", s_content->ceiling);
+	 printf("y: %i\n", s_content->map_max_y);
+	 printf("celing: %x\n", s_content->ceiling);
 	// printf("y: %i", s_content->map_max_y);
 
 	//init_window(player, content);

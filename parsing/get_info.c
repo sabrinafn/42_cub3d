@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/21 18:13:40 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/23 15:23:45 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int get_color(char **matrix, t_content *s_content)
 	return(1);
 }
 
-int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
+uint32_t	ft_pixel(uint32_t r, uint32_t g, uint32_t b, uint32_t a)
 {
 	return (r << 24 | g << 16 | b << 8 | a);
 }
@@ -143,27 +143,26 @@ int get_map(t_args *s_map, t_content *s_content)
 		j++;
 		lines_map++;
 	}
+	s_content->map[j] = NULL;
 	return(1);
 }
 
-// void	get_map_sizes_y(t_content *s_content)
-// {
-// 	int	i;
-// 	int count;
-// 	i = 0;
-// 	count = 0;
-// 	s_content->map_max_y = 0;
-// 	printf("%s essa é a primiera linha" ,s_content->map[i]);
-// 	while(s_content->map[i] != NULL)
-// 	{
-// 		while (s_content->map[i][count] == ' ')
-// 			count++;
-// 		if(s_content->map[i][count] == '\n' || s_content->map[i][count] == '\0')
-// 			break;
-// 		i++;
-// 	}
-// 	s_content->map_max_y = count;
-// }
+int	get_map_sizes_y(t_content *s_content)
+{
+	int	i;
+	int count;
+	i = 0;
+	count = 0;
+	while(s_content->map[i] != NULL)
+	{
+		while (s_content->map[i][count] == ' ')
+			count++;
+		if(s_content->map[i][count] == '\n' || s_content->map[i][count] == '\0')
+			break;
+		i++;
+	}
+	return(i);
+}
 
 int get_info(t_args *s_map, t_content *s_content)
 {
