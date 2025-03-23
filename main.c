@@ -79,8 +79,6 @@ int main(int argc, char **argv)
 	//	return(1);
 	//if(read_content(argv[1], s_map) == 1)
 	//	return(1);
-	game->map_struct = init_map_struct();
-	game->player_struct = init_player_struct(game->map_struct);
 	init_game(game);
 	return(0);
 }

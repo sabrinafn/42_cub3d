@@ -25,15 +25,15 @@ LIBFT := libft/libft.a
 
 MLXLIB := MLX42/build/libmlx42.a
 
-FILES := main.c init_game.c init_player_struct.c calculate_rays.c \
-		wall_calculations.c key_hooks.c
+FILES := main.c init_game.c init_structs.c init_mlx.c init_player_struct.c \
+		calculate_rays.c wall_calculations.c key_hooks.c
 
 OBJ := $(FILES:.c=.o)
 
 all: $(MLXLIB) $(LIBFT) $(NAME)
 
 %.o: %.c 
-	@$(CC) $(C_FLAGS) -c $< -o $@ > /dev/null 2>&1 
+	$(CC) $(C_FLAGS) -c $< -o $@
 
 $(LIBFT): 
 	@make -C $(LIBFT_DIR) > /dev/null 2>&1

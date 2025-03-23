@@ -143,9 +143,19 @@ int			valide_numbers(char **matrix);
 int			texture_path(char **matrix);
 int			empy_line(t_map s_map);
 
-// init window
+// init game
 void		init_game(t_game *game);
 void		render_raycast_frame(t_game *game);
+
+// init_mlx
+int	init_window(t_game *game);
+mlx_image_t	*init_img(t_game *game);
+t_textures	*init_textures(t_game *game);
+
+// init_structs
+int	init_structs_in_game(t_game *game);
+void	draw_ceiling_and_floor(t_game *game);
+int	get_rgba(int r, int g, int b, int a);
 
 // init player_struct
 t_player	*init_player_struct(t_args *map);
@@ -173,7 +183,5 @@ void	draw_walls(int x, t_game *game);
 // key_hooks.c
 void	key_pressed_function(mlx_key_data_t keydata, void *param);
 
-// get_rgba
-int	get_rgba(int r, int g, int b, int a);
 
 #endif
