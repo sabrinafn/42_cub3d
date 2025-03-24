@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation.c                                   :+:      :+:    :+:   */
+/*   init_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/26 11:34:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 13:53:41 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/03/24 13:39:23 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/03/24 13:41:39 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub_3d.h"
-
-int validate_map(t_args *s_map)
+void init_args(t_args *s_args)
 {
-	int map_position;
 	
-	map_position = find_map(s_map);	
-	if(!find_player(s_map))
-		return(print_error(ERROR_11));
-	if(!invalid_character(s_map, map_position))
-		return(print_error(ERROR_13));
-	if(!validate_wall(s_map))
-		return(print_error(ERROR_12));
-	if(!empty_line(s_map))
-		return(print_error(ERROR_14));
-	return(1);
 }
-

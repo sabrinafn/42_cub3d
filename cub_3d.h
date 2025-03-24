@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/23 15:44:17 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 13:55:07 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,7 @@ typedef struct s_position
 	int		y;
 } 	t_position;
 
-typedef struct s_args
-{
-	char	**matrix;
-	char	*name_file;
-	int		countcols;
-	int		map_position;
-}			t_args;
-/*
+
 typedef struct s_args
 {
 	char	*NO_wall;
