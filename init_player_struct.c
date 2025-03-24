@@ -12,23 +12,24 @@
 
 #include "cub_3d.h"
 
+void	update_player_position(t_position **pos, int x, int y, char c)
+{
+	(*pos)->x = x;
+	(*pos)->y = y;
+	(*pos)->direction = c;
+}
+
 t_position	*find_char(char **map, int map_height, int map_width)
 {
 	t_position	*pos;
 	int			y;
 	int			x;
 
-	y = 0;
-	x = 0;
 	pos = (t_position *)malloc(sizeof(t_position));
-	if (!pos)
+	if (!pos || !map)
 		return (NULL);
-	pos->x = -1;
-	pos->y = -1;
-	pos->direction = '\0';
-	if (map == NULL)
-		return (pos);
-	while (y < map_height && map[y] != NULL)
+	y = 0;
+	while (y < map_height && map[y])
 	{
 		x = 0;
 		while (x < map_width)
@@ -36,16 +37,14 @@ t_position	*find_char(char **map, int map_height, int map_width)
 			if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'W'
 				|| map[y][x] == 'E')
 			{
-				pos->x = x;
-				pos->y = y;
-				pos->direction = map[y][x];
+				update_player_position(&pos, x, y, map[y][x]);
 				return (pos);
 			}
 			x++;
 		}
 		y++;
 	}
-	return (pos); // Not found, return invalid position
+	return (NULL);
 }
 
 t_player	*init_player_struct(t_content *map)
