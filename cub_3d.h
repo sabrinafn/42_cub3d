@@ -157,11 +157,13 @@ int get_map_sizes_x(t_content *s_content);
 // init_game
 void		init_game(t_game *game);
 void		render_raycast_frame(t_game *game);
+void		draw_walls_with_texture(int x, t_game *game);
 
 // init_mlx
-int	init_window(t_game *game);
-mlx_image_t	*init_img(t_game *game);
-t_textures	*init_textures(t_game *game);
+int				init_window(t_game *game);
+mlx_image_t		*init_img(t_game *game);
+t_textures		*init_textures(t_game *game);
+mlx_texture_t	*get_wall_texture(t_game *game);
 
 // init_structs
 int	init_structs_in_game(t_game *game);
@@ -192,7 +194,10 @@ void 	get_color_number(t_content *s_content);
 
 // wall_calculations.c
 void	get_wall_height(t_ray *ray);
-void	draw_walls(int x, t_game *game);
+void	calculate_and_draw_walls(t_game *game, mlx_texture_t *texture, int x);
+void	calculate_texture_step_and_position(t_game *game, int tex_height);
+void	find_x_strip(t_game *game, int tex_width);
+void	find_x_pixel(t_game *game);
 
 // key_hooks.c
 void	key_pressed_function(mlx_key_data_t keydata, void *param);

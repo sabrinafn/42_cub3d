@@ -26,8 +26,6 @@ void	draw_ceiling_and_floor(t_game *game)
 
 	i = 0;
 	j = 0;
-	//ceiling = get_rgba(128, 112, 214, 255);
-	//floor = get_rgba(255, 199, 231, 255);
 	ceiling = game->map->ceiling;
 	floor = game->map->floor;
 	while (i < WIDTH)

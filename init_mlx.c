@@ -12,6 +12,27 @@
 
 #include "cub_3d.h"
 
+mlx_texture_t	*get_wall_texture(t_game *game)
+{
+	mlx_texture_t	*texture;
+
+	if (game->ray->side == 0)
+	{
+		if (game->ray->dir_x > 0)
+			texture = game->textures->EA_path;
+		else
+			texture = game->textures->WE_path;
+	}
+	else
+	{
+		if (game->ray->dir_y > 0)
+			texture = game->textures->SO_path;
+		else
+			texture = game->textures->NO_path;
+	}
+	return (texture);
+}
+
 t_textures	*init_textures(t_game *game)
 {
 	t_textures	*tex;

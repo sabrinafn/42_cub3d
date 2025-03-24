@@ -12,6 +12,18 @@
 
 #include "cub_3d.h"
 
+void	draw_walls_with_texture(int x, t_game *game)
+{
+	mlx_texture_t	*texture;
+
+	texture = get_wall_texture(game);
+	find_x_pixel(game);
+	find_x_strip(game, texture->width);
+	calculate_texture_step_and_position(game, texture->height);
+	calculate_and_draw_walls(game, texture, x);
+	// mlx_delete_texture(wall_texture);
+}
+
 void	render_raycast_frame(t_game *game)
 {
 	int	x;
