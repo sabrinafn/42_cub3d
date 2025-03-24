@@ -58,20 +58,7 @@ typedef struct s_args
 	int		countcols;
 	int		map_position;
 }			t_args;
-/*
-typedef struct s_args
-{
-	char	*NO_wall;
-	char	*SO_wall;
-	char	*WE_wall;
-	char	*EA_wall;
-	char	*ceiling; // uint
-	char	*floor; // uint
-	char	**map;
-	int		map_max_x;
-	int		map_max_y;
-}			t_args;
-*/
+
 typedef struct s_content
 {
 	char		**map;
@@ -124,6 +111,11 @@ typedef struct s_textures
 	mlx_texture_t	*SO_path;
 	mlx_texture_t	*WE_path;
 	mlx_texture_t	*EA_path;
+	double			wall_x;
+	double			step;
+	double			tex_pos;
+	int				tex_x;
+	int				tex_y;
 }	t_textures;
 
 typedef struct s_game

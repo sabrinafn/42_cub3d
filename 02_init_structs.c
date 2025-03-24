@@ -49,7 +49,7 @@ int	init_structs_in_game(t_game *game)
 {
 	// the following two structs might have to be initialized in the main function
 	//game->map_struct = init_map_struct();
-	
+	//init_player_struct(t_content *map)
 	game->img = init_img(game);
 	if (!game->img)
 	{

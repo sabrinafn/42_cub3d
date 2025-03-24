@@ -65,6 +65,8 @@ void	init_step_and_sidedist(t_ray *ray, t_player *player)
 
 void	perform_dda(t_ray *ray, t_content *map)
 {
+	// check if it will be needed to normalize these values
+
 	// perform DDA
 	while (ray->hit == 0)
 	{
