@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 17:59:57 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:28:57 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_elements(char **matrix)
 		cols++;
 	}
 	if (count != 6)
-		return (print_error(ERROR_1));
+		return (print_error(ERROR_7));
 	return (1);
 }
 
@@ -117,20 +117,21 @@ int	texture_path(char **m)
 	int				cols;
 	char			**temp;
 	mlx_texture_t	*text;
+	int				count;
 
-	temp = NULL;
 	cols = 0;
 	while (m[cols] != NULL)
 	{
-		if (ft_strchr(m[cols], 'N') != NULL || ft_strchr(m[cols], 'W') != NULL \
-		|| ft_strchr(m[cols], 'S') != NULL || ft_strchr(m[cols], 'E') != NULL)
+		count = walk_spaces(m[cols]);
+		if (m[cols][count] == 'N' || m[cols][count] == 'W' \
+		|| m[cols][count] == 'S' || m[cols][count] == 'E')
 		{
 			temp = ft_split(m[cols], ' ');
 			text = mlx_load_png(temp[1]);
 			if (text == NULL)
 			{
 				free_matrix(temp);
-				return (print_error(ERROR_9));
+				return (print_error(ERROR_15));
 			}
 			mlx_delete_texture(text);
 			free_matrix(temp);

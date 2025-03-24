@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:58:23 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 17:55:15 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:58:39 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_arguments(int argc, char *argv)
 		return (print_error(ERROR_5));
 	else if (!check_name(argv))
 		return (print_error(ERROR_6));
-	else if (empty_file(argv))
+	else if (!empty_file(argv))
 		return (print_error(ERROR_2));
 	return (1);
 }

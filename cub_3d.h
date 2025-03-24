@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 18:06:47 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:02:50 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define ERROR_12 "Invalid Character in map\n"
 # define ERROR_13 "Invalid Wall in map\n"
 # define ERROR_14 "Empty line in map\n"
+# define ERROR_15 "Failed to open PNG file\n"
 # define WIDTH 800
 # define HEIGHT 800
 # define MOVE_SPEED 0.1
@@ -166,10 +167,24 @@ int	validate_wall(char **file_matrix);
 int	check_wall(char **matrix, int cols, int i);
 int	empty_line(char **file_matrix);
 
-//
 
+//#get_content
 
+//get_info_map
+int	get_map(char **file_matrix, t_content *s_content);
+void	get_map_sizes_y(t_content *s_content);
+void	get_map_sizes_x(t_content *s_content);
 
+//get_info_utils
+int	get_texture_path(char **matrix, t_content *s_content);
+char	*get_string(char *string, int count);
+uint32_t	ft_pixel(uint32_t r, uint32_t g, uint32_t b, uint32_t a);
+void	get_color_number(t_content *s_content);
+
+//get_info
+int		get_content(char **file_matrix, t_content *s_content);
+int		get_color(char **matrix, t_content *s_content);
+char	**get_color_split(char *string, int count);
 
 // init_game
 void		init_game(t_game *game);
@@ -203,7 +218,6 @@ void	init_delta_distance(t_ray *ray);
 void	init_step_and_sidedist(t_ray *ray, t_player *player);
 void	perform_dda(t_ray *ray, t_content *map);
 void	calculate_rays(int x, t_game *game);
-int		get_info(t_args *s_map, t_content *s_content);
 int		find_map(char **file_matrix);
 void 	get_color_number(t_content *s_content);
 
