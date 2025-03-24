@@ -6,143 +6,136 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 14:09:30 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:59:57 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int  validate_content(char **matrix_file)
-{
-	if(!check_elements(matrix_file))
-		return(0);
-	if(!validate_numbers(matrix_file))
-		return(0);
-	if(!texture_path(matrix_file))
-	  	return(0);		
-	return(1);	
-}
-
 int	check_elements(char **matrix)
 {
-	int cols;
-	int line;
-	int count;
+	int	cols;
+	int	line;
+	int	count;
 
 	cols = 0;
 	line = 0;
-	count = 0;	
-	while(matrix[cols] != NULL)
+	count = 0;
+	while (matrix[cols] != NULL)
 	{
 		line = walk_spaces(matrix[cols]);
-		if(matrix[cols][line] != '\0' && matrix[cols][line] != '\n')
+		if (matrix[cols][line] != '\0' && matrix[cols][line] != '\n')
 		{
-			if(matrix[cols][line] == '1' || matrix[cols][line] == '0')
-				break;
-			if(!validate_element(matrix[cols], line))
-				return(0);
+			if (matrix[cols][line] == '1')
+				break ;
+			if (!validate_element(matrix[cols], line))
+				return (0);
 			else
 				count++;
 		}
 		cols++;
 	}
-	if(count != 6)	
-		return(print_error(ERROR_1));
-	return(1);
+	if (count != 6)
+		return (print_error(ERROR_1));
+	return (1);
 }
 
 int	validate_element(char *matrix_line, int line_number)
 {
-	char *temp;
-	
+	char	*temp;
+
 	temp = malloc(4 * sizeof(char));
 	temp[0] = matrix_line[line_number];
 	temp[1] = matrix_line[line_number + 1];
 	temp[2] = matrix_line[line_number + 2];
 	temp[3] = '\0';
-	if(ft_strncmp(temp, "NO ", 3) == 0 || ft_strncmp(temp, "SO ", 3) == 0 \
+	if (ft_strncmp(temp, "NO ", 3) == 0 || ft_strncmp(temp, "SO ", 3) == 0 \
 		|| ft_strncmp(temp, "WE ", 3) == 0 || ft_strncmp(temp, "EA ", 3) == 0 \
 		|| ft_strncmp(temp, "F ", 2) == 0 || ft_strncmp(temp, "C ", 2) == 0)
-			return(1);
+	{
+		free (temp);
+		return (1);
+	}	
 	else
-			return(print_error(ERROR_8));
+	{
+		free (temp);
+		return (print_error(ERROR_8));
+	}
 }
 
-
-int validate_numbers(char **matrix)
+int	validate_numbers(char **matrix)
 {
-	int cols;
-	int count;
-	char *temp;
-	int number;
-	int i;
-	
-	i = 0;
-	number = 0;
+	int	cols;
+	int	count;
+
 	count = 0;
 	cols = 0;
-	temp = malloc(4 * sizeof(char));
-	while(matrix[cols] != NULL)
-	{ 
+	while (matrix[cols] != NULL)
+	{
 		count = walk_spaces(matrix[cols]);
-		if(matrix[cols][count] == 'F' || matrix[cols][count] == 'C')
+		if (matrix[cols][count] == 'F' || matrix[cols][count] == 'C')
 		{
-			while(matrix[cols][count])
-			{
-				ft_bzero(temp, 4);
-				i = 0;
-				temp = malloc(4 * sizeof(char));
-				while (matrix[cols][count] && (matrix[cols][count] < '0' || matrix[cols][count] > '9'))
-					count++;
-				while (matrix[cols][count] && (matrix[cols][count] >= '0' && matrix[cols][count] <= '9'))
-				{
-					temp[i] = matrix[cols][count]; 
-					i++;
-					count++;
-				}
-				temp[i + 1] = '\0';
-				number = ft_atoi(temp);
-				if(number < 0 || number > 255)
-				{
-					free(temp);
-					return(print_error(ERROR_9));
-				}
-				if(matrix[cols][count] == '\0')
-					break;
-			}
+			if (!check_numbers(matrix[cols], count))
+				return (print_error(ERROR_9));
 		}
 		cols++;
 	}
-	free(temp);
-	return(1);
+	return (1);
 }
 
-
-int texture_path(char **matrix)
+int	check_numbers(char *string, int count)
 {
-	int cols;
-	char **temp;
-	mlx_texture_t* text;
-	
+	int		number;
+	char	*temp;
+	int		i;
+
+	temp = malloc(4 * sizeof(char));
+	number = 0;
+	i = 0;
+	while (string[count])
+	{
+		ft_bzero(temp, 4);
+		i = 0;
+		while (string[count] && (string[count] < '0' || string[count] > '9'))
+			count++;
+		while (string[count] && (string[count] >= '0' && string[count] <= '9'))
+			temp[i++] = string[count++];
+		temp[i + 1] = '\0';
+		number = ft_atoi(temp);
+		if (number < 0 || number > 255)
+		{
+			free (temp);
+			return (0);
+		}
+	}
+	free (temp);
+	return (1);
+}
+
+int	texture_path(char **m)
+{
+	int				cols;
+	char			**temp;
+	mlx_texture_t	*text;
+
 	temp = NULL;
 	cols = 0;
-	while(matrix[cols] != NULL)
+	while (m[cols] != NULL)
 	{
-		if(ft_strchr(matrix[cols], 'N') != NULL || ft_strchr(matrix[cols], 'W') != NULL \
-		|| ft_strchr(matrix[cols], 'S') != NULL || ft_strchr(matrix[cols], 'E') != NULL)
+		if (ft_strchr(m[cols], 'N') != NULL || ft_strchr(m[cols], 'W') != NULL \
+		|| ft_strchr(m[cols], 'S') != NULL || ft_strchr(m[cols], 'E') != NULL)
+		{
+			temp = ft_split(m[cols], ' ');
+			text = mlx_load_png(temp[1]);
+			if (text == NULL)
 			{
-				temp = ft_split(matrix[cols], ' ');
-				text = mlx_load_png(temp[1]);
-				if(text == NULL)
-				{
-					free_matrix(temp);
-					return(print_error(ERROR_9));
-				}
-				
-				mlx_delete_texture(text);
 				free_matrix(temp);
+				return (print_error(ERROR_9));
 			}
-		cols++;	
+			mlx_delete_texture(text);
+			free_matrix(temp);
+		}
+		cols++;
 	}
-	return(1);
+	return (1);
 }

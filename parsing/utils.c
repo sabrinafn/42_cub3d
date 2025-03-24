@@ -6,26 +6,26 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:05:51 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 14:41:09 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:57:40 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int	print_error(char *e)
+int	print_error(char *error)
 {
-	printf("Error\n%s", e);
+	printf("Error\n%s", error);
 	return (0);
 }
 
-int walk_spaces(char *string)
+int	walk_spaces(char *string)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(string[i] == ' ' || string[i] == '\n' || string[i] == '\t')
+	while (string[i] == ' ' || string[i] == '\n' || string[i] == '\t')
 		i++;
-	return(i);	
+	return (i);
 }
 
 void	free_matrix(char **malloc_string)
@@ -37,8 +37,8 @@ void	free_matrix(char **malloc_string)
 		return ;
 	while (malloc_string[count] != NULL)
 	{
-		free(malloc_string[count]);
+		free (malloc_string[count]);
 		count++;
 	}
-	free(malloc_string);
+	free (malloc_string);
 }

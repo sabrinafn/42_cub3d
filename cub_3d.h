@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 14:28:37 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:06:47 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@
 # define ERROR_12 "Invalid Character in map\n"
 # define ERROR_13 "Invalid Wall in map\n"
 # define ERROR_14 "Empty line in map\n"
-
-
-
-
 # define WIDTH 800
 # define HEIGHT 800
 # define MOVE_SPEED 0.1
@@ -129,30 +125,51 @@ typedef struct s_game
 	t_textures	*textures;
 }	t_game;
 
-int			check_arguments(int argc, char *argv);
-int			check_name(char *argv);
-int			print_error(char *e);
-int			countcols(char *file_name);
-char		**makematrix(char *file_name, int count_cols);
-int			read_content(t_args *s_map);
-int			empty_file(char *argv);
-int			validation_map(char **file_matrix);
-int			only_player(char *string);
-int			find_player(char **file_matrix);
-int			invalid_character(char **file_matrix);
-int			validate_wall(char **file_matrix);
-int			check_wall(char **matrix, int cols, int i);
-int			walk_spaces(char *string);
-void		free_matrix(char **malloc_string);
-int			validate_content(char **matrix_file);
-int			validate_element(char *matrix_line, int line_number);
-int			check_elements(char **matrix);
-int			validate_numbers(char **matrix);
-int			texture_path(char **matrix);
-int			empty_line(char **file_matrix);
-char	 *get_string(char *string, int count);
-int	get_map_sizes_y(t_content *s_content);
-int get_map_sizes_x(t_content *s_content);
+//#Parsing//
+
+//character_mapvalidation
+int	invalid_character(char **file_matrix);
+int	validate_char(char *string);
+
+//check_argv
+int	check_arguments(int argc, char *argv);
+int	check_name(char *argv);
+int	empty_file(char *argv);
+
+//map_validation
+int	validation_map(char **file_matrix);
+int	validate_content(char **matrix_file);
+
+//parsing_content
+int	check_elements(char **matrix);
+int	validate_element(char *matrix_line, int line_number);
+int	validate_numbers(char **matrix);
+int	check_numbers(char *string, int count);
+int	texture_path(char **m);
+
+//player_mapvalidation
+int	only_player(char *string);
+int	find_player(char **file_matrix);
+
+//read_argv
+int		countcols(char *file_name);
+char	**makematrix(char *file_name, int count_cols);
+int		find_map(char **file_matrix);
+
+//utils
+int		print_error(char *error);
+int		walk_spaces(char *string);
+void	free_matrix(char **malloc_string);
+
+//wall_mapvalidation
+int	validate_wall(char **file_matrix);
+int	check_wall(char **matrix, int cols, int i);
+int	empty_line(char **file_matrix);
+
+//
+
+
+
 
 // init_game
 void		init_game(t_game *game);
