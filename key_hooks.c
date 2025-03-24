@@ -41,18 +41,18 @@ void	move_player_w(t_game *game)
 	int		new_pos_x;
 	int		new_pos_y;
 
-	new_y = game->player_struct->pos_y + game->player_struct->dir_y
+	new_y = game->player->pos_y + game->player->dir_y
 		* MOVE_SPEED;
-	new_x = game->player_struct->pos_x + game->player_struct->dir_x
+	new_x = game->player->pos_x + game->player->dir_x
 		* MOVE_SPEED;
 	new_pos_x = (int)new_x;
 	new_pos_y = (int)new_y;
-	if (game->map_struct->map[new_pos_y][new_pos_x] != '1'
-		&& new_x < game->map_struct->map_max_x
-		&& new_y < game->map_struct->map_max_y)
+	if (game->map->map[new_pos_y][new_pos_x] != '1'
+		&& new_x < game->map->map_max_x
+		&& new_y < game->map->map_max_y)
 	{
-		game->player_struct->pos_x = new_x;
-		game->player_struct->pos_y = new_y;
+		game->player->pos_x = new_x;
+		game->player->pos_y = new_y;
 		render_raycast_frame(game);
 	}
 }
@@ -64,18 +64,18 @@ void	move_player_s(t_game *game)
 	int		new_pos_x;
 	int		new_pos_y;
 
-	new_y = game->player_struct->pos_y - game->player_struct->dir_y
+	new_y = game->player->pos_y - game->player->dir_y
 		* MOVE_SPEED;
-	new_x = game->player_struct->pos_x - game->player_struct->dir_x
+	new_x = game->player->pos_x - game->player->dir_x
 		* MOVE_SPEED;
 	new_pos_x = (int)new_x;
 	new_pos_y = (int)new_y;
-	if (game->map_struct->map[new_pos_y][new_pos_x] != '1'
-		&& new_x < game->map_struct->map_max_x
-		&& new_y < game->map_struct->map_max_y)
+	if (game->map->map[new_pos_y][new_pos_x] != '1'
+		&& new_x < game->map->map_max_x
+		&& new_y < game->map->map_max_y)
 	{
-		game->player_struct->pos_x = new_x;
-		game->player_struct->pos_y = new_y;
+		game->player->pos_x = new_x;
+		game->player->pos_y = new_y;
 		render_raycast_frame(game);
 	}
 }
@@ -87,18 +87,18 @@ void	move_player_a(t_game *game) // move left
 	int		new_pos_x;
 	int		new_pos_y;
 
-	new_y = game->player_struct->pos_y - game->player_struct->plane_y
+	new_y = game->player->pos_y - game->player->plane_y
 		* MOVE_SPEED;
-	new_x = game->player_struct->pos_x - game->player_struct->plane_x
+	new_x = game->player->pos_x - game->player->plane_x
 		* MOVE_SPEED;
 	new_pos_x = (int)new_x;
 	new_pos_y = (int)new_y;
-	if (game->map_struct->map[new_pos_y][new_pos_x] != '1'
-		&& new_x < game->map_struct->map_max_x
-		&& new_y < game->map_struct->map_max_y)
+	if (game->map->map[new_pos_y][new_pos_x] != '1'
+		&& new_x < game->map->map_max_x
+		&& new_y < game->map->map_max_y)
 	{
-		game->player_struct->pos_x = new_x;
-		game->player_struct->pos_y = new_y;
+		game->player->pos_x = new_x;
+		game->player->pos_y = new_y;
 		render_raycast_frame(game);
 	}
 }
@@ -110,18 +110,18 @@ void	move_player_d(t_game *game) // move right
 	int		new_pos_x;
 	int		new_pos_y;
 
-	new_y = game->player_struct->pos_y + game->player_struct->plane_y
+	new_y = game->player->pos_y + game->player->plane_y
 		* MOVE_SPEED;
-	new_x = game->player_struct->pos_x + game->player_struct->plane_x
+	new_x = game->player->pos_x + game->player->plane_x
 		* MOVE_SPEED;
 	new_pos_x = (int)new_x;
 	new_pos_y = (int)new_y;
-	if (game->map_struct->map[new_pos_y][new_pos_x] != '1'
-		&& new_x < game->map_struct->map_max_x
-		&& new_y < game->map_struct->map_max_y)
+	if (game->map->map[new_pos_y][new_pos_x] != '1'
+		&& new_x < game->map->map_max_x
+		&& new_y < game->map->map_max_y)
 	{
-		game->player_struct->pos_x = new_x;
-		game->player_struct->pos_y = new_y;
+		game->player->pos_x = new_x;
+		game->player->pos_y = new_y;
 		render_raycast_frame(game);
 	}
 }
@@ -131,18 +131,18 @@ void	move_player_vision_left(t_game *game)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	old_dir_x = game->player_struct->dir_x;
-	game->player_struct->dir_x = game->player_struct->dir_x
-		* cos(-ROTATION_SPEED) - game->player_struct->dir_y
+	old_dir_x = game->player->dir_x;
+	game->player->dir_x = game->player->dir_x
+		* cos(-ROTATION_SPEED) - game->player->dir_y
 		* sin(-ROTATION_SPEED);
-	game->player_struct->dir_y = old_dir_x * sin(-ROTATION_SPEED)
-		+ game->player_struct->dir_y * cos(-ROTATION_SPEED);
-	old_plane_x = game->player_struct->plane_x;
-	game->player_struct->plane_x = game->player_struct->plane_x
-		* cos(-ROTATION_SPEED) - game->player_struct->plane_y
+	game->player->dir_y = old_dir_x * sin(-ROTATION_SPEED)
+		+ game->player->dir_y * cos(-ROTATION_SPEED);
+	old_plane_x = game->player->plane_x;
+	game->player->plane_x = game->player->plane_x
+		* cos(-ROTATION_SPEED) - game->player->plane_y
 		* sin(-ROTATION_SPEED);
-	game->player_struct->plane_y = old_plane_x * sin(-ROTATION_SPEED)
-		+ game->player_struct->plane_y * cos(-ROTATION_SPEED);
+	game->player->plane_y = old_plane_x * sin(-ROTATION_SPEED)
+		+ game->player->plane_y * cos(-ROTATION_SPEED);
 	render_raycast_frame(game);
 }
 
@@ -151,17 +151,17 @@ void	move_player_vision_right(t_game *game)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	old_dir_x = game->player_struct->dir_x;
-	game->player_struct->dir_x = game->player_struct->dir_x
-		* cos(ROTATION_SPEED) - game->player_struct->dir_y
+	old_dir_x = game->player->dir_x;
+	game->player->dir_x = game->player->dir_x
+		* cos(ROTATION_SPEED) - game->player->dir_y
 		* sin(ROTATION_SPEED);
-	game->player_struct->dir_y = old_dir_x * sin(ROTATION_SPEED)
-		+ game->player_struct->dir_y * cos(ROTATION_SPEED);
-	old_plane_x = game->player_struct->plane_x;
-	game->player_struct->plane_x = game->player_struct->plane_x
-		* cos(ROTATION_SPEED) - game->player_struct->plane_y
+	game->player->dir_y = old_dir_x * sin(ROTATION_SPEED)
+		+ game->player->dir_y * cos(ROTATION_SPEED);
+	old_plane_x = game->player->plane_x;
+	game->player->plane_x = game->player->plane_x
+		* cos(ROTATION_SPEED) - game->player->plane_y
 		* sin(ROTATION_SPEED);
-	game->player_struct->plane_y = old_plane_x * sin(ROTATION_SPEED)
-		+ game->player_struct->plane_y * cos(ROTATION_SPEED);
+	game->player->plane_y = old_plane_x * sin(ROTATION_SPEED)
+		+ game->player->plane_y * cos(ROTATION_SPEED);
 	render_raycast_frame(game);
 }

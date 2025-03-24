@@ -21,7 +21,7 @@ void	render_raycast_frame(t_game *game)
 	while (x < WIDTH)
 	{
 		calculate_rays(x, game);
-		get_wall_height(game->ray_struct);
+		get_wall_height(game->ray);
 		draw_walls_with_texture(x, game);
 		x++;
 	}

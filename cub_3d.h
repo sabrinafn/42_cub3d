@@ -120,9 +120,9 @@ typedef struct s_textures
 
 typedef struct s_game
 {
-	t_ray		*ray_struct;
-	t_player	*player_struct;
-	t_content	*map_struct;
+	t_ray		*ray;
+	t_player	*player;
+	t_content	*map;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_textures	*textures;

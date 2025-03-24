@@ -46,8 +46,8 @@ int main(int argc, char **argv)
 	s_content->map_max_x = get_map_sizes_x(s_content);
 	// até aqui
 
-	game->map_struct = s_content;
-	game->player_struct = init_player_struct(game->map_struct);
+	game->map = s_content;
+	game->player = init_player_struct(game->map);
 	init_game(game);
 	return(0);
 }

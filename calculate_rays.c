@@ -91,8 +91,8 @@ void	perform_dda(t_ray *ray, t_content *map)
 
 void	calculate_rays(int x, t_game *game)
 {
-	init_ray_pos_and_dir(x, game->ray_struct, game->player_struct);
-	init_delta_distance(game->ray_struct);
-	init_step_and_sidedist(game->ray_struct, game->player_struct);
-	perform_dda(game->ray_struct, game->map_struct);
+	init_ray_pos_and_dir(x, game->ray, game->player);
+	init_delta_distance(game->ray);
+	init_step_and_sidedist(game->ray, game->player);
+	perform_dda(game->ray, game->map);
 }

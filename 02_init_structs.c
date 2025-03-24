@@ -28,8 +28,8 @@ void	draw_ceiling_and_floor(t_game *game)
 	j = 0;
 	//ceiling = get_rgba(128, 112, 214, 255);
 	//floor = get_rgba(255, 199, 231, 255);
-	ceiling = game->map_struct->ceiling;
-	floor = game->map_struct->floor;
+	ceiling = game->map->ceiling;
+	floor = game->map->floor;
 	while (i < WIDTH)
 	{
 		j = 0;
@@ -48,7 +48,7 @@ void	draw_ceiling_and_floor(t_game *game)
 int	init_structs_in_game(t_game *game)
 {
 	// the following two structs might have to be initialized in the main function
-	//game->map_struct = init_map_struct();
+	//game->map = init_map_struct();
 	//init_player_struct(t_content *map)
 	game->img = init_img(game);
 	if (!game->img)
@@ -56,10 +56,10 @@ int	init_structs_in_game(t_game *game)
 		ft_putstr_fd("game->img error\n", 2);
 		return (0);
 	}
-	game->ray_struct = (t_ray *)malloc(sizeof(t_ray));
-	if (!game->ray_struct)
+	game->ray = (t_ray *)malloc(sizeof(t_ray));
+	if (!game->ray)
 	{
-		ft_putstr_fd("game->ray_struct error\n", 2);
+		ft_putstr_fd("game->ray error\n", 2);
 		return (0);
 	}
 	game->textures = init_textures(game);

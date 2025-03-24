@@ -44,9 +44,9 @@ mlx_texture_t	*get_wall_texture(t_game *game)
 {
 	mlx_texture_t	*texture;
 
-    if (game->ray_struct->side == 0)
+    if (game->ray->side == 0)
 	{
-		if (game->ray_struct->dir_x > 0)
+		if (game->ray->dir_x > 0)
             texture = game->textures->EA_path;
 		else
 			texture = game->textures->WE_path;
@@ -54,7 +54,7 @@ mlx_texture_t	*get_wall_texture(t_game *game)
     }
 	else
 	{
-        if (game->ray_struct->dir_y > 0)
+        if (game->ray->dir_y > 0)
 			texture = game->textures->SO_path;
         else
 			texture = game->textures->NO_path;
@@ -75,33 +75,48 @@ void	draw_walls_with_texture(int x, t_game *game)
 
 	texture = get_wall_texture(game);
 
-	if (game->ray_struct->side == 0)
+
+	//1.
+
+	// game->textures_wall_x: finds the exact position where the wall was hit
+	// it is required to know which x position we need to get the pixels from
+	if (game->ray->side == 0)
 	{
-		game->textures->wall_x = game->player_struct->pos_y
-		+ game->ray_struct->perp_wall_dist * game->ray_struct->dir_y;
+		game->textures->wall_x = game->player->pos_y
+		+ game->ray->perp_wall_dist * game->ray->dir_y;
 	}
 	else
 	{
-		game->textures->wall_x = game->player_struct->pos_x
-		+ game->ray_struct->perp_wall_dist * game->ray_struct->dir_x;
+		game->textures->wall_x = game->player->pos_x
+		+ game->ray->perp_wall_dist * game->ray->dir_x;
 	}
+	// removes the integer part of a number: 3.14 = 0.14
+	// line removes the grid square number, leaving only the position inside
+	// that grid square. This position is then used to find the correct 
+	// pixel on the texture.
 	game->textures->wall_x -= floor((game->textures->wall_x));
 
   	//x coordinate on the texture
+	// tex_x finds which 'stip' of the texture to be used
 	game->textures->tex_x = (int)(game->textures->wall_x * (double)(texture->width));
-	if (game->ray_struct->side == 0 && game->ray_struct->dir_x > 0)
+	if (game->ray->side == 0 && game->ray->dir_x > 0)
 		game->textures->tex_x = texture->width - game->textures->tex_x - 1;
-	if (game->ray_struct->side == 1 && game->ray_struct->dir_y < 0)
+	if (game->ray->side == 1 && game->ray->dir_y < 0)
 		game->textures->tex_x = texture->width - game->textures->tex_x - 1;
 
+	/*********************************************************************/
+
+	// 2. 
 	// How much to increase the texture coordinate per screen pixel
-	game->textures->step = 1.0 * texture->height / game->ray_struct->line_height;
+	// distance to move
+	game->textures->step = 1.0 * texture->height / game->ray->line_height;
 	// Starting texture coordinate
-	game->textures->tex_pos = (game->ray_struct->draw_start - HEIGHT / 2 + game->ray_struct->line_height / 2) * game->textures->step;
+	game->textures->tex_pos = (game->ray->draw_start - HEIGHT 
+		/ 2 + game->ray->line_height / 2) * game->textures->step;
 	
-	y = game->ray_struct->draw_start;
+	y = game->ray->draw_start;
 
-	while (y < game->ray_struct->draw_end)
+	while (y < game->ray->draw_end)
 	{
 		// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 		game->textures->tex_y = (int)game->textures->tex_pos & (texture
@@ -139,7 +154,7 @@ void	draw_walls_with_colors(int x, t_game *game)
 	int			i;
 
 	color = RGB_Green;
-	if (game->ray_struct->side == 1)
+	if (game->ray->side == 1)
 	{
 		// Darken the color when it is a side wall (divide each component by 2)
 		r = (color >> 24) & 0xFF;
@@ -151,8 +166,8 @@ void	draw_walls_with_colors(int x, t_game *game)
 		b /= 2;
 		color = (r << 24) | (g << 16) | (b << 8) | a;
 	}
-	i = game->ray_struct->draw_start;
-	while (i < game->ray_struct->draw_end)
+	i = game->ray->draw_start;
+	while (i < game->ray->draw_end)
 	{
 		if (i >= 0 && i < HEIGHT && x >= 0 && x < WIDTH)
 			mlx_put_pixel(game->img, x, i, color);
@@ -160,7 +175,7 @@ void	draw_walls_with_colors(int x, t_game *game)
 
 }
 	//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-	//if(game->ray_struct->side == 1)
+	//if(game->ray->side == 1)
 	//	color = (color >> 1) & 8355711;
 	//buffer[y][x] = color;
 */
