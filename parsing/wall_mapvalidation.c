@@ -6,28 +6,28 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:38:13 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 13:45:52 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:28:17 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int validate_wall(t_args *s_map)
+int validate_wall(char **file_matrix)
 {
 	int cols;
 	int i;
 	
-	cols = s_map->map_position;
+	cols = find_map(file_matrix);
 	i = 0;
-	while(s_map->matrix[cols] != NULL)
+	while(file_matrix[cols] != NULL)
 	{
 		i = 0;
-		while(s_map->matrix[cols][i] != '\0')
+		while(file_matrix[cols][i] != '\0')
 		{
-			if(s_map->matrix[cols][i] == '0'
-			|| ft_strchr("NSEW", s_map->matrix[cols][i]))
+			if(file_matrix[cols][i] == '0'
+			|| ft_strchr("NSEW", file_matrix[cols][i]))
 			{
-				if(!check_wall(s_map->matrix, cols, i))
+				if(!check_wall(file_matrix, cols, i))
 					return(0);
 			}
 			i++;	
@@ -62,25 +62,25 @@ int check_wall(char **matrix, int cols, int i)
 
 
 
-int empty_line(t_args *s_map)
+int empty_line(char **file_matrix)
 {
 	int cols;
 	int i;
 
-	cols = s_map->map_position;
-	while(s_map->matrix[cols] != NULL)
+	cols = find_map(file_matrix);
+	while(file_matrix[cols] != NULL)
 	{
-		i = walk_spaces(s_map->matrix[cols]);
-		if(i > 1 && s_map->matrix[cols][i] == '\0')
+		i = walk_spaces(file_matrix[cols]);
+		if(i > 1 && file_matrix[cols][i] == '\0')
 			return (0);
-		if(s_map->matrix[cols][i] == '\0')
+		if(file_matrix[cols][i] == '\0')
 			break ;
 		cols++;	
 	}
-	while(s_map->matrix[cols] != NULL)
+	while(file_matrix[cols] != NULL)
 	{
-		i = walk_spaces(s_map->matrix[cols]);
-		if(s_map->matrix[cols][i] != '\0')
+		i = walk_spaces(file_matrix[cols]);
+		if(file_matrix[cols][i] != '\0')
 			return(0);
 		cols++;	
 	}

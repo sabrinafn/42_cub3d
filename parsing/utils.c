@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_things.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/26 17:28:57 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/31 16:49:17 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/03/24 14:05:51 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/03/24 14:41:09 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
+
+int	print_error(char *e)
+{
+	printf("Error\n%s", e);
+	return (0);
+}
+
+int walk_spaces(char *string)
+{
+	int i;
+
+	i = 0;
+	while(string[i] == ' ' || string[i] == '\n' || string[i] == '\t')
+		i++;
+	return(i);	
+}
 
 void	free_matrix(char **malloc_string)
 {

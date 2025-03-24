@@ -6,20 +6,20 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/20 16:32:33 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:09:30 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int  validate_content(t_args *s_map)
+int  validate_content(char **matrix_file)
 {
-	if(!check_elements(s_map->matrix))
+	if(!check_elements(matrix_file))
 		return(0);
-	if(!validate_numbers(s_map->matrix))
+	if(!validate_numbers(matrix_file))
 		return(0);
-	//if(!texture_path(s_map->matrix) == 1)
-	  	//return(0);		
+	if(!texture_path(matrix_file))
+	  	return(0);		
 	return(1);	
 }
 

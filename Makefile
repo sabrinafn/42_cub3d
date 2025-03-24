@@ -6,7 +6,7 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:38:48 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/03/13 17:56:31 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/03/24 14:06:29 by mgonzaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ FILES := main.c init_game.c init_structs.c init_mlx.c init_player_struct.c \
 		calculate_rays.c wall_calculations.c key_hooks.c parsing/read_content.c \
 		parsing/find_map.c parsing/map_validation.c parsing/find_player.c \
 		parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
-		parsing/get_info.c parsing/check_funcitions.c
+		parsing/get_info.c parsing/check_argv.c
 
 OBJ := $(FILES:.c=.o)
 
