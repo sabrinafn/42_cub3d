@@ -26,9 +26,9 @@ LIBFT := libft/libft.a
 MLXLIB := MLX42/build/libmlx42.a
 
 FILES := main.c 01_init_game.c 02_init_structs.c init_player_struct.c init_mlx.c\
-		calculate_rays.c wall_calculations.c key_hooks.c key_hooks_2.c parsing/read_content.c \
-		parsing/find_map.c parsing/map_validation.c parsing/find_player.c \
-		parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
+		calculate_rays.c wall_calculations.c wall_colours.c key_hooks.c key_hooks_2.c \
+		parsing/read_content.c parsing/find_map.c parsing/map_validation.c \
+		parsing/find_player.c parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
 		parsing/get_info.c parsing/check_funcitions.c
 
 OBJ := $(FILES:.c=.o)

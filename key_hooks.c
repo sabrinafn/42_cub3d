@@ -24,13 +24,13 @@ void	key_pressed_function(mlx_key_data_t keydata, void *param)
 		move_player_w(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
 		move_player_s(game);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_A)) // move player to the left
+	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
 		move_player_a(game);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_D)) // move player to the right
+	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		move_player_d(game);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT)) // move camera to the left
+	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		move_player_vision_left(game);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT)) // move camera to the right
+	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		move_player_vision_right(game);
 }
 
@@ -80,7 +80,7 @@ void	move_player_s(t_game *game)
 	}
 }
 
-void	move_player_a(t_game *game) // move left
+void	move_player_a(t_game *game)
 {
 	double	new_x;
 	double	new_y;
@@ -103,7 +103,7 @@ void	move_player_a(t_game *game) // move left
 	}
 }
 
-void	move_player_d(t_game *game) // move right
+void	move_player_d(t_game *game)
 {
 	double	new_x;
 	double	new_y;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_structs.c                                     :+:      :+:    :+:   */
+/*   02_init_structs.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/23 12:30:00 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:52:37 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ void	draw_ceiling_and_floor(t_game *game)
 
 int	init_structs_in_game(t_game *game)
 {
-	// the following two structs might have to be initialized in the main function
-	//game->map = init_map_struct();
-	//init_player_struct(t_content *map)
 	game->img = init_img(game);
 	if (!game->img)
 	{

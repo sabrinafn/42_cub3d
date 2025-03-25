@@ -193,11 +193,15 @@ int find_map(t_args *s_map);
 void 	get_color_number(t_content *s_content);
 
 // wall_calculations.c
-void	get_wall_height(t_ray *ray);
 void	calculate_and_draw_walls(t_game *game, mlx_texture_t *texture, int x);
 void	calculate_texture_step_and_position(t_game *game, int tex_height);
-void	find_x_strip(t_game *game, int tex_width);
+void	calculate_x_for_vertical_slice(t_game *game, int tex_width);
 void	find_x_pixel(t_game *game);
+void	get_wall_height(t_ray *ray);
+
+// wall_colors.c
+uint32_t	get_current_pixel_color(t_game *game, mlx_texture_t *texture);
+int		get_pixel_index(t_game *game, mlx_texture_t *texture);
 
 // key_hooks.c
 void	key_pressed_function(mlx_key_data_t keydata, void *param);
