@@ -19,15 +19,11 @@ void	update_struct_position(t_position **pos, int x, int y, char c)
 	(*pos)->direction = c;
 }
 
-t_position	*find_char(char **map, int map_height, int map_width)
+void	find_char(t_position *pos, char **map, int map_height, int map_width)
 {
-	t_position	*pos;
 	int			y;
 	int			x;
 
-	pos = (t_position *)malloc(sizeof(t_position));
-	if (!pos || !map)
-		return (NULL);
 	y = 0;
 	while (y < map_height && map[y])
 	{
@@ -38,13 +34,12 @@ t_position	*find_char(char **map, int map_height, int map_width)
 				|| map[y][x] == 'W' || map[y][x] == 'E')
 			{
 				update_struct_position(&pos, x, y, map[y][x]);
-				return (pos);
+				return ;
 			}
 			x++;
 		}
 		y++;
 	}
-	return (NULL);
 }
 
 void	set_direction_north_and_south(char dir, t_player **player)
@@ -89,7 +84,8 @@ t_player	*init_player_struct(t_content *map)
 	t_position	*pos;
 
 	player = (t_player *)malloc(sizeof(t_player));
-	pos = find_char(map->map, map->map_max_y, map->map_max_x);
+	pos = (t_position *)malloc(sizeof(t_position));
+	find_char(pos, map->map, map->map_max_y, map->map_max_x);
 	player->pos_x = pos->x + 0.5;
 	player->pos_y = pos->y + 0.5;
 	if (pos->direction == 'N' || pos->direction == 'S')
