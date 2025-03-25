@@ -51,7 +51,6 @@ void	set_direction_north_and_south(char dir, t_player **player)
 {
 	if (dir == 'N')
 	{
-		printf("found north\n");
 		(*player)->dir_x = 0;
 		(*player)->dir_y = -1;
 		(*player)->plane_x = 0.66;
@@ -59,7 +58,6 @@ void	set_direction_north_and_south(char dir, t_player **player)
 	}
 	else if (dir == 'S')
 	{
-		printf("found south\n");
 		(*player)->dir_x = 0;
 		(*player)->dir_y = 1;
 		(*player)->plane_x = -0.66;
@@ -71,7 +69,6 @@ void	set_direction_west_and_east(char dir, t_player **player)
 {
 	if (dir == 'E')
 	{
-		printf("found east\n");
 		(*player)->dir_x = 1;
 		(*player)->dir_y = 0;
 		(*player)->plane_x = 0;
@@ -79,7 +76,6 @@ void	set_direction_west_and_east(char dir, t_player **player)
 	}
 	else if (dir == 'W')
 	{
-		printf("found west\n");
 		(*player)->dir_x = -1;
 		(*player)->dir_y = 0;
 		(*player)->plane_x = 0;

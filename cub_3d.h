@@ -35,6 +35,7 @@
 # define ERROR_12 "Invalid Wall in map\n"
 # define ERROR_13 "Invalid Character in map\n"
 # define ERROR_14 "Empty line in map\n"
+# define ERROR_21 "Impossible to init "
 
 
 
@@ -155,7 +156,7 @@ int	get_map_sizes_y(t_content *s_content);
 int get_map_sizes_x(t_content *s_content);
 
 // init_game
-void		init_game(t_game *game);
+int		init_game(t_game *game);
 void		render_raycast_frame(t_game *game);
 void		draw_walls_with_texture(int x, t_game *game);
 

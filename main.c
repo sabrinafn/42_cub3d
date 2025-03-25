@@ -12,6 +12,33 @@
 
 #include "cub_3d.h"
 
+void	free_all(t_game *game)
+{
+//	typedef struct s_game
+//{
+//	t_ray		*ray;
+//	t_player	*player;
+//	t_content	*map;
+//	mlx_t		*mlx;
+//	mlx_image_t	*img;
+//	t_textures	*textures;
+//	t_game;
+
+	printf("hi\n");
+	if (game->map)
+	{
+		//free_matrix(game->map->map);
+		//free(game->map->NO_path);
+		//free(game->map->SO_path);
+		//free(game->map->WE_path);
+		//free(game->map->EA_path);
+		//free_matrix(game->map->color_C);
+		//free_matrix(game->map->color_F);
+		free(game->map);
+	}
+
+}
+
 int main(int argc, char **argv)
 {
 	t_game		*game;
@@ -49,6 +76,7 @@ int main(int argc, char **argv)
 	game->map = s_content;
 	game->player = init_player_struct(game->map);
 	init_game(game);
+	free_all(game);
 	return(0);
 }
 

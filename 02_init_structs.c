@@ -45,6 +45,7 @@ void	draw_ceiling_and_floor(t_game *game)
 
 int	init_structs_in_game(t_game *game)
 {
+	// dar free aqui dentro em caso de erro
 	game->img = init_img(game);
 	if (!game->img)
 	{
