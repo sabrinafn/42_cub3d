@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 18:50:53 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:57:09 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	get_content(char **file_matrix, t_content *s_content)
 		return (0);
 	}
 	get_color_number(s_content);
-	get_map_sizes_y(s_content);
-	get_map_sizes_x(s_content);
+	s_content->map_max_y =  get_map_sizes_y(file_matrix);
+	s_content->map_max_x =  get_map_sizes_x(file_matrix);
 	return (1);
 }
 

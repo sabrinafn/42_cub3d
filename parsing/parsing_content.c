@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 19:28:57 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:17:19 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	check_numbers(char *string, int count)
 			count++;
 		while (string[count] && (string[count] >= '0' && string[count] <= '9'))
 			temp[i++] = string[count++];
-		temp[i + 1] = '\0';
 		number = ft_atoi(temp);
 		if (number < 0 || number > 255)
 		{

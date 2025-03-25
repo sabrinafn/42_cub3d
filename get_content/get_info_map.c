@@ -6,76 +6,104 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:23:25 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 18:50:17 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:20:45 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int	get_map(char **file_matrix, t_content *s_content)
+int	get_map(char **matrix, t_content *s_content)
 {
 	int	i;
-	int	j;
-	int	lines_map;
+	int	l;
 
-	j = 0;
 	i = 0;
-	lines_map = find_map(file_matrix);
-	s_content->map = malloc((lines_map + 1) * sizeof(char *));
+	l = get_map_sizes_y(matrix);
+	s_content->map = ft_calloc((l + 2) , sizeof(char *));
 	if (!s_content->map)
 		return (print_error(ERROR_3));
-	while (file_matrix[lines_map] != NULL)
+	l = find_map(matrix);
+	while (matrix[l] != NULL)
 	{
-		i = ft_strlen(file_matrix[lines_map]);
-		s_content->map[j] = malloc((i + 1) * sizeof(char));
-		if (!s_content->map[j])
+		s_content->map[i] = get_map_string(get_map_sizes_x(matrix), matrix[l]);
+		if (!s_content->map[i])
 		{
 			free_matrix(s_content->map);
 			return (print_error(ERROR_3));
 		}
-		ft_strlcpy(s_content->map[j], file_matrix[lines_map], i);
-		j++;
-		lines_map++;
+		l++;
+		i++;
 	}
-	s_content->map[j] = NULL;
+	s_content->map[i] = NULL;
 	return (1);
 }
 
-void	get_map_sizes_y(t_content *s_content)
+char *get_map_string(int size_x, char *string)
+{
+	char *result;
+	int i;
+	int j;
+	
+	i = 0;
+	j = 0;
+	printf("%i sizex \n", size_x);
+	result = ft_calloc((size_x + 1) , sizeof(char));
+	if (!result)
+		return (NULL);
+	while(string[i] != '\n' && string[i] != '\0')
+	{
+		result[j] = string[i];
+		j++;
+		i++;
+	}
+	while(j < size_x)
+	{
+		result[j] = 'j';
+		j++;
+	}
+	result[j] = '\0';
+	return(result);
+}
+
+int	get_map_sizes_y(char **file_matrix)
 {
 	int	i;
 	int	count;
+	int lines;
 
-	i = 0;
+	i = find_map(file_matrix);
+	lines = 0;
 	count = 0;
-	while (s_content->map[i] != NULL)
+	while (file_matrix[i] != NULL)
 	{
-		while (s_content->map[i][count] == ' ')
+		while (file_matrix[i][count] == ' ')
 			count++;
-		if (s_content->map[i][count] == '\n'
-			|| s_content->map[i][count] == '\0')
+		if (file_matrix[i][count] == '\n'
+			|| file_matrix[i][count] == '\0')
 			break ;
 		i++;
+		lines++;
 	}
-	s_content->map_max_y = i;
+	printf(" numero de y %i\n", lines);
+	return(lines);
 }
 
-void	get_map_sizes_x(t_content *s_content)
+int	get_map_sizes_x(char **file_matrix)
 {
 	int	i;
 	int	size_line;
 	int	comp_size;
 
-	i = 0;
+	i = find_map(file_matrix);
 	size_line = 0;
 	comp_size = 0;
-	size_line = ft_strlen(s_content->map[i]);
-	while (s_content->map[i] != NULL)
+	size_line = ft_strlen(file_matrix[i]);
+	while (file_matrix[i] != NULL)
 	{
-		comp_size = ft_strlen(s_content->map[i]);
+		comp_size = ft_strlen(file_matrix[i]);
 		if (comp_size > size_line)
 			size_line = comp_size;
 		i++;
 	}
-	s_content->map_max_x = size_line;
+	return(size_line);
 }

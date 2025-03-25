@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 18:56:37 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:17:32 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ int	main(int argc, char **argv)
 	s_content = malloc(sizeof(t_content));
 	if (!get_content(file_matrix, s_content))
 		return (1);
+	int i;
+	i = 0;
+	// while(s_content->map != NULL)
+	// {
+	// 	printf("%s\n",s_content->map[i]);
+	// 	i++;
+	// }
 	free_matrix(file_matrix);
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
