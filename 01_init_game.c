@@ -30,6 +30,7 @@ void	render_raycast_frame(t_game *game)
 	draw_ceiling_and_floor(game);
 	while (x < WIDTH)
 	{
+		// check the functions beings called and if it makes sense
 		calculate_rays(x, game);
 		get_wall_height(game->ray);
 		draw_walls_with_texture(x, game);
