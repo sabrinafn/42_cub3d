@@ -37,5 +37,5 @@ uint32_t	get_current_pixel_color(t_game *game, mlx_texture_t *texture)
 	green = texture->pixels[pixel_index + 1];
 	blue = texture->pixels[pixel_index + 2];
 	alpha = texture->pixels[pixel_index + 3];
-	return (get_rgba(red, green, blue, alpha));
+	return (ft_pixel(red, green, blue, alpha));
 }

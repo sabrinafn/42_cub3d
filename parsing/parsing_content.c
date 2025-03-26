@@ -126,6 +126,7 @@ int	texture_path(char **m)
 		|| m[cols][count] == 'S' || m[cols][count] == 'E')
 		{
 			temp = ft_split(m[cols], ' ');
+			//temp[1][ft_strlen(temp[1] - 1)] = '\0';
 			text = mlx_load_png(temp[1]);
 			if (text == NULL)
 			{

@@ -26,7 +26,7 @@ int	get_map(char **matrix, t_content *s_content)
 	l = find_map(matrix);
 	while (matrix[l] != NULL)
 	{
-		s_content->map[i] = get_map_string(get_map_sizes_x(matrix), matrix[l]);
+		s_content->map[i] = get_map_string(38, matrix[l]);
 		if (!s_content->map[i])
 		{
 			free_matrix(s_content->map);
@@ -47,8 +47,8 @@ char *get_map_string(int size_x, char *string)
 	
 	i = 0;
 	j = 0;
-	printf("%i sizex \n", size_x);
-	result = ft_calloc((size_x + 1) , sizeof(char));
+	result = malloc((size_x + 1) * sizeof(char));
+	ft_bzero(result, size_x);
 	if (!result)
 		return (NULL);
 	while(string[i] != '\n' && string[i] != '\0')
@@ -85,7 +85,6 @@ int	get_map_sizes_y(char **file_matrix)
 		i++;
 		lines++;
 	}
-	printf(" numero de y %i\n", lines);
 	return(lines);
 }
 

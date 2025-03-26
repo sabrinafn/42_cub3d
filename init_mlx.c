@@ -40,10 +40,9 @@ t_textures	*init_textures(t_game *game)
 	tex = (t_textures *)malloc(sizeof(t_textures));
 	if (!tex)
 	{
-		printf("error in malloc textures\n");
+		print_error(ERROR_3);
 		return (NULL);
 	}
-	printf("string path: [%s]\n", game->map->NO_path);
 	tex->NO_path = mlx_load_png(game->map->NO_path);
 	tex->SO_path = mlx_load_png(game->map->SO_path);
 	tex->WE_path = mlx_load_png(game->map->WE_path);
@@ -58,7 +57,7 @@ mlx_image_t	*init_img(t_game *game)
 	img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (!img)
 	{
-		ft_putstr_fd("Error creating image2\n", 2);
+		print_error(ERROR_18);
 		return (NULL);
 	}
 	return (img);
@@ -68,9 +67,6 @@ int	init_window(t_game *game)
 {
 	game->mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
 	if (!game->mlx)
-	{
-		ft_putstr_fd("game->mlx error\n", 2);
-		return (0);
-	}
+		return (print_error(ERROR_17));
 	return (1);
 }

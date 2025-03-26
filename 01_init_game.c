@@ -42,11 +42,12 @@ void	render_raycast_frame(t_game *game)
 int	init_game(t_game *game)
 {
 	if (!init_window(game))
-		return (print_error(ERROR_21));
+		return (print_error(ERROR_16));
 	if (!init_structs_in_game(game))
 		return (print_error(ERROR_3));
 	render_raycast_frame(game);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
 	mlx_loop(game->mlx);
+	mlx_terminate(game->mlx);
 	return (1);
 }

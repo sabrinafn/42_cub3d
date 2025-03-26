@@ -12,11 +12,6 @@
 
 #include "cub_3d.h"
 
-int	get_rgba(int r, int g, int b, int a)
-{
-	return (r << 24 | g << 16 | b << 8 | a);
-}
-
 void	draw_ceiling_and_floor(t_game *game)
 {
 	int				i;
@@ -45,24 +40,28 @@ void	draw_ceiling_and_floor(t_game *game)
 
 int	init_structs_in_game(t_game *game)
 {
-	// dar free aqui dentro em caso de erro
 	game->img = init_img(game);
 	if (!game->img)
-	{
-		ft_putstr_fd("game->img error\n", 2);
 		return (0);
-	}
 	game->ray = (t_ray *)malloc(sizeof(t_ray));
 	if (!game->ray)
 	{
-		ft_putstr_fd("game->ray error\n", 2);
-		return (0);
+		mlx_delete_image(game->mlx, game->img);
+		return (print_error(ERROR_3));
+	}
+	game->player = init_player_struct(game->map);
+	if (!game->player)
+	{
+		mlx_delete_image(game->mlx, game->img);
+		free(game->ray);
 	}
 	game->textures = init_textures(game);
 	if (!game->textures)
 	{
-		ft_putstr_fd("game->textures error\n", 2);
-		return (0);
+		mlx_delete_image(game->mlx, game->img);
+		free(game->ray);
+		free(game->player);
+		return (print_error(ERROR_3));
 	}
 	return (1);
 }

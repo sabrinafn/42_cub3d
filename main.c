@@ -24,7 +24,6 @@ void	free_all(t_game *game)
 //	t_textures	*textures;
 //	t_game;
 
-	printf("hi\n");
 	if (game->map)
 	{
 		//free_matrix(game->map->map);
@@ -53,22 +52,21 @@ int	main(int argc, char **argv)
 	s_content = malloc(sizeof(t_content));
 	if (!get_content(file_matrix, s_content))
 		return (1);
-	int i;
-	i = 0;
-	// while(s_content->map[i] != NULL)
-	// {
-	// 	printf("%s\n",s_content->map[i]);
-	// 	i++;
-	// }
 	free_matrix(file_matrix);
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 	{
 		printf("!game malloc\n");
-		return (0);
+		return (1);
 	}
-	game->map_struct = s_content;
-	game->player_struct = init_player_struct(game->map_struct);
+	game->map = s_content;
+	free_matrix(s_content->map);
+	free_matrix(s_content->color_C);
+	free_matrix(s_content->color_F);
+	free(s_content->NO_path);
+	free(s_content->SO_path);
+	free(s_content->WE_path);
+	free(s_content->EA_path);
 	init_game(game);
 	free_all(game);
 	return(0);

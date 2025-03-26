@@ -84,7 +84,9 @@ t_player	*init_player_struct(t_content *map)
 	t_position	*pos;
 
 	player = (t_player *)malloc(sizeof(t_player));
+	player = NULL;
 	pos = (t_position *)malloc(sizeof(t_position));
+	pos = NULL;
 	find_char(pos, map->map, map->map_max_y, map->map_max_x);
 	player->pos_x = pos->x + 0.5;
 	player->pos_y = pos->y + 0.5;
@@ -92,5 +94,7 @@ t_player	*init_player_struct(t_content *map)
 		set_direction_north_and_south(pos->direction, &player);
 	else if (pos->direction == 'W' || pos->direction == 'E')
 		set_direction_west_and_east(pos->direction, &player);
+	if (pos)
+		free(pos);
 	return (player);
 }

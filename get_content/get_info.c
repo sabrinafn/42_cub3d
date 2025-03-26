@@ -26,6 +26,10 @@ int	get_content(char **file_matrix, t_content *s_content)
 	}
 	if (!get_texture_path(file_matrix, s_content))
 	{
+		printf("%s\n", s_content->NO_path);
+		printf("%s\n", s_content->SO_path);
+		printf("%s\n", s_content->WE_path);
+		printf("%s\n", s_content->EA_path);
 		printf("error when creating texture\n");
 		return (0);
 	}

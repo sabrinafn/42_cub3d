@@ -36,11 +36,9 @@
 # define ERROR_13 "Invalid Wall in map\n"
 # define ERROR_14 "Empty line in map\n"
 # define ERROR_15 "Failed to open PNG file\n"
-# define ERROR_21 "Impossible to init "
-
-
-
-
+# define ERROR_16 "Impossible to init game\n"
+# define ERROR_17 "Failed to open MLX window\n"
+# define ERROR_18 "Failed to init MLX image\n"
 
 # define WIDTH 800
 # define HEIGHT 800
@@ -53,7 +51,6 @@ typedef struct s_position
 	int 	x;
 	int		y;
 } 	t_position;
-
 
 typedef struct s_content
 {
@@ -85,13 +82,13 @@ typedef struct s_ray
 	double	camera_x;
 	double	dir_x;
 	double	dir_y;
-	int		map_x;
-	int		map_y;
 	double	side_dist_x;
 	double	side_dist_y;
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
+	int		map_x;
+	int		map_y;
 	int		step_x;
 	int		step_y;
 	int		side;
@@ -203,7 +200,7 @@ int	get_rgba(int r, int g, int b, int a);
 
 // init player_struct
 t_player	*init_player_struct(t_content *map);
-t_args		*init_map_struct(void);
+t_content		*init_map_struct(void);
 
 // player movements
 void	move_player_w(t_game *game);
@@ -236,6 +233,5 @@ int		get_pixel_index(t_game *game, mlx_texture_t *texture);
 // key_hooks.c
 void	key_pressed_function(mlx_key_data_t keydata, void *param);
 
-void	draw_walls_with_texture(int x, t_game *game);
 
 #endif
