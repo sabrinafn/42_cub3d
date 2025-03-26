@@ -48,6 +48,13 @@ int	init_game(t_game *game)
 	render_raycast_frame(game);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
 	mlx_loop(game->mlx);
+	mlx_delete_texture(game->textures->NO_path);
+	mlx_delete_texture(game->textures->SO_path);
+	mlx_delete_texture(game->textures->WE_path);
+	mlx_delete_texture(game->textures->EA_path);
+	free(game->textures);
+	free(game->ray);
+	free(game->player);
 	mlx_terminate(game->mlx);
 	return (1);
 }

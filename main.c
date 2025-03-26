@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	free(s_content->SO_path);
 	free(s_content->WE_path);
 	free(s_content->EA_path);
-	//free_all(game);
+	free(game);
 	return(0);
 }
 
