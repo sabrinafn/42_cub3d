@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player_struct.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:32:27 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/20 14:40:15 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/26 13:51:02 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ t_player	*init_player_struct(t_content *map)
 	t_position	*pos;
 
 	player = (t_player *)malloc(sizeof(t_player));
-	player = NULL;
+	//player = NULL;
 	pos = (t_position *)malloc(sizeof(t_position));
-	pos = NULL;
+	pos->x = -1;
+	pos->y = -1;
 	find_char(pos, map->map, map->map_max_y, map->map_max_x);
 	player->pos_x = pos->x + 0.5;
 	player->pos_y = pos->y + 0.5;

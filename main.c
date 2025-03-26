@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/26 10:19:08 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/26 13:57:42 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	game->map = s_content;
+	init_game(game);
 	free_matrix(s_content->map);
 	free_matrix(s_content->color_C);
 	free_matrix(s_content->color_F);
@@ -67,8 +68,7 @@ int	main(int argc, char **argv)
 	free(s_content->SO_path);
 	free(s_content->WE_path);
 	free(s_content->EA_path);
-	init_game(game);
-	free_all(game);
+	//free_all(game);
 	return(0);
 }
 

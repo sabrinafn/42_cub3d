@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_rays.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 19:03:11 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/25 13:53:17 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:00:44 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	perform_dda(t_ray *ray, t_content *map)
 		}
 		if (map->map[ray->map_y][ray->map_x] == '1'
 			&& ray->map_x < map->map_max_x && ray->map_y < map->map_max_y)
-			ray->hit = 1;
+				ray->hit = 1;
 	}
 }
 
