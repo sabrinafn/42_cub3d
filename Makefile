@@ -6,7 +6,7 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:38:48 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/03/13 17:56:31 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/03/24 18:43:38 by mgonzaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,11 @@ MLXLIB := MLX42/build/libmlx42.a
 
 FILES := main.c 01_init_game.c 02_init_structs.c init_player_struct.c init_mlx.c\
 		calculate_rays.c wall_calculations.c wall_colours.c key_hooks.c key_hooks_2.c \
-		parsing/read_content.c parsing/find_map.c parsing/map_validation.c \
-		parsing/find_player.c parsing/wall_validation.c parsing/free_things.c parsing/parsing_content.c \
-		parsing/get_info.c parsing/check_funcitions.c
+		parsing/character_mapvalidation.c parsing/check_argv.c parsing/map_validation.c \
+		parsing/parsing_content.c parsing/player_mapvalidation.c parsing/read_argv.c \
+		parsing/utils.c parsing/wall_mapvalidation.c get_content/get_info_map.c \
+		get_content/get_info_utils.c get_content/get_info.c 
+
 
 OBJ := $(FILES:.c=.o)
 

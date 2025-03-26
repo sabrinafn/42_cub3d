@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_things.c                                      :+:      :+:    :+:   */
+/*   char_mapvalidation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/26 17:28:57 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/01/31 16:49:17 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/01/24 13:25:28 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/03/24 17:29:20 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-void	free_matrix(char **malloc_string)
+int	invalid_character(char **file_matrix)
 {
-	int	count;
+	int	cols;
 
-	count = 0;
-	if (!malloc_string)
-		return ;
-	while (malloc_string[count] != NULL)
+	cols = find_map(file_matrix);
+	while (file_matrix[cols] != NULL)
 	{
-		free(malloc_string[count]);
-		count++;
+		if (!validate_char(file_matrix[cols]))
+			return (0);
+		cols++;
 	}
-	free(malloc_string);
+	return (1);
+}
+
+int	validate_char(char *string)
+{
+	int	i;
+
+	i = 0;
+	while (string[i] != '\0')
+	{
+		if (ft_strchr("0NSEW1 \n", string[i]) == NULL)
+			return (0);
+		i++;
+	}
+	return (1);
 }

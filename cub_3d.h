@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/23 15:44:17 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:53:40 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,20 @@
 # define ERROR_1 "Impossible to read the file\n"
 # define ERROR_2 "Empty File\n"
 # define ERROR_3 "Invalid malloc\n"
-# define ERROR_4 "Error: Not enough params!\n"
-# define ERROR_5 "Error: Too many params!\n"
-# define ERROR_6 "Error: The file need be .cub\n"
+# define ERROR_4 "Not enough params!\n"
+# define ERROR_5 "Too many params!\n"
+# define ERROR_6 "The file need be .cub\n"
 # define ERROR_7 "Invalid Numbers Elements\n"
 # define ERROR_8 "Invalid Elements\n"
 # define ERROR_9 "Wrong color number\n"
 # define ERROR_10 "Invalid taxture\n"
 # define ERROR_11 "Invalid player in map\n"
-# define ERROR_12 "Invalid Wall in map\n"
-# define ERROR_13 "Invalid Character in map\n"
+# define ERROR_12 "Invalid Character in map\n"
+# define ERROR_13 "Invalid Wall in map\n"
 # define ERROR_14 "Empty line in map\n"
+# define ERROR_15 "Failed to open PNG file\n"
 # define ERROR_21 "Impossible to init "
+
 
 
 
@@ -52,13 +54,6 @@ typedef struct s_position
 	int		y;
 } 	t_position;
 
-typedef struct s_args
-{
-	char	**matrix;
-	char	*name_file;
-	int		countcols;
-	int		map_position;
-}			t_args;
 
 typedef struct s_content
 {
@@ -129,31 +124,66 @@ typedef struct s_game
 	t_textures	*textures;
 }	t_game;
 
-int			check_arguments(int argc, char *argv);
-int			check_name(char *argv);
-int			print_error(char *e);
-int			countcols(char *file_name);
-char		**makematrix(char *file_name, int count_cols);
-int			read_content(t_args *s_map);
-int			empty_file(char *argv);
-int			validate_map(t_args *s_map);
-int			only_player(char *string);
-int			find_player(t_args *s_map);
-int			invalid_character(t_args *s_map, int cols);
-int			validate_wall(t_args *s_map);
-int			check_wall(char **matrix, int cols, int i);
-int			size_map(t_args *s_map);
-int			walk_spaces(char *string);
-void		free_matrix(char **malloc_string);
-int			validate_content(t_args *s_map);
-int			validate_element(char *matrix_line, int line_number);
-int			check_elements(char **matrix);
-int			validate_numbers(char **matrix);
-int			texture_path(char **matrix);
-int			empty_line(t_args *s_map);
-char	 *get_string(char *string, int count);
-int	get_map_sizes_y(t_content *s_content);
-int get_map_sizes_x(t_content *s_content);
+//#Parsing//
+
+//character_mapvalidation
+int	invalid_character(char **file_matrix);
+int	validate_char(char *string);
+
+//check_argv
+int	check_arguments(int argc, char *argv);
+int	check_name(char *argv);
+int	empty_file(char *argv);
+
+//map_validation
+int	validation_map(char **file_matrix);
+int	validate_content(char **matrix_file);
+
+//parsing_content
+int	check_elements(char **matrix);
+int	validate_element(char *matrix_line, int line_number);
+int	validate_numbers(char **matrix);
+int	check_numbers(char *string, int count);
+int	texture_path(char **m);
+
+//player_mapvalidation
+int	only_player(char *string);
+int	find_player(char **file_matrix);
+
+//read_argv
+int		countcols(char *file_name);
+char	**makematrix(char *file_name, int count_cols);
+int		find_map(char **file_matrix);
+
+//utils
+int		print_error(char *error);
+int		walk_spaces(char *string);
+void	free_matrix(char **malloc_string);
+
+//wall_mapvalidation
+int	validate_wall(char **file_matrix);
+int	check_wall(char **matrix, int cols, int i);
+int	empty_line(char **file_matrix);
+
+
+//#get_content
+
+//get_info_map
+int	get_map(char **file_matrix, t_content *s_content);
+int	get_map_sizes_y(char **file_matrix);
+int	get_map_sizes_x(char **file_matrix);
+char *get_map_string(int size_x, char *string);
+
+//get_info_utils
+int	get_texture_path(char **matrix, t_content *s_content);
+char	*get_string(char *string, int count);
+uint32_t	ft_pixel(uint32_t r, uint32_t g, uint32_t b, uint32_t a);
+void	get_color_number(t_content *s_content);
+
+//get_info
+int		get_content(char **file_matrix, t_content *s_content);
+int		get_color(char **matrix, t_content *s_content);
+char	**get_color_split(char *string, int count);
 
 // init_game
 int		init_game(t_game *game);
@@ -189,8 +219,7 @@ void	init_delta_distance(t_ray *ray);
 void	init_step_and_sidedist(t_ray *ray, t_player *player);
 void	perform_dda(t_ray *ray, t_content *map);
 void	calculate_rays(int x, t_game *game);
-int		get_info(t_args *s_map, t_content *s_content);
-int find_map(t_args *s_map);
+int		find_map(char **file_matrix);
 void 	get_color_number(t_content *s_content);
 
 // wall_calculations.c

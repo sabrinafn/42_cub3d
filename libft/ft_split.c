@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 15:40:50 by mgonzaga          #+#    #+#             */
-/*   Updated: 2023/05/28 05:28:38 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 19:06:28 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**ft_split(char const *s, char c)
 		words[line] = ft_calloc((word_size(&s[i], c) + 1), sizeof(char));
 		if (!words[line])
 			return (NULL);
-		while (s[i] != c && s[i] != '\0')
+		while (s[i] != c && s[i] != '\0' && s[i] != '\n')
 			words[line][letter++] = s[i++];
 		line++;
 	}

@@ -1,49 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_map.c                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/24 13:25:28 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/20 16:32:50 by mgonzaga         ###   ########.fr       */
+/*   Created: 2025/03/24 14:05:51 by mgonzaga          #+#    #+#             */
+/*   Updated: 2025/03/24 17:57:40 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int walk_spaces(char *string)
+int	print_error(char *error)
 {
-	int i;
-
-	i = 0;
-	while(string[i] == ' ' || string[i] == '\n' || string[i] == '\t')
-		i++;
-	return(i);	
+	printf("Error\n%s", error);
+	return (0);
 }
 
-int	validate_char(char *string)
+int	walk_spaces(char *string)
 {
 	int	i;
 
 	i = 0;
-	while(string[i] != '\0')
-	{
-		if(ft_strchr("0NSEW1 \n", string[i]) == NULL)
-			return(0);
-		i++;		
-	}
-	return(1);			
+	while (string[i] == ' ' || string[i] == '\n' || string[i] == '\t')
+		i++;
+	return (i);
 }
 
-int	invalid_character(t_args *s_map, int cols)
+void	free_matrix(char **malloc_string)
 {
-	while(s_map->matrix[cols] != NULL)
-	{
-		if(!validate_char(s_map->matrix[cols]))
-			return(0);
-		cols++;	
-	}
-	return(1);	
-}
+	int	count;
 
+	count = 0;
+	if (!malloc_string)
+		return ;
+	while (malloc_string[count] != NULL)
+	{
+		free (malloc_string[count]);
+		count++;
+	}
+	free (malloc_string);
+}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_content.c                                     :+:      :+:    :+:   */
+/*   read_argv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:13:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/13 19:30:11 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:23:51 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	countcols(char *file_name)
 {
 	int		count;
 	char	*string;
-	int fd;
+	int		fd;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{
-		print_error(ERROR_1);
-		exit(0);
+		printf("Error\nImpossible to read the file\n");
+		exit(1);
 	}
 	count = 0;
 	while (1)
@@ -32,8 +32,8 @@ int	countcols(char *file_name)
 			break ;
 		count++;
 		free (string);
-
 	}
+	free(string);
 	close(fd);
 	return (count);
 }
@@ -43,14 +43,20 @@ char	**makematrix(char *file_name, int count_cols)
 	char	**matrix_malloc;
 	int		count;
 	int		fd;
-	
+
 	count = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		exit(print_error(ERROR_1));
+	{
+		printf("Error\nImpossible to read the file\n");
+		exit(1);
+	}
 	matrix_malloc = ft_calloc (count_cols + 1, sizeof(char *));
 	if (matrix_malloc == NULL)
-		exit(print_error(ERROR_3));
+	{
+		printf("Error\nInvalid malloc\n");
+		exit(1);
+	}
 	while (count < count_cols)
 	{
 		matrix_malloc[count] = get_next_line(fd);
@@ -61,5 +67,19 @@ char	**makematrix(char *file_name, int count_cols)
 	return (matrix_malloc);
 }
 
+int	find_map(char **file_matrix)
+{
+	int	lines_map;
+	int	count;
 
-
+	lines_map = 0;
+	count = 0;
+	while (file_matrix[lines_map] != NULL)
+	{
+		count = walk_spaces(file_matrix[lines_map]);
+		if (file_matrix[lines_map][count] == '1')
+			break ;
+		lines_map++;
+	}
+	return (lines_map);
+}

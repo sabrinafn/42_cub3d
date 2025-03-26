@@ -6,23 +6,34 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:34:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/20 16:37:31 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:54:42 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_3d.h"
 
-int validate_map(t_args *s_map)
+int	validate_content(char **matrix_file)
 {
-	s_map->map_position = find_map(s_map);	
-	if(!find_player(s_map))
-		return(print_error(ERROR_11));
-	if(!invalid_character(s_map, s_map->map_position))
-		return(print_error(ERROR_13));
-	if(!validate_wall(s_map))
-		return(print_error(ERROR_12));
-	if(!empty_line(s_map))
-		return(print_error(ERROR_14));
-	return(1);
+	if (!check_elements(matrix_file))
+		return (0);
+	if (!validate_numbers(matrix_file))
+		return (0);
+	if (!texture_path(matrix_file))
+		return (0);
+	if (!validation_map(matrix_file))
+		return(0);
+	return (1);
+}
+int	validation_map(char **file_matrix)
+{
+	if (!find_player(file_matrix))
+		return (print_error(ERROR_11));
+	if (!invalid_character(file_matrix))
+		return (print_error(ERROR_12));
+	if (!validate_wall(file_matrix))
+		return (print_error(ERROR_13));
+	if (!empty_line(file_matrix))
+		return (print_error(ERROR_14));
+	return (1);
 }
 
