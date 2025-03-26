@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/26 13:46:24 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:14:19 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/types.h>
 # include <unistd.h>
 # include <math.h>
+# include "get_next_line.h"
 # define ERROR_1 "Impossible to read the file\n"
 # define ERROR_2 "Empty File\n"
 # define ERROR_3 "Invalid malloc\n"

@@ -1,13 +1,20 @@
 
+NO ./assets/textures/crying_cat.png
 
-NO ./maps/croissant.png
-            
-            
-SO ./maps/croissant.png
-        
-WE ./maps/croissant.png
 
-EA ./maps/croissant.png
+
+
+SO ./assets/textures/crying_cat.png
+
+
+
+
+WE ./assets/textures/ollie_polite_cat-256x256.png
+
+
+
+
+EA ./assets/textures/ollie_polite_cat-256x256.png
 
 
 F 100,100,0

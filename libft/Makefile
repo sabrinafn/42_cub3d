@@ -6,7 +6,7 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/20 16:00:25 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/01/25 14:32:53 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/03/26 17:10:45 by mgonzaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c \
 ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c \
 ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-gnl/get_next_line.c
 
 
 OBJ = $(FILES:%.c=%.o)

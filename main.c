@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/26 13:57:42 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:35:10 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,19 @@ int	main(int argc, char **argv)
 	if (!check_arguments(argc, argv[1]))
 		return (1);
 	file_matrix = makematrix(argv[1], countcols(argv[1]));
+	//int i = 0;	
+	//while (file_matrix[i] != NULL)
+	//{
+//		printf("%s", file_matrix[i]);
+	//	i++;
+	//}
 	if (!validate_content(file_matrix))
 		return (1);
 	s_content = malloc(sizeof(t_content));
 	if (!get_content(file_matrix, s_content))
 		return (1);
 	free_matrix(file_matrix);
+	
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 	{

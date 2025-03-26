@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/25 15:57:09 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:17:20 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ int	get_content(char **file_matrix, t_content *s_content)
 	}
 	if (!get_texture_path(file_matrix, s_content))
 	{
-		printf("%s\n", s_content->NO_path);
-		printf("%s\n", s_content->SO_path);
-		printf("%s\n", s_content->WE_path);
-		printf("%s\n", s_content->EA_path);
 		printf("error when creating texture\n");
 		return (0);
 	}

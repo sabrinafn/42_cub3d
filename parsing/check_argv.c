@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:58:23 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 18:58:39 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:10:35 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,15 @@ int	empty_file(char *argv)
 {
 	int		fd;
 	char	*string;
-
+	
 	fd = open(argv, O_RDONLY);
 	string = get_next_line(fd);
 	if (string == NULL)
+	{
+		free(string);
+		close(fd);
 		return (0);
+	}
 	free(string);
 	close(fd);
 	return (1);
