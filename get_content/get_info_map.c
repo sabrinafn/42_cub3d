@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:23:25 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/25 16:20:45 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:19:01 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	get_map(char **matrix, t_content *s_content)
 
 	i = 0;
 	l = get_map_sizes_y(matrix);
-	s_content->map = ft_calloc((l + 2) , sizeof(char *));
+	s_content->map = malloc((l + 1) * sizeof(char *));
+	ft_bzero(s_content->map, l);
 	if (!s_content->map)
 		return (print_error(ERROR_3));
 	l = find_map(matrix);
@@ -58,7 +59,7 @@ char *get_map_string(int size_x, char *string)
 	}
 	while(j < size_x)
 	{
-		result[j] = 'j';
+		result[j] = ' ';
 		j++;
 	}
 	result[j] = '\0';

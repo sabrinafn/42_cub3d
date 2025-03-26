@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/25 16:17:32 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:19:08 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		return (1);
 	int i;
 	i = 0;
-	// while(s_content->map != NULL)
+	// while(s_content->map[i] != NULL)
 	// {
 	// 	printf("%s\n",s_content->map[i]);
 	// 	i++;

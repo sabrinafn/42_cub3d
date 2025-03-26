@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 14:13:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 19:29:49 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:23:51 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	countcols(char *file_name)
 		count++;
 		free (string);
 	}
+	free(string);
 	close(fd);
 	return (count);
 }
