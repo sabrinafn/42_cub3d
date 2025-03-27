@@ -238,4 +238,7 @@ void				key_pressed_function(mlx_key_data_t keydata, void *param);
 void				cleanup_mlx(t_game *game);
 void				cleanup_program(t_game *game);
 
+
+void init_map(char *argv, t_game *game);
+
 #endif

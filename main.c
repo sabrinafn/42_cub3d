@@ -15,20 +15,34 @@
 int	main(int argc, char **argv)
 {
 	t_game		*game;
-	char		**file_matrix;
 
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		return (1);
 	if (!check_arguments(argc, argv[1]))
 		return (1);
-	file_matrix = makematrix(argv[1], countcols(argv[1]));
-	if (!validate_content(file_matrix))
-		return (1);
-	game->map = malloc(sizeof(t_content));
-	if (!get_content(file_matrix, game->map))
-		return (1);
+	init_map(argv[1], game);
 	init_game(game);
 	cleanup_program(game);
 	return (0);
+}
+void init_map(char *argv, t_game *game)
+{
+	char		**file_matrix;
+
+	file_matrix = makematrix(argv, countcols(argv));
+	// dar uma verificada na função makematrix
+	if (!validate_content(file_matrix))
+	{
+		free_matrix(file_matrix);
+		free(game);
+		exit (1);
+	}
+	game->map = malloc(sizeof(t_content));
+	if (!get_content(file_matrix, game->map))
+	{
+		free_matrix(file_matrix);
+		cleanup_program(game);
+		exit (1);
+	}
 }
