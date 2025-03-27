@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:34:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/27 18:21:25 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:32:41 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ int	validate_content(char **matrix_file)
 		return (0);
 	if (!validate_numbers(matrix_file))
 		return (0);
-	//if (!texture_path(matrix_file))
-		//return (0);
+	// if (!texture_path(matrix_file))
+	// return (0);
 	if (!validation_map(matrix_file))
-		return(0);
+		return (0);
 	return (1);
 }
+
 int	validation_map(char **file_matrix)
 {
 	if (!invalid_character(file_matrix))
@@ -36,4 +37,3 @@ int	validation_map(char **file_matrix)
 		return (print_error(ERROR_14));
 	return (1);
 }
-

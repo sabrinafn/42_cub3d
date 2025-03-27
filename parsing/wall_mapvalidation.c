@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:38:13 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 17:37:02 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:31:00 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	validate_wall(char **file_matrix)
 		i = 0;
 		while (file_matrix[cols][i] != '\0')
 		{
-			if (file_matrix[cols][i] == '0'
-			|| ft_strchr("NSEW", file_matrix[cols][i]))
+			if (file_matrix[cols][i] == '0' || ft_strchr("NSEW",
+					file_matrix[cols][i]))
 			{
 				if (!check_wall(file_matrix, cols, i))
 					return (0);
@@ -43,18 +43,14 @@ int	check_wall(char **matrix, int cols, int i)
 		return (0);
 	else if (cols == 0 || !matrix[cols + 1])
 		return (0);
-	else if (matrix[cols][i + 1] == ' '
-		|| matrix[cols][i - 1] == ' '
-		|| matrix[cols + 1][i] == ' '
-		|| matrix[cols - 1][i] == ' ')
+	else if (matrix[cols][i + 1] == ' ' || matrix[cols][i - 1] == ' '
+		|| matrix[cols + 1][i] == ' ' || matrix[cols - 1][i] == ' ')
 		return (0);
-	else if (matrix[cols][i + 1] == '\n'
-	|| matrix[cols + 1][i] == '\n'
-	|| matrix[cols - 1][i] == '\n')
+	else if (matrix[cols][i + 1] == '\n' || matrix[cols + 1][i] == '\n'
+		|| matrix[cols - 1][i] == '\n')
 		return (0);
-	else if (matrix[cols][i + 1] == '\0'
-	|| matrix[cols + 1][i] == '\0'
-	|| matrix[cols - 1][i] == '\0')
+	else if (matrix[cols][i + 1] == '\0' || matrix[cols + 1][i] == '\0'
+		|| matrix[cols - 1][i] == '\0')
 		return (0);
 	return (1);
 }

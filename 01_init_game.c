@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/27 19:23:47 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:41:51 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	draw_walls_with_texture(int x, t_game *game)
 
 void	render_raycast_frame(void *param)
 {
-	int	x;
+	int		x;
 	t_game	*game;
 
 	x = 0;
@@ -32,7 +32,7 @@ void	render_raycast_frame(void *param)
 	draw_ceiling_and_floor(game);
 	while (x < WIDTH)
 	{
-		// check the functions beings called and if it makes sense
+		// check the functions being called and if their names make sense
 		calculate_rays(x, game);
 		get_wall_height(game->ray);
 		draw_walls_with_texture(x, game);
@@ -47,18 +47,9 @@ int	init_game(t_game *game)
 		return (print_error(ERROR_16));
 	if (!init_structs_in_game(game))
 		return (print_error(ERROR_3));
-	render_raycast_frame(game);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
 	mlx_loop_hook(game->mlx, render_raycast_frame, game);
 	mlx_loop(game->mlx);
-	mlx_delete_image(game->mlx, game->img);
-	mlx_delete_texture(game->textures->NO_path);
-	mlx_delete_texture(game->textures->SO_path);
-	mlx_delete_texture(game->textures->WE_path);
-	mlx_delete_texture(game->textures->EA_path);
-	free(game->textures);
-	free(game->ray);
-	free(game->player);
-	mlx_terminate(game->mlx);
+	cleanup_mlx(game);
 	return (1);
 }
