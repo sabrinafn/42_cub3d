@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/26 17:14:19 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:24:53 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ char	**get_color_split(char *string, int count);
 
 // init_game
 int		init_game(t_game *game);
-void		render_raycast_frame(t_game *game);
+void		render_raycast_frame(void *param);
 void		draw_walls_with_texture(int x, t_game *game);
 
 // init_mlx

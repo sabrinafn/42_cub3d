@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hooks.c                                        :+:      :+:    :+:   */
+/*   key_hooks_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 14:14:24 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/20 14:38:31 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:24:20 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	move_player_vision_left(t_game *game)
 		* sin(-ROTATION_SPEED);
 	game->player->plane_y = old_plane_x * sin(-ROTATION_SPEED)
 		+ game->player->plane_y * cos(-ROTATION_SPEED);
-	render_raycast_frame(game);
 }
 
 void	move_player_vision_right(t_game *game)
@@ -49,5 +48,4 @@ void	move_player_vision_right(t_game *game)
 		* sin(ROTATION_SPEED);
 	game->player->plane_y = old_plane_x * sin(ROTATION_SPEED)
 		+ game->player->plane_y * cos(ROTATION_SPEED);
-	render_raycast_frame(game);
 }

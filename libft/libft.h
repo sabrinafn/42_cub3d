@@ -6,14 +6,12 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 15:37:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/02/18 16:51:37 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:17:27 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
-# define BUFFER_SIZE 1
 
 # include <fcntl.h>
 # include <stdio.h>

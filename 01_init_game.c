@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/27 14:48:11 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:23:47 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ void	draw_walls_with_texture(int x, t_game *game)
 	calculate_and_draw_walls(game, texture, x);
 }
 
-void	render_raycast_frame(t_game *game)
+void	render_raycast_frame(void *param)
 {
 	int	x;
+	t_game	*game;
 
 	x = 0;
+	game = (t_game *)param;
 	draw_ceiling_and_floor(game);
 	while (x < WIDTH)
 	{
@@ -47,6 +49,7 @@ int	init_game(t_game *game)
 		return (print_error(ERROR_3));
 	render_raycast_frame(game);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
+	mlx_loop_hook(game->mlx, render_raycast_frame, game);
 	mlx_loop(game->mlx);
 	mlx_delete_image(game->mlx, game->img);
 	mlx_delete_texture(game->textures->NO_path);

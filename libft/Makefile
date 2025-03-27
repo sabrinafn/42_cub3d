@@ -6,7 +6,7 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/20 16:00:25 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/03/26 17:10:45 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/03/27 19:20:11 by mgonzaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(NAME): $(OBJ)
 	@ar -rcs $@ $^ > /dev/null 2>&1
 
 %.o: %.c
-	@gcc -Wall -Wextra -Werror -g -c $< -o $@ -Iget_next_line > /dev/null 2>&1
+	@gcc -Wall -Wextra -Werror -g -c $< -o $@ > /dev/null 2>&1
 
 clean:
 	@rm -f $(OBJ) > /dev/null 2>&1

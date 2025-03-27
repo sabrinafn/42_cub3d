@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:13:34 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/26 17:13:36 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:18:27 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include "cub_3d.h"
+#include "./libft/libft.h"
+
 char *get_next_line(int fd);
 
 #endif
