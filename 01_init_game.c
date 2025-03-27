@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   01_init_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/23 12:28:55 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:48:11 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	init_game(t_game *game)
 	render_raycast_frame(game);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
 	mlx_loop(game->mlx);
+	mlx_delete_image(game->mlx, game->img);
 	mlx_delete_texture(game->textures->NO_path);
 	mlx_delete_texture(game->textures->SO_path);
 	mlx_delete_texture(game->textures->WE_path);

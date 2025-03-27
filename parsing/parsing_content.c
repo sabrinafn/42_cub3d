@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:51:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/25 16:17:19 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:32:20 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,8 @@ int	texture_path(char **m)
 		|| m[cols][count] == 'S' || m[cols][count] == 'E')
 		{
 			temp = ft_split(m[cols], ' ');
-			//temp[1][ft_strlen(temp[1] - 1)] = '\0';
+			if(temp[1][ft_strlen(temp[1])] == '\n')
+				temp[1][ft_strlen(temp[1] - 1)] = '\0';
 			text = mlx_load_png(temp[1]);
 			if (text == NULL)
 			{

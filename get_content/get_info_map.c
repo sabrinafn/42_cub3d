@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:23:25 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/26 10:19:01 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:50:38 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_map(char **matrix, t_content *s_content)
 	l = find_map(matrix);
 	while (matrix[l] != NULL)
 	{
-		s_content->map[i] = get_map_string(38, matrix[l]);
+		s_content->map[i] = get_map_string(get_map_sizes_x(matrix), matrix[l]);
 		if (!s_content->map[i])
 		{
 			free_matrix(s_content->map);
@@ -69,19 +69,12 @@ char *get_map_string(int size_x, char *string)
 int	get_map_sizes_y(char **file_matrix)
 {
 	int	i;
-	int	count;
 	int lines;
 
 	i = find_map(file_matrix);
 	lines = 0;
-	count = 0;
 	while (file_matrix[i] != NULL)
 	{
-		while (file_matrix[i][count] == ' ')
-			count++;
-		if (file_matrix[i][count] == '\n'
-			|| file_matrix[i][count] == '\0')
-			break ;
 		i++;
 		lines++;
 	}
