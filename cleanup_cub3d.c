@@ -12,23 +12,28 @@
 
 #include "cub_3d.h"
 
-int	main(int argc, char **argv)
+void	cleanup_mlx(t_game *game)
 {
-	t_game		*game;
-	char		**file_matrix;
+	mlx_delete_image(game->mlx, game->img);
+	mlx_delete_texture(game->textures->no_path);
+	mlx_delete_texture(game->textures->so_path);
+	mlx_delete_texture(game->textures->we_path);
+	mlx_delete_texture(game->textures->ea_path);
+	free(game->textures);
+	free(game->ray);
+	free(game->player);
+	mlx_terminate(game->mlx);
+}
 
-	game = (t_game *)malloc(sizeof(t_game));
-	if (!game)
-		return (1);
-	if (!check_arguments(argc, argv[1]))
-		return (1);
-	file_matrix = makematrix(argv[1], countcols(argv[1]));
-	if (!validate_content(file_matrix))
-		return (1);
-	game->map = malloc(sizeof(t_content));
-	if (!get_content(file_matrix, game->map))
-		return (1);
-	init_game(game);
-	cleanup_program(game);
-	return (0);
+void	cleanup_program(t_game *game)
+{
+	free_matrix(game->map->map);
+	free_matrix(game->map->color_c);
+	free_matrix(game->map->color_f);
+	free(game->map->no_path);
+	free(game->map->so_path);
+	free(game->map->we_path);
+	free(game->map->ea_path);
+	free(game->map);
+	free(game);
 }

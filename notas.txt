@@ -1,1 +1,0 @@
-erro na função performdda vem vem do get_map no parcing -- 

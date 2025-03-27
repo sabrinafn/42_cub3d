@@ -19,16 +19,16 @@ mlx_texture_t	*get_wall_texture(t_game *game)
 	if (game->ray->side == 0)
 	{
 		if (game->ray->dir_x > 0)
-			texture = game->textures->EA_path;
+			texture = game->textures->ea_path;
 		else
-			texture = game->textures->WE_path;
+			texture = game->textures->we_path;
 	}
 	else
 	{
 		if (game->ray->dir_y > 0)
-			texture = game->textures->SO_path;
+			texture = game->textures->so_path;
 		else
-			texture = game->textures->NO_path;
+			texture = game->textures->no_path;
 	}
 	return (texture);
 }
@@ -43,10 +43,10 @@ t_textures	*init_textures(t_game *game)
 		print_error(ERROR_3);
 		return (NULL);
 	}
-	tex->NO_path = mlx_load_png(game->map->NO_path);
-	tex->SO_path = mlx_load_png(game->map->SO_path);
-	tex->WE_path = mlx_load_png(game->map->WE_path);
-	tex->EA_path = mlx_load_png(game->map->EA_path);
+	tex->no_path = mlx_load_png(game->map->no_path);
+	tex->so_path = mlx_load_png(game->map->so_path);
+	tex->we_path = mlx_load_png(game->map->we_path);
+	tex->ea_path = mlx_load_png(game->map->ea_path);
 	return (tex);
 }
 

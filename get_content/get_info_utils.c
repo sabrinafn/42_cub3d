@@ -23,17 +23,17 @@ int	get_texture_path(char **matrix, t_content *s_content)
 	{
 		count = walk_spaces(matrix[cols]);
 		if (matrix[cols][count] == 'N')
-			s_content->NO_path = get_string(matrix[cols], count + 2);
+			s_content->no_path = get_string(matrix[cols], count + 2);
 		else if (matrix[cols][count] == 'S')
-			s_content->SO_path = get_string(matrix[cols], count + 2);
+			s_content->so_path = get_string(matrix[cols], count + 2);
 		else if (matrix[cols][count] == 'E')
-			s_content->EA_path = get_string(matrix[cols], count + 2);
+			s_content->ea_path = get_string(matrix[cols], count + 2);
 		else if (matrix[cols][count] == 'W')
-			s_content->WE_path = get_string(matrix[cols], count + 2);
+			s_content->we_path = get_string(matrix[cols], count + 2);
 		cols++;
 	}
-	if (!s_content->EA_path || !s_content->NO_path || !s_content->SO_path
-		|| !s_content->WE_path)
+	if (!s_content->ea_path || !s_content->no_path || !s_content->so_path
+		|| !s_content->we_path)
 		return (print_error(ERROR_3));
 	return (1);
 }
@@ -66,12 +66,12 @@ void	get_color_number(t_content *s_content)
 	int	number[3];
 	int	number2[3];
 
-	number[0] = ft_atoi(s_content->color_F[0]);
-	number[1] = ft_atoi(s_content->color_F[1]);
-	number[2] = ft_atoi(s_content->color_F[2]);
+	number[0] = ft_atoi(s_content->color_f[0]);
+	number[1] = ft_atoi(s_content->color_f[1]);
+	number[2] = ft_atoi(s_content->color_f[2]);
 	s_content->floor = ft_pixel(number[0], number[1], number[2], 255);
-	number2[0] = ft_atoi(s_content->color_C[0]);
-	number2[1] = ft_atoi(s_content->color_C[1]);
-	number2[2] = ft_atoi(s_content->color_C[2]);
+	number2[0] = ft_atoi(s_content->color_c[0]);
+	number2[1] = ft_atoi(s_content->color_c[1]);
+	number2[2] = ft_atoi(s_content->color_c[2]);
 	s_content->ceiling = ft_pixel(number2[0], number2[1], number2[2], 255);
 }
