@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/28 16:40:55 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:54:58 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,6 @@ void				cleanup_mlx(t_game *game);
 void				cleanup_program(t_game *game);
 void				clear_image(t_game *game);
 
-void init_map(char *argv, t_game *game);
+void				init_map(char *argv, t_game *game);
 
 #endif

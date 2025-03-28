@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/28 16:48:28 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:57:30 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,25 @@ void	cleanup_program(t_game *game)
 	free(game->map->ea_path);
 	free(game->map);
 	free(game);
+}
+
+void	clear_image(t_game *game)
+{
+	int				i;
+	int				j;
+	unsigned int	blank;
+
+	i = 0;
+	j = 0;
+	blank = 0xFFFFFFFF;
+	while (i < WIDTH)
+	{
+		j = 0;
+		while (j < HEIGHT)
+		{
+			mlx_put_pixel(game->img, i, j, blank);
+			j++;
+		}
+		i++;
+	}
 }
