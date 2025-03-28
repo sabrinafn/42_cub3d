@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_3d.h"
+#include "../cub_3d.h"
 
 void	draw_walls_with_texture(int x, t_game *game)
 {

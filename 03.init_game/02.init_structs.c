@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_3d.h"
+#include "../cub_3d.h"
 
 void	draw_ceiling_and_floor(t_game *game)
 {

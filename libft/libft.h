@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 15:37:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/28 16:50:57 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/28 17:19:31 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# ifndef	BUFFER_SIZE
-# define	BUFFER_SIZE 4096
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
 # endif
 
 int		ft_atoi(const char *str);
@@ -37,7 +37,7 @@ void	*ft_memset(void *s, int c, size_t n);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-void    ft_strcpy(char *dst, char *src, int len);
+void	ft_strcpy(char *dst, char *src, int len);
 size_t	ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);

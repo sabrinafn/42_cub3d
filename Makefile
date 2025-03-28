@@ -25,13 +25,15 @@ LIBFT := libft/libft.a
 
 MLXLIB := MLX42/build/libmlx42.a
 
-FILES := main.c 01_init_game.c 02_init_structs.c init_player_struct.c init_mlx.c\
-		calculate_rays.c wall_calculations.c wall_colours.c key_hooks.c key_hooks_2.c \
-		parsing/character_mapvalidation.c parsing/check_argv.c parsing/map_validation.c \
-		parsing/parsing_content.c parsing/player_mapvalidation.c parsing/read_argv.c \
-		parsing/utils.c parsing/wall_mapvalidation.c get_content/get_info_map.c \
-		get_content/get_info_utils.c get_content/get_info.c cleanup_cub3d.c
-
+FILES := main.c \
+		01.parsing/01.check_argv.c 01.parsing/02.read_argv.c 01.parsing/03.map_validation.c \
+		01.parsing/04.parsing_content.c 01.parsing/05.character_mapvalidation.c \
+		01.parsing/06.player_mapvalidation.c 01.parsing/07.wall_mapvalidation.c 01.parsing/08.utils.c \
+		02.get_content/01.get_info.c 02.get_content/02.get_info_map.c 02.get_content/03.get_info_utils.c \
+		03.init_game/01.init_game.c 03.init_game/02.init_structs.c 03.init_game/03.init_player_struct.c \
+		03.init_game/04.init_mlx.c 03.init_game/05.cleanup_cub3d.c \
+		04.moves/01.key_hooks.c 04.moves/02.key_hooks.c \
+		05.rays_and_walls/01.calculate_rays.c 05.rays_and_walls/02.wall_calculations.c 05.rays_and_walls/03.wall_colours.c
 
 OBJ := $(FILES:.c=.o)
 

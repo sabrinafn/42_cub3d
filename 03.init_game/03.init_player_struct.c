@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_3d.h"
+#include "../cub_3d.h"
 
 void	update_struct_position(t_position **pos, int x, int y, char c)
 {

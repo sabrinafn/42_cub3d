@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_3d.h"
+#include "../cub_3d.h"
 
 void	key_pressed_function(mlx_key_data_t keydata, void *param)
 {

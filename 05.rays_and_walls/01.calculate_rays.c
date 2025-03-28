@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_3d.h"
+#include "../cub_3d.h"
 
 void	init_ray_pos_and_dir(int x, t_ray *ray, t_player *player)
 {

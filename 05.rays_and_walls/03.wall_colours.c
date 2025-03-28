@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_3d.h"
+#include "../cub_3d.h"
 
 int	get_pixel_index(t_game *game, mlx_texture_t *texture)
 {

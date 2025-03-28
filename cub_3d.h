@@ -213,7 +213,6 @@ void				init_delta_distance(t_ray *ray);
 void				init_step_and_sidedist(t_ray *ray, t_player *player);
 void				perform_dda(t_ray *ray, t_content *map);
 void				calculate_rays(int x, t_game *game);
-int					find_map(char **file_matrix);
 void				get_color_number(t_content *s_content);
 
 // wall_calculations.c
