@@ -22,6 +22,44 @@ void	draw_walls_with_texture(int x, t_game *game)
 	calculate_and_draw_walls(game, texture, x);
 }
 
+void	draw_minimap(t_game *game)
+{
+	int			x;
+	int			y;
+	int			mini_x;
+	int			mini_y;
+
+	x = 0;
+	y = 0;
+	mini_x = game->map->map_max_x;
+	mini_y = game->map->map_max_y;
+	while (y < HEIGHT)
+	{
+		printf("hi\n");
+		x = 0;
+		while (x < WIDTH)
+		{
+			if (game->map->map[y][x] == 1)
+				mlx_put_pixel(game->img, y, x, 0X00000000);
+			x++;
+		}
+		y++;
+	}
+	//x = 0;
+	//y = 0;
+	//while (y < HEIGHT)
+	//{
+	//	while (x < WIDTH)
+	//	{
+	//		if (game->map->map[y][x] == 'N' ||game->map->map[y][x] == 'S'
+	//			|| game->map->map[y][x] == 'W' ||game->map->map[y][x] == 'E')
+	//			mlx_put_pixel(game->img, map_y + y, map_x + x, 0xFF0000FF);
+	//		x++;
+	//	}
+	//	y++;
+	//}
+}
+
 void	render_raycast_frame(void *param)
 {
 	int		x;
@@ -36,6 +74,7 @@ void	render_raycast_frame(void *param)
 		calculate_rays(x, game);
 		get_wall_height(game->ray);
 		draw_walls_with_texture(x, game);
+		draw_minimap(game);
 		x++;
 	}
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
