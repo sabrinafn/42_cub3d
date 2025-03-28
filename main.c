@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:21:32 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/27 19:41:36 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:47:33 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	main(int argc, char **argv)
 	cleanup_program(game);
 	return (0);
 }
-void init_map(char *argv, t_game *game)
+
+void	init_map(char *argv, t_game *game)
 {
-	char		**file_matrix;
+	char	**file_matrix;
 
 	file_matrix = makematrix(argv, countcols(argv));
-	// dar uma verificada na função makematrix
 	if (!validate_content(file_matrix))
 	{
 		free_matrix(file_matrix);

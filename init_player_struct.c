@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:32:27 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/26 13:51:02 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:47:49 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ t_player	*init_player_struct(t_content *map)
 	t_position	*pos;
 
 	player = (t_player *)malloc(sizeof(t_player));
-	//player = NULL;
 	pos = (t_position *)malloc(sizeof(t_position));
 	pos->x = -1;
 	pos->y = -1;

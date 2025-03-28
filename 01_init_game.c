@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/27 19:41:51 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:48:40 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	render_raycast_frame(void *param)
 	draw_ceiling_and_floor(game);
 	while (x < WIDTH)
 	{
-		// check the functions being called and if their names make sense
 		calculate_rays(x, game);
 		get_wall_height(game->ray);
 		draw_walls_with_texture(x, game);
