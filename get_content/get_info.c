@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 11:00:09 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/27 19:41:00 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:53:00 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,11 @@
 int	get_content(char **file_matrix, t_content *s_content)
 {
 	if (!get_map(file_matrix, s_content))
-	{
-		printf("error when creating map\n");
-		//fix
-		//fix
-		//fix
-		//fix
 		return (0);
-	}
 	if (!get_color(file_matrix, s_content))
-	{
-		printf("error when creating color\n");
 		return (0);
-	}
 	if (!get_texture_path(file_matrix, s_content))
-	{
-		printf("error when creating texture\n");
 		return (0);
-	}
 	get_color_number(s_content);
 	s_content->map_max_y = get_map_sizes_y(file_matrix);
 	s_content->map_max_x = get_map_sizes_x(file_matrix);
