@@ -6,11 +6,11 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 16:56:55 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/27 18:52:55 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:43:24 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 int	has_newline(char *saved)
 {
@@ -61,18 +61,18 @@ char	*flush_saved(char *saved)
 	return (temp);
 }
 
-void	update_saved(char *saved, char *buffer, int bytes_read)
+void	update(char *temp, char *buffer, int bytes_read)
 {
 	int	j;
 	int	k;
 
 	j = 0;
 	k = 0;
-	while (saved[j])
+	while (temp[j])
 		j++;
 	while (k < bytes_read && j < BUFFER_SIZE)
-		saved[j++] = buffer[k++];
-	saved[j] = '\0';
+		temp[j++] = buffer[k++];
+	temp[j] = '\0';
 }
 
 char	*get_next_line(int fd)
@@ -91,6 +91,6 @@ char	*get_next_line(int fd)
 	if (len_read <= 0)
 		return (flush_saved(saved));
 	dest_file[len_read] = '\0';
-	update_saved(saved, dest_file, len_read);
+	update(saved, dest_file, len_read);
 	return (get_next_line(fd));
 }

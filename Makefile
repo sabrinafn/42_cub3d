@@ -6,7 +6,7 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:38:48 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/03/26 17:14:38 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/03/28 16:42:23 by mgonzaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ FILES := main.c 01_init_game.c 02_init_structs.c init_player_struct.c init_mlx.c
 		parsing/character_mapvalidation.c parsing/check_argv.c parsing/map_validation.c \
 		parsing/parsing_content.c parsing/player_mapvalidation.c parsing/read_argv.c \
 		parsing/utils.c parsing/wall_mapvalidation.c get_content/get_info_map.c \
-		get_content/get_info_utils.c get_content/get_info.c get_next_line.c cleanup_cub3d.c
+		get_content/get_info_utils.c get_content/get_info.c cleanup_cub3d.c
 
 
 OBJ := $(FILES:.c=.o)

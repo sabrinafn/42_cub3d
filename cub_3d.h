@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:46 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/27 19:45:40 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:40:55 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CUB_3D_H
 
 # include "MLX42/include/MLX42/MLX42.h"
-# include "get_next_line.h"
 # include "libft/libft.h"
 # include <fcntl.h>
 # include <math.h>

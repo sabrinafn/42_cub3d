@@ -6,7 +6,7 @@
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 15:37:41 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/27 19:17:27 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:39:24 by mgonzaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*get_next_line(int fd);
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 4096
+#endif
+
 int		ft_atoi(const char *str);
 void	*ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
