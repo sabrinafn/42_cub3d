@@ -24,26 +24,28 @@ void	draw_walls_with_texture(int x, t_game *game)
 
 void	draw_minimap(t_game *game)
 {
+	mlx_image_t	*img_mini;
 	int			x;
 	int			y;
-	int			mini_x;
-	int			mini_y;
 
 	x = 0;
 	y = 0;
-	mini_x = game->map->map_max_x;
-	mini_y = game->map->map_max_y;
-	while (y < HEIGHT)
+	int mini_width = 100;
+	int	mini_height = 100;
+	while (x < mini_width)
 	{
 		printf("hi\n");
-		x = 0;
-		while (x < WIDTH)
+		y = 0;
+		while (y < mini_height)
 		{
-			if (game->map->map[y][x] == 1)
-				mlx_put_pixel(game->img, y, x, 0X00000000);
-			x++;
+			if (game->map->map[x][y] == 1)
+			{
+				printf("found wall\n");
+				mlx_put_pixel(img_mini, x, y, 0x00000000);
+			}
+			y++;
 		}
-		y++;
+		x++;
 	}
 	//x = 0;
 	//y = 0;
@@ -60,6 +62,28 @@ void	draw_minimap(t_game *game)
 	//}
 }
 
+void	clear_image(t_game *game)
+{
+
+	int				i;
+	int				j;
+	unsigned int	blank;
+
+	i = 0;
+	j = 0;
+	blank = 0xFFFFFFFF;
+	while (i < WIDTH)
+	{
+		j = 0;
+		while (j < HEIGHT)
+		{
+				mlx_put_pixel(game->img, i, j, blank);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	render_raycast_frame(void *param)
 {
 	int		x;
@@ -67,6 +91,7 @@ void	render_raycast_frame(void *param)
 
 	x = 0;
 	game = (t_game *)param;
+	clear_image(game);
 	draw_ceiling_and_floor(game);
 	while (x < WIDTH)
 	{
