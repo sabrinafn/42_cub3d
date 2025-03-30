@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player_struct.c                               :+:      :+:    :+:   */
+/*   03.init_player_struct.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:32:27 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/28 16:47:49 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:50:25 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	update_struct_position(t_position **pos, int x, int y, char c)
 
 void	find_char(t_position *pos, char **map, int map_height, int map_width)
 {
-	int			y;
-	int			x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < map_height && map[y])
@@ -30,8 +30,8 @@ void	find_char(t_position *pos, char **map, int map_height, int map_width)
 		x = 0;
 		while (x < map_width)
 		{
-			if (map[y][x] == 'N' || map[y][x] == 'S'
-				|| map[y][x] == 'W' || map[y][x] == 'E')
+			if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'W'
+				|| map[y][x] == 'E')
 			{
 				update_struct_position(&pos, x, y, map[y][x]);
 				return ;

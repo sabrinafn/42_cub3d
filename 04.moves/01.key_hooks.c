@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hooks.c                                        :+:      :+:    :+:   */
+/*   01.key_hooks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 14:14:24 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/27 19:24:09 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:50:49 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,12 @@ void	move_player_w(t_game *game)
 	int		new_pos_x;
 	int		new_pos_y;
 
-	new_y = game->player->pos_y + game->player->dir_y
-		* MOVE_SPEED;
-	new_x = game->player->pos_x + game->player->dir_x
-		* MOVE_SPEED;
+	new_y = game->player->pos_y + game->player->dir_y * MOVE_SPEED;
+	new_x = game->player->pos_x + game->player->dir_x * MOVE_SPEED;
 	new_pos_x = (int)new_x;
 	new_pos_y = (int)new_y;
 	if (game->map->map[new_pos_y][new_pos_x] != '1'
-		&& new_x < game->map->map_max_x
-		&& new_y < game->map->map_max_y)
+		&& new_x < game->map->map_max_x && new_y < game->map->map_max_y)
 	{
 		game->player->pos_x = new_x;
 		game->player->pos_y = new_y;
@@ -63,15 +60,12 @@ void	move_player_s(t_game *game)
 	int		new_pos_x;
 	int		new_pos_y;
 
-	new_y = game->player->pos_y - game->player->dir_y
-		* MOVE_SPEED;
-	new_x = game->player->pos_x - game->player->dir_x
-		* MOVE_SPEED;
+	new_y = game->player->pos_y - game->player->dir_y * MOVE_SPEED;
+	new_x = game->player->pos_x - game->player->dir_x * MOVE_SPEED;
 	new_pos_x = (int)new_x;
 	new_pos_y = (int)new_y;
 	if (game->map->map[new_pos_y][new_pos_x] != '1'
-		&& new_x < game->map->map_max_x
-		&& new_y < game->map->map_max_y)
+		&& new_x < game->map->map_max_x && new_y < game->map->map_max_y)
 	{
 		game->player->pos_x = new_x;
 		game->player->pos_y = new_y;
@@ -85,15 +79,12 @@ void	move_player_a(t_game *game)
 	int		new_pos_x;
 	int		new_pos_y;
 
-	new_y = game->player->pos_y - game->player->plane_y
-		* MOVE_SPEED;
-	new_x = game->player->pos_x - game->player->plane_x
-		* MOVE_SPEED;
+	new_y = game->player->pos_y - game->player->plane_y * MOVE_SPEED;
+	new_x = game->player->pos_x - game->player->plane_x * MOVE_SPEED;
 	new_pos_x = (int)new_x;
 	new_pos_y = (int)new_y;
 	if (game->map->map[new_pos_y][new_pos_x] != '1'
-		&& new_x < game->map->map_max_x
-		&& new_y < game->map->map_max_y)
+		&& new_x < game->map->map_max_x && new_y < game->map->map_max_y)
 	{
 		game->player->pos_x = new_x;
 		game->player->pos_y = new_y;
@@ -107,15 +98,12 @@ void	move_player_d(t_game *game)
 	int		new_pos_x;
 	int		new_pos_y;
 
-	new_y = game->player->pos_y + game->player->plane_y
-		* MOVE_SPEED;
-	new_x = game->player->pos_x + game->player->plane_x
-		* MOVE_SPEED;
+	new_y = game->player->pos_y + game->player->plane_y * MOVE_SPEED;
+	new_x = game->player->pos_x + game->player->plane_x * MOVE_SPEED;
 	new_pos_x = (int)new_x;
 	new_pos_y = (int)new_y;
 	if (game->map->map[new_pos_y][new_pos_x] != '1'
-		&& new_x < game->map->map_max_x
-		&& new_y < game->map->map_max_y)
+		&& new_x < game->map->map_max_x && new_y < game->map->map_max_y)
 	{
 		game->player->pos_x = new_x;
 		game->player->pos_y = new_y;

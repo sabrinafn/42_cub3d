@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation.c                                   :+:      :+:    :+:   */
+/*   03.map_validation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:34:53 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/28 14:52:23 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:47:50 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	validate_content(char **matrix_file)
 int	validation_map(char **file_matrix)
 {
 	if (!validate_wall(file_matrix))
-	return (print_error(ERROR_13));
+		return (print_error(ERROR_13));
 	if (!invalid_character(file_matrix))
 		return (print_error(ERROR_12));
 	if (!find_player(file_matrix))

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wall_calculations.c                                :+:      :+:    :+:   */
+/*   03.wall_colours.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabrifer <sabrifer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:49:43 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/25 13:56:31 by sabrifer         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:51:20 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	get_pixel_index(t_game *game, mlx_texture_t *texture)
 
 uint32_t	get_current_pixel_color(t_game *game, mlx_texture_t *texture)
 {
-	int			pixel_index;
-	uint8_t		red;
-	uint8_t		green;
-	uint8_t		blue;
-	uint8_t		alpha;
+	int		pixel_index;
+	uint8_t	red;
+	uint8_t	green;
+	uint8_t	blue;
+	uint8_t	alpha;
 
 	pixel_index = get_pixel_index(game, texture);
 	red = texture->pixels[pixel_index];

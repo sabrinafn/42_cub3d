@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculate_rays.c                                   :+:      :+:    :+:   */
+/*   01.calculate_rays.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 19:03:11 by sabrifer          #+#    #+#             */
-/*   Updated: 2025/03/26 14:00:44 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:51:08 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	perform_dda(t_ray *ray, t_content *map)
 		}
 		if (map->map[ray->map_y][ray->map_x] == '1'
 			&& ray->map_x < map->map_max_x && ray->map_y < map->map_max_y)
-				ray->hit = 1;
+			ray->hit = 1;
 	}
 }
 

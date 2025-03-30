@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   08.utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:05:51 by mgonzaga          #+#    #+#             */
-/*   Updated: 2025/03/24 17:57:40 by mgonzaga         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:49:20 by sabrifer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	free_matrix(char **malloc_string)
 		return ;
 	while (malloc_string[count] != NULL)
 	{
-		free (malloc_string[count]);
+		free(malloc_string[count]);
 		count++;
 	}
-	free (malloc_string);
+	free(malloc_string);
 }
