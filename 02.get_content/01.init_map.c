@@ -33,5 +33,6 @@ t_game	*init_map(char *argv)
 		cleanup_program(game);
 		exit (1);
 	}
+	//free_matrix(file_matrix);
 	return (game);
 }

@@ -130,7 +130,7 @@ int	texture_path(char **m)
 			if (text == NULL)
 			{
 				free_matrix(temp);
-				return (print_error(ERROR_15));
+				return (0);
 			}
 			mlx_delete_texture(text);
 			free_matrix(temp);

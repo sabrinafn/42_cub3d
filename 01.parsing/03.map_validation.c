@@ -27,12 +27,12 @@ int	validate_content(char **matrix_file)
 
 int	validation_map(char **file_matrix)
 {
+	if (!validate_wall(file_matrix))
+	return (print_error(ERROR_13));
 	if (!invalid_character(file_matrix))
 		return (print_error(ERROR_12));
 	if (!find_player(file_matrix))
 		return (print_error(ERROR_11));
-	if (!validate_wall(file_matrix))
-		return (print_error(ERROR_13));
 	if (!empty_line(file_matrix))
 		return (print_error(ERROR_14));
 	return (1);

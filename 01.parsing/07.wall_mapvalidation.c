@@ -41,6 +41,12 @@ int	check_wall(char **matrix, int cols, int i)
 {
 	if (i == 0)
 		return (0);
+	else if(matrix[cols + 1] == NULL)
+		return(0);
+	else if(matrix[cols + 1][walk_spaces(matrix[cols + 1])] == '\0')
+		return (0);
+	else if((int)ft_strlen(matrix[cols + 1]) < i)
+		return (0);
 	else if (cols == 0 || !matrix[cols + 1])
 		return (0);
 	else if (matrix[cols][i + 1] == ' ' || matrix[cols][i - 1] == ' '
@@ -49,7 +55,7 @@ int	check_wall(char **matrix, int cols, int i)
 	else if (matrix[cols][i + 1] == '\n' || matrix[cols + 1][i] == '\n'
 		|| matrix[cols - 1][i] == '\n')
 		return (0);
-	else if (matrix[cols][i + 1] == '\0' || matrix[cols + 1][i] == '\0'
+	else if (matrix[cols][i + 1] == '\0' || matrix[cols + 1][i] == '\0' 
 		|| matrix[cols - 1][i] == '\0')
 		return (0);
 	return (1);
