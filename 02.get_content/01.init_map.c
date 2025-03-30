@@ -10,16 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub_3d.h"
+#include "../cub_3d.h"
 
-int	main(int argc, char **argv)
+t_game	*init_map(char *argv)
 {
-	t_game	*game;
+	char		**file_matrix;
+	t_game		*game;
 
-	if (!check_arguments(argc, argv[1]))
-		return (1);
-	game = init_map(argv[1]);
-	init_game(game);
-	cleanup_program(game);
-	return (0);
+	file_matrix = makematrix(argv, countcols(argv));
+	if (!validate_content(file_matrix))
+	{
+		free_matrix(file_matrix);
+		exit (1);
+	}
+	game = (t_game *)malloc(sizeof(t_game));
+	if (!game)
+		return (NULL);
+	game->map = malloc(sizeof(t_content));
+	if (!get_content(file_matrix, game->map))
+	{
+		free_matrix(file_matrix);
+		cleanup_program(game);
+		exit (1);
+	}
+	return (game);
 }

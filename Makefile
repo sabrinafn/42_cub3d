@@ -28,7 +28,8 @@ FILES := main.c \
 		01.parsing/01.check_argv.c 01.parsing/02.read_argv.c 01.parsing/03.map_validation.c \
 		01.parsing/04.parsing_content.c 01.parsing/05.character_mapvalidation.c \
 		01.parsing/06.player_mapvalidation.c 01.parsing/07.wall_mapvalidation.c 01.parsing/08.utils.c \
-		02.get_content/01.get_info.c 02.get_content/02.get_info_map.c 02.get_content/03.get_info_utils.c \
+		02.get_content/01.init_map.c 02.get_content/02.get_info.c 02.get_content/03.get_info_map.c \
+		02.get_content/04.get_info_utils.c \
 		03.init_game/01.init_game.c 03.init_game/02.init_structs.c 03.init_game/03.init_player_struct.c \
 		03.init_game/04.init_mlx.c 03.init_game/05.cleanup_cub3d.c \
 		04.moves/01.key_hooks.c 04.moves/02.key_hooks.c \
@@ -82,4 +83,4 @@ re: fclean all
 .PHONY: all fclean clean re print_message
 
 # compile with suppression file:
-valgrind --leak-check=full --suppressions=mlx.sup ./cub3D assets/maps/21d-valid_file_map.cub
+# valgrind --leak-check=full --suppressions=mlx.sup ./cub3D assets/maps/21d-valid_file_map.cub

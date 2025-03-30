@@ -41,15 +41,16 @@ void	render_raycast_frame(void *param)
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
 }
 
-int	init_game(t_game *game)
+void	init_game(t_game *game)
 {
+	if (!game)
+		return ;
 	if (!init_window(game))
-		return (print_error(ERROR_16));
+		print_error(ERROR_16);
 	if (!init_structs_in_game(game))
-		return (print_error(ERROR_3));
+		print_error(ERROR_3);
 	mlx_key_hook(game->mlx, &key_pressed_function, game);
 	mlx_loop_hook(game->mlx, render_raycast_frame, game);
 	mlx_loop(game->mlx);
 	cleanup_mlx(game);
-	return (1);
 }

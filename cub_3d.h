@@ -180,7 +180,7 @@ int					get_color(char **matrix, t_content *s_content);
 char				**get_color_split(char *string, int count);
 
 // init_game
-int					init_game(t_game *game);
+void				init_game(t_game *game);
 void				render_raycast_frame(void *param);
 void				draw_walls_with_texture(int x, t_game *game);
 
@@ -237,6 +237,6 @@ void				cleanup_mlx(t_game *game);
 void				cleanup_program(t_game *game);
 void				clear_image(t_game *game);
 
-void				init_map(char *argv, t_game *game);
+t_game				*init_map(char *argv);
 
 #endif
