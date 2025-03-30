@@ -1,10 +1,10 @@
        C 2,2,255
 
-	NO ./maps/croissant-NO.png
+       NO ./assets/textures/ollie_polite_cat-256x256.png
        F 255,255,255
-	SO ./maps/croissant-SO.png
-	EA ./maps/croissant-EA.png
-	WE ./maps/croissant-WE.png
+       SO ./assets/textures/ollie_polite_cat-256x256.png
+       EA ./assets/textures/ollie_polite_cat-256x256.png
+       WE ./assets/textures/ollie_polite_cat-256x256.png
        
        1111111111111111111111111
        1000000000110000000000001
