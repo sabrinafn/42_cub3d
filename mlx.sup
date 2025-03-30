@@ -110,3 +110,11 @@
    obj:*/libGLX_mesa.so.*
    ...
 }
+{
+   <MLX_CODAM>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:_dl_catch_exception
+   ...
+}

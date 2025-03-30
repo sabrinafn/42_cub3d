@@ -6,10 +6,9 @@
 #    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 18:38:48 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/03/28 16:42:23 by mgonzaga         ###   ########.fr        #
+#    Updated: 2025/03/30 17:20:42 by sabrifer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME := cub3D
 
@@ -77,9 +76,10 @@ print_message:
 	@echo "|                                      |"
 	@echo "----------------------------------------"
 
-v: all
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 re: fclean all
 
-.PHONY: all fclean clean re v print_message
+.PHONY: all fclean clean re print_message
+
+# compile with suppression file:
+valgrind --leak-check=full --suppressions=mlx.sup ./cub3D assets/maps/21d-valid_file_map.cub
