@@ -31,7 +31,7 @@ FILES := main.c \
 		02.get_content/01.init_map.c 02.get_content/02.get_info.c 02.get_content/03.get_info_map.c \
 		02.get_content/04.get_info_utils.c \
 		03.init_game/01.init_game.c 03.init_game/02.init_structs.c 03.init_game/03.init_player_struct.c \
-		03.init_game/04.init_mlx.c 03.init_game/05.cleanup_cub3d.c \
+		03.init_game/04.init_mlx.c 03.init_game/05.init_pixels.c 03.init_game/06.cleanup_cub3d.c \
 		04.moves/01.key_hooks.c 04.moves/02.key_hooks.c \
 		05.rays_and_walls/01.calculate_rays.c 05.rays_and_walls/02.wall_calculations.c \
 		05.rays_and_walls/03.wall_colours.c

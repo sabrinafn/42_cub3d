@@ -21,6 +21,7 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <unistd.h>
+
 # define ERROR_1 "Impossible to read the file\n"
 # define ERROR_2 "Empty file\n"
 # define ERROR_3 "Invalid malloc\n"
@@ -40,10 +41,8 @@
 # define ERROR_17 "Failed to open MLX window\n"
 # define ERROR_18 "Failed to init MLX image\n"
 
-//# define WIDTH 800
-//# define HEIGHT 800
-# define WIDTH 640
-# define HEIGHT 480
+# define WIDTH 1280
+# define HEIGHT 1000
 # define MOVE_SPEED 0.1
 # define ROTATION_SPEED 0.1
 
@@ -63,10 +62,10 @@ typedef struct s_content
 	char			*ea_path;
 	char			**color_c;
 	char			**color_f;
-	uint32_t		ceiling;
-	uint32_t		floor;
 	int				map_max_x;
 	int				map_max_y;
+	uint32_t		ceiling;
+	uint32_t		floor;
 }					t_content;
 
 typedef struct s_player

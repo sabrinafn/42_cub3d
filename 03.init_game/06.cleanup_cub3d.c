@@ -38,23 +38,3 @@ void	cleanup_program(t_game *game)
 	free(game);
 }
 
-void	clear_image(t_game *game)
-{
-	int				i;
-	int				j;
-	unsigned int	blank;
-
-	i = 0;
-	j = 0;
-	blank = 0xFFFFFFFF;
-	while (i < WIDTH)
-	{
-		j = 0;
-		while (j < HEIGHT)
-		{
-			mlx_put_pixel(game->img, i, j, blank);
-			j++;
-		}
-		i++;
-	}
-}
