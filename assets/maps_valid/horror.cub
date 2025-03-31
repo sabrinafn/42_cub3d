@@ -1,10 +1,10 @@
-NO ./assets/textures/bu.png
-SO ./assets/textures/bu.png
-WE ./assets/textures/bu.png
-EA ./assets/textures/bu.png
+NO ./assets/textures/eye_open.png
+SO ./assets/textures/forest3.png
+WE ./assets/textures/florest1.png
+EA ./assets/textures/florest2.png
 
-C 238,245,255
-F 210,227,200
+F 31, 33, 32
+C 82, 66, 68
 
 1111111111111111111111111111111111111
 1000000010000000100000000010000001001

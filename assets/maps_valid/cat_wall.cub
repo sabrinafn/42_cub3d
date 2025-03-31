@@ -1,12 +1,12 @@
-NO ./assets/textures/cat2.png
+NO ./assets/textures/cat1.png
 
 
-SO ./assets/textures/crying_cat.png
+SO ./assets/textures/cat2.png
 
-WE ./assets/textures/cat1.png
+WE ./assets/textures/cat3.png
 
 
-EA ./assets/textures/ollie_polite_cat-256x256.png
+EA ./assets/textures/cat4.png
 
 
 F 220,100,255

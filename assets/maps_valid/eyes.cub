@@ -1,18 +1,19 @@
 
-NO ./assets/textures/Horrorlist.png
+NO ./assets/textures/eye_open.png
 
 
 
-SO ./assets/textures/Horrorlist.png
+                                SO ./assets/textures/eye_open.png
 
-WE ./assets/textures/Horrorlist2.png
+WE ./assets/textures/eye_closed.png
 
 
-EA ./assets/textures/Horrorlist2.png
+                                                             EA ./assets/textures/eye_closed.png
 
 
 
 F 31, 33, 32
+
 C 82, 66, 68
 
         1111111111111111111111111
