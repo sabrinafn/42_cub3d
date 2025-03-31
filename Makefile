@@ -33,14 +33,15 @@ FILES := main.c \
 		03.init_game/01.init_game.c 03.init_game/02.init_structs.c 03.init_game/03.init_player_struct.c \
 		03.init_game/04.init_mlx.c 03.init_game/05.cleanup_cub3d.c \
 		04.moves/01.key_hooks.c 04.moves/02.key_hooks.c \
-		05.rays_and_walls/01.calculate_rays.c 05.rays_and_walls/02.wall_calculations.c 05.rays_and_walls/03.wall_colours.c
+		05.rays_and_walls/01.calculate_rays.c 05.rays_and_walls/02.wall_calculations.c \
+		05.rays_and_walls/03.wall_colours.c
 
 OBJ := $(FILES:.c=.o)
 
 all: $(MLXLIB) $(LIBFT) $(NAME)
 
 %.o: %.c 
-	$(CC) $(C_FLAGS) -c $< -o $@
+	@$(CC) $(C_FLAGS) -c $< -o $@ > /dev/null 2>&1
 
 $(LIBFT): 
 	@make -C $(LIBFT_DIR) > /dev/null 2>&1
@@ -52,7 +53,7 @@ $(MLXLIB):
 	@echo "Compiling mlx42..."
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(C_FLAGS) $(OBJ) $(MLXLIB) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(C_FLAGS) $(OBJ) $(MLXLIB) $(LIBFT) $(MLX_FLAGS) -o $(NAME) > /dev/null 2>&1
 	@echo "Compiling cub3D..."
 	@$(MAKE) -s print_message
 
@@ -83,4 +84,4 @@ re: fclean all
 .PHONY: all fclean clean re print_message
 
 # compile with suppression file:
-# valgrind --leak-check=full --suppressions=mlx.sup ./cub3D assets/maps/21d-valid_file_map.cub
+# valgrind --leak-check=full --suppressions=mlx.sup ./cub3D [map]
