@@ -37,4 +37,3 @@ void	cleanup_program(t_game *game)
 	free(game->map);
 	free(game);
 }
-

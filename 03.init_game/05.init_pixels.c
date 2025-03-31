@@ -37,6 +37,7 @@ void	draw_ceiling_and_floor(t_game *game)
 		i++;
 	}
 }
+
 void	clear_image(t_game *game)
 {
 	int				i;
