@@ -22,7 +22,10 @@ LIBFT_DIR := ./libft
 
 LIBFT := libft/libft.a
 
-MLXLIB := MLX42/build/libmlx42.a
+MLX_REPO := https://github.com/codam-coding-college/MLX42.git
+MLX_DIR := MLX42
+MLX_BUILD_DIR := $(MLX_DIR)/build
+MLX_LIB := $(MLX_BUILD_DIR)/libmlx42.a
 
 FILES := main.c \
 		01.parsing/01.check_argv.c 01.parsing/02.read_argv.c 01.parsing/03.map_validation.c \
@@ -41,19 +44,22 @@ OBJ := $(FILES:.c=.o)
 all: $(MLXLIB) $(LIBFT) $(NAME)
 
 %.o: %.c 
-	@$(CC) $(C_FLAGS) -c $< -o $@ > /dev/null 2>&1
+	@$(CC) $(C_FLAGS) -c $< -o $@
 
 $(LIBFT): 
-	@make -C $(LIBFT_DIR) > /dev/null 2>&1
+	@make -C $(LIBFT_DIR)
 	@echo "Compiling libft..."
 
-$(MLXLIB):
-	@cmake -S MLX42 -B MLX42/build > /dev/null 2>&1
-	@make -j4 -C MLX42/build > /dev/null 2>&1
+$(MLX_LIB):
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		git clone $(MLX_REPO) $(MLX_DIR); \
+	fi
+	@cmake -S $(MLX_DIR) -B $(MLX_BUILD_DIR)
+	@make -j4 -C $(MLX_BUILD_DIR)
 	@echo "Compiling mlx42..."
 
-$(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(C_FLAGS) $(OBJ) $(MLXLIB) $(LIBFT) $(MLX_FLAGS) -o $(NAME) > /dev/null 2>&1
+$(NAME): $(MLX_LIB) $(OBJ) $(LIBFT)
+	@$(CC) $(C_FLAGS) $(OBJ) $(MLX_LIB) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 	@echo "Compiling cub3D..."
 	@$(MAKE) -s print_message
 
@@ -66,7 +72,8 @@ clean:
 fclean: clean
 	@rm -f $(NAME) > /dev/null 2>&1
 	@make -C $(LIBFT_DIR) fclean  > /dev/null 2>&1
-	@rm -rf MLX42/build > /dev/null 2>&1
+	@rm -rf $(MLX_BUILD_DIR) > /dev/null 2>&1
+	@rm -rf $(MLX_DIR) > /dev/null 2>&1
 	@echo "Cleaning cub3D..."
 	@echo "Cleaning libft directory..."
 	@echo "Cleaning mlx42/build directory..."
