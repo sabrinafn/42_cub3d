@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mgonzaga <mgonzaga@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/25 18:38:48 by mgonzaga          #+#    #+#              #
-#    Updated: 2025/03/30 17:20:42 by sabrifer         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME := cub3D
 
 CC := cc
@@ -17,15 +5,10 @@ CC := cc
 C_FLAGS := -g3 -Wall -Wextra -Werror
 
 MLX_FLAGS = -lm -ldl -pthread -lglfw
+MLX_LIB := ./MLX42/build/libmlx42.a
 
 LIBFT_DIR := ./libft
-
-LIBFT := libft/libft.a
-
-MLX_REPO := https://github.com/codam-coding-college/MLX42.git
-MLX_DIR := MLX42
-MLX_BUILD_DIR := $(MLX_DIR)/build
-MLX_LIB := $(MLX_BUILD_DIR)/libmlx42.a
+LIBFT := $(LIBFT_DIR)/libft.a
 
 FILES := main.c \
 		01.parsing/01.check_argv.c 01.parsing/02.read_argv.c 01.parsing/03.map_validation.c \
@@ -41,54 +24,28 @@ FILES := main.c \
 
 OBJ := $(FILES:.c=.o)
 
-all: $(MLXLIB) $(LIBFT) $(NAME)
+all: $(LIBFT) $(NAME)
 
-%.o: %.c 
-	@$(CC) $(C_FLAGS) -c $< -o $@
+%.o: %.c
+	$(CC) $(C_FLAGS) -c $< -o $@
 
-$(LIBFT): 
-	@make -C $(LIBFT_DIR)
-	@echo "Compiling libft..."
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-$(MLX_LIB):
-	@if [ ! -d "$(MLX_DIR)" ]; then \
-		git clone $(MLX_REPO) $(MLX_DIR); \
-	fi
-	@cmake -S $(MLX_DIR) -B $(MLX_BUILD_DIR)
-	@make -j4 -C $(MLX_BUILD_DIR)
-	@echo "Compiling mlx42..."
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(C_FLAGS) $(OBJ) $(MLX_LIB) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
-$(NAME): $(MLX_LIB) $(OBJ) $(LIBFT)
-	@$(CC) $(C_FLAGS) $(OBJ) $(MLX_LIB) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
-	@echo "Compiling cub3D..."
-	@$(MAKE) -s print_message
-
-clean: 
-	@rm -f $(OBJ) > /dev/null 2>&1
-	@make -C $(LIBFT_DIR) clean > /dev/null 2>&1
-	@echo "Cleaning cub3D object files..."
-	@echo "Cleaning libft object files..."
+clean:
+	rm -f $(OBJ)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	@rm -f $(NAME) > /dev/null 2>&1
-	@make -C $(LIBFT_DIR) fclean  > /dev/null 2>&1
-	@rm -rf $(MLX_BUILD_DIR) > /dev/null 2>&1
-	@rm -rf $(MLX_DIR) > /dev/null 2>&1
-	@echo "Cleaning cub3D..."
-	@echo "Cleaning libft directory..."
-	@echo "Cleaning mlx42/build directory..."
-
-print_message:
-	@echo "----------------------------------------"
-	@echo "|                                      |"
-	@echo "|       Program Fully Compiled!        |"
-	@echo "|                                      |"
-	@echo "----------------------------------------"
-
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: all fclean clean re print_message
-
-# compile with suppression file:
+# Run with Valgrind (using suppression file for MLX42):
 # valgrind --leak-check=full --suppressions=mlx.sup ./cub3D [map]
+
+.PHONY: all clean fclean re

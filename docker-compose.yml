@@ -1,0 +1,10 @@
+services:
+  mlxgame:
+    build: .
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    working_dir: /app
+    tty: true
+    stdin_open: true
