@@ -2,3 +2,4 @@ cub3D
 /lib/MLX42
 *.o
 libft/libft.a
+.vscode/

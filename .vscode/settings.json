@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"algorithm": "c",
-		"cub_3d.h": "c",
-		"string": "c"
-	},
-	"cmake.sourceDirectory": "/nfs/homes/sabrifer/27.03cub3d/MLX42"
-}
