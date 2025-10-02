@@ -41,8 +41,8 @@
 # define ERROR_17 "Failed to open MLX window\n"
 # define ERROR_18 "Failed to init MLX image\n"
 
-# define WIDTH 1280
-# define HEIGHT 1000
+# define WIDTH 600
+# define HEIGHT 400
 # define MOVE_SPEED 0.1
 # define ROTATION_SPEED 0.1
 

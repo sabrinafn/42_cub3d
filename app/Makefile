@@ -2,7 +2,7 @@ NAME := cub3D
 
 CC := cc
 
-C_FLAGS := -g3 -Wall -Wextra -Werror
+C_FLAGS := -Wall -Wextra -Werror
 
 MLX_FLAGS = -lm -ldl -pthread -lglfw
 MLX_LIB := ./MLX42/build/libmlx42.a
@@ -45,7 +45,7 @@ fclean: clean
 
 re: fclean all
 
-# Run with Valgrind (using suppression file for MLX42):
+# Run with Valgrind:
 # valgrind --leak-check=full --suppressions=mlx.sup ./cub3D [map]
 
 .PHONY: all clean fclean re
